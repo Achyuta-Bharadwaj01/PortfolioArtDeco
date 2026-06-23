@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { AboutSection } from "@/components/home/AboutSection";
+import { ContactSection } from "@/components/home/ContactSection";
 import { Navbar } from "@/components/navbar";
 import { ProjectShowcase } from "@/components/projects";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 
 type NavVariant = "light" | "dark";
 
@@ -28,7 +31,7 @@ export function HomePage() {
 
   return (
     <>
-      <Navbar variant={navVariant} />
+      <Navbar variant={navVariant} compact={navVariant === "dark"} />
 
       <main className="flex flex-1 flex-col">
         <section
@@ -46,7 +49,12 @@ export function HomePage() {
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-mist to-transparent" />
         </section>
 
+        <SectionDivider label="Selected Works" tone="mist" />
         <ProjectShowcase />
+        <SectionDivider label="About" tone="fade" />
+        <AboutSection />
+        <SectionDivider label="Contact" tone="fadeReverse" />
+        <ContactSection />
       </main>
     </>
   );

@@ -7,7 +7,7 @@ import { ProjectCard } from "@/components/projects/ProjectCard";
 
 export function ProjectShowcase() {
   return (
-    <section className="bg-mist py-24 lg:py-36">
+    <section className="bg-mist pb-24 pt-8 lg:pb-36 lg:pt-12">
       <div className="mx-auto w-full px-5 lg:px-8">
         <div className="mb-16 border-b border-black/10 pb-12 lg:mb-20 lg:flex lg:items-end lg:justify-between lg:pb-14">
           <div className="max-w-2xl">
