@@ -6,7 +6,10 @@ type NavLinksProps = {
 };
 
 export function NavLinks({ tone = "dark" }: NavLinksProps) {
-  const colorClass = tone === "light" ? "text-white" : "text-foreground";
+  const colorClass =
+    tone === "light"
+      ? "text-white hover:opacity-70"
+      : "text-black hover:text-teal";
 
   return (
     <nav aria-label="Main navigation">
@@ -15,7 +18,7 @@ export function NavLinks({ tone = "dark" }: NavLinksProps) {
           <li key={href}>
             <Link
               href={href}
-              className={`font-heading text-xl font-bold uppercase leading-none tracking-[0.04em] transition-opacity hover:opacity-60 lg:text-2xl ${colorClass}`}
+              className={`font-heading text-xl font-bold uppercase leading-none tracking-[0.04em] transition-colors lg:text-2xl ${colorClass}`}
             >
               {label}
             </Link>

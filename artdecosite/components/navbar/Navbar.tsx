@@ -12,15 +12,15 @@ type NavbarProps = {
 export function Navbar({ variant = "dark" }: NavbarProps) {
   const isLight = variant === "light";
 
-  const textColor = isLight ? "text-white" : "text-foreground";
-  const borderColor = isLight ? "border-transparent" : "border-black/5";
-  const bgColor = isLight ? "bg-transparent" : "bg-background/90";
+  const textColor = isLight ? "text-white" : "text-black";
+  const borderColor = isLight ? "border-transparent" : "border-border";
+  const bgColor = isLight ? "bg-transparent" : "bg-white/95 backdrop-blur-sm";
 
   const logoSrc = isLight ? logos.onDark : logos.onLight;
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-20 px-8 py-6 lg:px-16 lg:py-8 border-b ${bgColor} ${borderColor} transition-colors duration-500`}
+      className={`fixed inset-x-0 top-0 z-20 border-b px-5 py-6 transition-colors duration-500 lg:px-8 lg:py-8 ${bgColor} ${borderColor}`}
     >
       <div className="grid grid-cols-[1fr_auto_1fr] items-center">
         <div className="justify-self-start">
@@ -29,7 +29,7 @@ export function Navbar({ variant = "dark" }: NavbarProps) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            className={`inline-flex transition-opacity hover:opacity-80 ${textColor}`}
+            className={`inline-flex transition-opacity hover:opacity-60 ${textColor}`}
           >
             <InstagramIcon className="h-6 w-6" />
           </Link>

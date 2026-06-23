@@ -1,7 +1,9 @@
+import { theme } from "@/lib/constants/theme";
+
 export const siteConfig = {
   name: "Shaineela Ahmed",
-  background: "#FDF9F3",
-  foreground: "#000000",
+  background: theme.background,
+  foreground: theme.foreground,
   instagramUrl: "https://www.instagram.com/",
 } as const;
 

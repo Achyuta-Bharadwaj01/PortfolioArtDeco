@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { bodoniCondensed } from "@/lib/fonts";
+import { ebGaramond } from "@/lib/fonts";
 import { Footer } from "@/components/footer/Footer";
 import "./globals.css";
 
@@ -14,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bodoniCondensed.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-background font-heading text-foreground">
+    <html lang="en" className={`${ebGaramond.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-mist font-heading text-black">
         {children}
         <Footer />
       </body>

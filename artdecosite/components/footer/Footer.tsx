@@ -14,7 +14,7 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-black/10 px-6 py-10 lg:px-16 lg:py-14">
+    <footer className="mt-auto border-t border-border bg-white px-5 py-10 lg:px-8 lg:py-14">
       <div className="grid gap-10 lg:grid-cols-[1.7fr_1.3fr] lg:items-start">
         <div className="flex items-start">
           <Image
@@ -28,12 +28,12 @@ export function Footer() {
           />
         </div>
 
-        <ul className="grid grid-cols-2 gap-x-10 gap-y-3 self-center text-sm lg:grid-cols-2 lg:text-base">
+        <ul className="grid grid-cols-2 gap-x-10 gap-y-3 self-center text-sm text-black lg:grid-cols-2 lg:text-base">
           {footerLinks.map((link) => (
             <li key={link.label}>
               <Link
                 href={link.href}
-                className="transition-opacity hover:opacity-60"
+                className="transition-colors hover:text-teal"
                 target={link.href.startsWith("http") ? "_blank" : undefined}
                 rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
               >
