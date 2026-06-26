@@ -36,7 +36,7 @@ export function HomePage() {
       <main className="flex flex-1 flex-col">
         <section
           ref={heroRef}
-          className="relative h-[70vh] w-full overflow-hidden bg-black lg:h-screen"
+          className="relative h-[65vh] w-full overflow-hidden bg-black sm:h-[70vh] lg:h-screen"
         >
           <video
             className="absolute inset-0 h-full w-full object-cover"

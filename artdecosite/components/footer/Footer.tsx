@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { logos } from "@/lib/constants/assets";
 import { siteConfig } from "@/lib/constants/site";
+import { siteX } from "@/lib/constants/layout";
 
 const footerLinks = [
   { label: "Contact Us", href: "/contact" },
@@ -14,8 +15,8 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-border bg-white px-5 py-10 lg:px-8 lg:py-14">
-      <div className="grid gap-10 lg:grid-cols-[1.7fr_1.3fr] lg:items-start">
+    <footer className={`mt-auto border-t border-border bg-white py-10 sm:py-12 lg:py-14 ${siteX}`}>
+      <div className="grid gap-8 sm:gap-10 lg:grid-cols-[1.6fr_1fr] lg:items-start xl:grid-cols-[1.7fr_1.3fr]">
         <div className="flex items-start">
           <Image
             src={logos.onLight}
@@ -23,12 +24,12 @@ export function Footer() {
             width={680}
             height={210}
             unoptimized
-            className="h-auto w-full max-w-[540px]"
+            className="h-auto w-full max-w-[16rem] sm:max-w-xs md:max-w-sm lg:max-w-md xl:max-w-[540px]"
             style={{ width: "100%" }}
           />
         </div>
 
-        <ul className="grid grid-cols-2 gap-x-10 gap-y-3 self-center text-sm text-black lg:grid-cols-2 lg:text-base">
+        <ul className="grid grid-cols-2 gap-x-6 gap-y-3 self-center text-sm text-black sm:gap-x-8 sm:text-base lg:justify-items-end lg:text-right">
           {footerLinks.map((link) => (
             <li key={link.label}>
               <Link

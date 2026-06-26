@@ -15,6 +15,11 @@
   --font-heading: var(--font-garamond), "EB Garamond", Georgia, serif;
 }
 
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   background-color: #f8f9fa;

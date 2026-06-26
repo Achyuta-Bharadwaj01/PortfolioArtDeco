@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PortfolioGrid } from "@/components/portfolio";
 import { Navbar } from "@/components/navbar";
+import { pageTop } from "@/lib/constants/layout";
 import { getAllProjects } from "@/lib/projects/getAllProjects";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export default function PortfolioPage() {
   return (
     <>
       <Navbar variant="dark" compact />
-      <main className="flex flex-1 flex-col pt-24 lg:pt-28">
+      <main className={`flex flex-1 flex-col ${pageTop}`}>
         <PortfolioGrid projects={projects} />
       </main>
     </>
