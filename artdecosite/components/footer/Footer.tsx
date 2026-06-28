@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { logos } from "@/lib/constants/assets";
+import { contactHref } from "@/lib/utils/scrollToHash";
 import { siteConfig } from "@/lib/constants/site";
 import { siteX } from "@/lib/constants/layout";
 
 const footerLinks = [
-  { label: "Contact Us", href: "/contact" },
+  { label: "Contact Us", href: contactHref },
   { label: "About", href: "/about" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Blog", href: "/blog" },

@@ -8,6 +8,7 @@ import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { Navbar } from "@/components/navbar";
 import { ProjectShowcase } from "@/components/projects";
 import { SectionDivider } from "@/components/ui/SectionDivider";
+import { scrollToHash } from "@/lib/utils/scrollToHash";
 
 type NavVariant = "light" | "dark";
 
@@ -29,6 +30,15 @@ export function HomePage() {
 
     observer.observe(heroEl);
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+
+    requestAnimationFrame(() => {
+      scrollToHash(hash);
+    });
   }, []);
 
   return (

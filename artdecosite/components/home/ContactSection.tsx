@@ -9,6 +9,7 @@ import {
   dialCodeOptions,
   type ContactFormValues,
 } from "@/lib/constants/contact";
+import { contactSectionId } from "@/lib/utils/scrollToHash";
 
 const initialValues: ContactFormValues = {
   fullName: "",
@@ -69,16 +70,13 @@ export function ContactSection() {
   }
 
   return (
-    <section className="bg-mist px-5 pb-16 pt-2 lg:px-8 lg:pb-24 lg:pt-4">
+    <section
+      id={contactSectionId}
+      className="scroll-mt-24 bg-mist px-5 pb-16 pt-2 lg:scroll-mt-28 lg:px-8 lg:pb-24 lg:pt-4"
+    >
       <div className="mx-auto w-full max-w-7xl">
-        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-14 xl:gap-20">
-          <div className="text-center lg:sticky lg:top-36 lg:pt-4 lg:text-left">
-            <div className="mb-6 flex items-center justify-center gap-4 lg:mb-8 lg:justify-start">
-              <span className="h-px w-12 bg-navy/20" />
-              <span className="text-black/20">◆</span>
-              <span className="hidden h-px w-12 bg-navy/20 sm:block" />
-            </div>
-
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-14 xl:gap-20">
+          <div className="text-center lg:text-left">
             <h2 className="font-heading text-2xl font-bold uppercase tracking-[0.16em] text-black sm:text-3xl lg:text-[2rem] lg:leading-tight">
               {contactConfig.heading}
             </h2>

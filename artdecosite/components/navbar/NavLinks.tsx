@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navLinks } from "@/lib/constants/site";
+import { parseHashHref, scrollToHash } from "@/lib/utils/scrollToHash";
 
 type NavLinksProps = {
   tone?: "light" | "dark";
@@ -18,7 +22,23 @@ export function NavLinks({
   revealed = true,
   animated = false,
 }: NavLinksProps) {
+  const pathname = usePathname();
   const isVertical = layout === "vertical";
+
+  function handleLinkClick(
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) {
+    const target = parseHashHref(href);
+    if (!target?.hash) return;
+
+    if (pathname === target.path) {
+      event.preventDefault();
+      scrollToHash(target.hash);
+      window.history.replaceState(null, "", `#${target.hash}`);
+      onNavigate?.();
+    }
+  }
 
   const linkClass =
     tone === "light"
@@ -60,7 +80,7 @@ export function NavLinks({
           >
             <Link
               href={href}
-              onClick={onNavigate}
+              onClick={(event) => handleLinkClick(event, href)}
               className={`group relative font-heading font-bold uppercase leading-none transition-all duration-300 ${
                 isVertical
                   ? "text-base tracking-[0.26em]"

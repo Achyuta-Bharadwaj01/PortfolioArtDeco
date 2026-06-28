@@ -1,4 +1,5 @@
 import { theme } from "@/lib/constants/theme";
+import { contactHref } from "@/lib/utils/scrollToHash";
 
 export const siteConfig = {
   name: "Shaineela Ahmed",
@@ -12,7 +13,8 @@ export const siteConfig = {
 
 export const navLinks = [
   { label: "PORTFOLIO", href: "/portfolio" },
+  { label: "SHOP", href: "/shop" },
   { label: "BLOG", href: "/blog" },
   { label: "ABOUT", href: "/about" },
-  { label: "CONTACT", href: "/contact" },
+  { label: "CONTACT", href: contactHref },
 ] as const;
