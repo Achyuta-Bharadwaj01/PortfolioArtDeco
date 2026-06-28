@@ -3,6 +3,7 @@ import { JourneySideOrnament } from "@/components/home/JourneySideOrnament";
 import {
   journeyEntries,
   journeyIntro,
+  journeyMaxWidthClass,
   type JourneyEntry,
 } from "@/lib/constants/journey";
 
@@ -10,7 +11,7 @@ function JourneyCard({ entry }: { entry: JourneyEntry }) {
   return (
     <article className="group relative flex w-[16.5rem] shrink-0 snap-start flex-col sm:w-[17.5rem] md:w-[18rem] lg:w-[19rem] xl:w-[20rem]">
       <div className="flex flex-col items-center">
-        <span className="whitespace-nowrap font-heading text-[10px] font-bold uppercase tracking-[0.32em] text-navy/55">
+        <span className="font-heading text-[11px] font-bold uppercase tracking-[0.28em] text-navy/55 sm:text-xs">
           {entry.period}
         </span>
         <span className="relative z-10 mt-3 flex h-3 w-3 items-center justify-center rounded-full border border-teal/40 bg-white ring-4 ring-white transition-colors duration-300 group-hover:border-teal group-hover:bg-teal" />
@@ -35,7 +36,7 @@ function TimelineConnector() {
   return (
     <span
       aria-hidden="true"
-      className="mt-[2.15rem] hidden h-px min-w-6 flex-1 shrink basis-10 bg-gradient-to-r from-navy/20 via-navy/15 to-navy/20 sm:block lg:min-w-10 lg:max-w-28"
+      className="mt-[2.15rem] hidden h-px min-w-6 flex-1 shrink basis-10 bg-gradient-to-r from-navy/20 via-navy/15 to-navy/20 sm:block lg:min-w-12 lg:max-w-36"
     />
   );
 }
@@ -46,7 +47,7 @@ export function JourneySection() {
       <JourneySideOrnament side="left" />
       <JourneySideOrnament side="right" />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className={`relative z-10 mx-auto w-full ${journeyMaxWidthClass} px-5 sm:px-6 lg:px-10 xl:px-12`}>
         <div className="mb-8 max-w-2xl border-b border-black/10 pb-8 lg:mb-10 lg:pb-10">
           <h2 className="font-heading text-2xl font-bold uppercase tracking-[0.14em] text-black sm:text-3xl">
             {journeyIntro.heading}
@@ -56,9 +57,9 @@ export function JourneySection() {
           </p>
         </div>
 
-        <div className="relative -mx-5 sm:-mx-6 lg:-mx-8">
-          <div className="overflow-x-auto overscroll-x-contain scroll-smooth pb-4 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory scroll-px-5 sm:scroll-px-6 lg:scroll-px-8 [&::-webkit-scrollbar]:hidden">
-            <div className="flex min-w-full w-max items-start gap-5 px-5 sm:gap-0 sm:px-6 lg:px-8">
+        <div className="relative -mx-5 sm:-mx-6 lg:-mx-10 xl:-mx-12">
+          <div className="overflow-x-auto overscroll-x-contain scroll-smooth pb-4 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory scroll-px-5 sm:scroll-px-6 lg:scroll-px-10 xl:scroll-px-12 [&::-webkit-scrollbar]:hidden">
+            <div className="flex min-w-full w-max items-start gap-5 px-5 sm:gap-0 sm:px-6 lg:px-10 xl:px-12">
               {journeyEntries.map((entry, index) => (
                 <Fragment key={entry.id}>
                   {index > 0 ? <TimelineConnector /> : null}

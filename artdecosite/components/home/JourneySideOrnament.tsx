@@ -72,7 +72,7 @@ export function JourneySideOrnament({ side }: JourneySideOrnamentProps) {
   return (
     <div
       aria-hidden="true"
-      className={`pointer-events-none absolute inset-y-0 hidden w-[calc((100%-min(100%,80rem))/2)] min-[1440px]:block ${
+      className={`pointer-events-none absolute inset-y-0 hidden w-[calc((100%-min(100%,92rem))/2)] min-[1440px]:block ${
         isLeft ? "left-0" : "right-0"
       }`}
     >

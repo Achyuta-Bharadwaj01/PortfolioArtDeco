@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { HeroTagline } from "@/components/home/HeroTagline";
 import { ContactSection } from "@/components/home/ContactSection";
 import { JourneySection } from "@/components/home/JourneySection";
+import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { Navbar } from "@/components/navbar";
 import { ProjectShowcase } from "@/components/projects";
 import { SectionDivider } from "@/components/ui/SectionDivider";
@@ -55,7 +56,9 @@ export function HomePage() {
         <ProjectShowcase />
         <SectionDivider label="Journey" tone="fade" />
         <JourneySection />
-        <SectionDivider label="Contact" tone="fadeReverse" />
+        <SectionDivider label="Testimonials" tone="fadeReverse" />
+        <TestimonialsSection />
+        <SectionDivider label="Contact" tone="mist" />
         <ContactSection />
       </main>
     </>
