@@ -6,6 +6,8 @@ type NavLinksProps = {
   compact?: boolean;
   layout?: "horizontal" | "vertical";
   onNavigate?: () => void;
+  revealed?: boolean;
+  animated?: boolean;
 };
 
 export function NavLinks({
@@ -13,6 +15,8 @@ export function NavLinks({
   compact = false,
   layout = "horizontal",
   onNavigate,
+  revealed = true,
+  animated = false,
 }: NavLinksProps) {
   const isVertical = layout === "vertical";
 
@@ -34,8 +38,26 @@ export function NavLinks({
               }`
         }`}
       >
-        {navLinks.map(({ label, href }) => (
-          <li key={href}>
+        {navLinks.map(({ label, href }, index) => (
+          <li
+            key={href}
+            className={
+              animated
+                ? `transition-all duration-500 ease-out ${
+                    revealed
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-3 opacity-0"
+                  }`
+                : undefined
+            }
+            style={
+              animated
+                ? {
+                    transitionDelay: revealed ? `${80 + index * 70}ms` : "0ms",
+                  }
+                : undefined
+            }
+          >
             <Link
               href={href}
               onClick={onNavigate}

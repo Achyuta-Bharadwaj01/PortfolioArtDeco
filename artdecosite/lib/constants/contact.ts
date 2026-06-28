@@ -1,5 +1,5 @@
 export const contactConfig = {
-  whatsappNumber: "916361540037",
+  whatsappNumber: "919019348653",
   heading: "Get in Touch",
   subheading:
     "Share your details below and begin a conversation on WhatsApp — for enquiries, collaborations, or project discussions.",

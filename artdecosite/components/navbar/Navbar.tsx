@@ -13,7 +13,7 @@ type NavbarProps = {
 };
 
 const sideRailClass =
-  "relative z-10 flex min-w-[5.5rem] shrink-0 items-center sm:min-w-[6.25rem]";
+  "relative z-10 flex min-w-[2.25rem] shrink-0 items-center md:min-w-[6.25rem]";
 
 export function Navbar({ variant = "dark", compact = false }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,15 +46,17 @@ export function Navbar({ variant = "dark", compact = false }: NavbarProps) {
       } ${bgColor} ${borderColor}`}
     >
       <div className="w-full">
-        <div className="relative flex min-h-8 items-center justify-between sm:min-h-9">
+        <div className="relative flex min-h-9 items-center justify-between">
           <div className={sideRailClass}>
-            <SocialLinks
-              tone={isLight ? "light" : "dark"}
-              iconClassName={iconSize}
-            />
+            <div className="hidden md:block">
+              <SocialLinks
+                tone={isLight ? "light" : "dark"}
+                iconClassName={iconSize}
+              />
+            </div>
           </div>
 
-          <div className="pointer-events-none absolute inset-x-0 flex justify-center px-[4.75rem] sm:px-24 md:px-28">
+          <div className="pointer-events-none absolute inset-x-0 flex justify-center px-14 sm:px-16 md:px-28">
             <div className="pointer-events-auto w-full max-w-[15rem] sm:max-w-none">
               <TextLogo tone={isLight ? "light" : "dark"} compact={compact} />
             </div>
@@ -78,20 +80,56 @@ export function Navbar({ variant = "dark", compact = false }: NavbarProps) {
         </div>
       </div>
 
-      {menuOpen ? (
-        <div
-          className={`mt-4 border-t pt-4 md:hidden ${mobileMenuBorder} ${
-            isLight ? "bg-black/20 backdrop-blur-sm" : ""
-          }`}
-        >
-          <NavLinks
-            tone={isLight ? "light" : "dark"}
-            compact={compact}
-            layout="vertical"
-            onNavigate={() => setMenuOpen(false)}
-          />
+      <div
+        className={`grid overflow-hidden transition-all duration-500 ease-out md:hidden ${
+          menuOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="min-h-0">
+          <div
+            className={`border-t pt-4 transition-transform duration-500 ease-out ${mobileMenuBorder} ${
+              menuOpen ? "translate-y-0" : "-translate-y-3"
+            } ${isLight ? "bg-black/20 backdrop-blur-sm" : ""}`}
+          >
+            <NavLinks
+              tone={isLight ? "light" : "dark"}
+              compact={compact}
+              layout="vertical"
+              animated
+              revealed={menuOpen}
+              onNavigate={() => setMenuOpen(false)}
+            />
+
+            <div
+              className={`mt-6 flex items-center justify-center gap-4 transition-all duration-500 ease-out ${
+                menuOpen
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-2 opacity-0"
+              }`}
+              style={{ transitionDelay: menuOpen ? "240ms" : "0ms" }}
+            >
+              <span
+                className={`h-px w-10 ${isLight ? "bg-white/25" : "bg-navy/20"}`}
+              />
+              <span className={isLight ? "text-white/25" : "text-black/20"}>
+                ◆
+              </span>
+              <span
+                className={`h-px w-10 ${isLight ? "bg-white/25" : "bg-navy/20"}`}
+              />
+            </div>
+
+            <div className="mt-5 pb-2">
+              <SocialLinks
+                tone={isLight ? "light" : "dark"}
+                layout="menu"
+                revealed={menuOpen}
+                iconClassName="h-5 w-5"
+              />
+            </div>
+          </div>
         </div>
-      ) : null}
+      </div>
     </header>
   );
 }
