@@ -5,6 +5,9 @@ export const siteConfig = {
   background: theme.background,
   foreground: theme.foreground,
   instagramUrl: "https://www.instagram.com/",
+  pinterestUrl: "https://uk.pinterest.com/shaineelaa/",
+  linkedinUrl: "https://www.linkedin.com/in/shaineela-ahmed-interiorarchitect/",
+  tagline: "Interior Architect and Set Designer",
 } as const;
 
 export const navLinks = [

@@ -4,32 +4,56 @@ import { navLinks } from "@/lib/constants/site";
 type NavLinksProps = {
   tone?: "light" | "dark";
   compact?: boolean;
+  layout?: "horizontal" | "vertical";
+  onNavigate?: () => void;
 };
 
-export function NavLinks({ tone = "dark", compact = false }: NavLinksProps) {
-  const colorClass =
+export function NavLinks({
+  tone = "dark",
+  compact = false,
+  layout = "horizontal",
+  onNavigate,
+}: NavLinksProps) {
+  const isVertical = layout === "vertical";
+
+  const linkClass =
     tone === "light"
-      ? "text-white hover:opacity-70"
+      ? "text-white hover:text-white/80"
       : "text-black hover:text-teal";
 
-  const sizeClass = compact
-    ? "text-[clamp(0.625rem,0.85vw,0.9375rem)] tracking-[0.03em]"
-    : "text-[clamp(0.6875rem,1vw,1.375rem)] tracking-[0.02em] xl:tracking-[0.035em]";
-
-  const gapClass = compact
-    ? "gap-[clamp(0.625rem,1.4vw,2.5rem)]"
-    : "gap-[clamp(0.75rem,1.8vw,3.5rem)]";
-
   return (
-    <nav aria-label="Main navigation" className="min-w-0">
-      <ul className={`flex items-center justify-end transition-all duration-500 ${gapClass}`}>
+    <nav aria-label="Main navigation">
+      <ul
+        className={`transition-all duration-500 ${
+          isVertical
+            ? "flex flex-col items-center gap-5 py-2"
+            : `flex flex-wrap items-center justify-center ${
+                compact
+                  ? "gap-x-5 gap-y-2 md:gap-x-8 lg:gap-x-10"
+                  : "gap-x-6 gap-y-2 md:gap-x-9 lg:gap-x-12"
+              }`
+        }`}
+      >
         {navLinks.map(({ label, href }) => (
-          <li key={href} className="shrink-0">
+          <li key={href}>
             <Link
               href={href}
-              className={`font-heading whitespace-nowrap font-bold uppercase leading-none transition-all duration-500 ${sizeClass} ${colorClass}`}
+              onClick={onNavigate}
+              className={`group relative font-heading font-bold uppercase leading-none transition-all duration-300 ${
+                isVertical
+                  ? "text-base tracking-[0.26em]"
+                  : compact
+                    ? "text-xs tracking-[0.22em] md:text-sm md:tracking-[0.24em]"
+                    : "text-sm tracking-[0.24em] sm:text-[0.9375rem] sm:tracking-[0.26em] md:text-base md:tracking-[0.28em]"
+              } ${linkClass}`}
             >
               {label}
+              <span
+                aria-hidden="true"
+                className={`absolute -bottom-1.5 left-0 h-px w-0 transition-all duration-300 group-hover:w-full ${
+                  tone === "light" ? "bg-white/70" : "bg-teal"
+                }`}
+              />
             </Link>
           </li>
         ))}

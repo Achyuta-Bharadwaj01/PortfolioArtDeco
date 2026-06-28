@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AboutSection } from "@/components/home/AboutSection";
+import { HeroTagline } from "@/components/home/HeroTagline";
 import { ContactSection } from "@/components/home/ContactSection";
 import { Navbar } from "@/components/navbar";
 import { ProjectShowcase } from "@/components/projects";
@@ -36,7 +36,7 @@ export function HomePage() {
       <main className="flex flex-1 flex-col">
         <section
           ref={heroRef}
-          className="relative h-[65vh] w-full overflow-hidden bg-black sm:h-[70vh] lg:h-screen"
+          className="relative h-[70vh] w-full overflow-hidden bg-black lg:h-screen"
         >
           <video
             className="absolute inset-0 h-full w-full object-cover"
@@ -46,14 +46,13 @@ export function HomePage() {
             loop
             playsInline
           />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-mist to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white to-transparent" />
         </section>
 
+        <HeroTagline />
         <SectionDivider label="Selected Works" tone="mist" />
         <ProjectShowcase />
-        <SectionDivider label="About" tone="fade" />
-        <AboutSection />
-        <SectionDivider label="Contact" tone="fadeReverse" />
+        <SectionDivider label="Contact" tone="mist" />
         <ContactSection />
       </main>
     </>
