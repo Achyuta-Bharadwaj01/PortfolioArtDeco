@@ -6,7 +6,7 @@ import { pageTop } from "@/lib/constants/layout";
 export const metadata: Metadata = {
   title: "About | Shaineela Ahmed",
   description:
-    "Learn about Shaineela Ahmed — interior designer, stylist, content creator, and art director.",
+    "Human-centered interior design — designing for how you live, not just how a space looks.",
 };
 
 export default function AboutPage() {

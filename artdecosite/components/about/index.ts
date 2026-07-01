@@ -1,3 +1,3 @@
 export { AboutPageContent } from "./AboutPageContent";
-export { AboutHero } from "./AboutHero";
-export { SpecialtyRow } from "./SpecialtyRow";
+export { AboutEssay } from "./AboutEssay";
+export { AboutShowcaseVideo } from "./AboutShowcaseVideo";
