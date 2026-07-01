@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { AboutSection } from "@/components/home/AboutSection";
 import { HeroTagline } from "@/components/home/HeroTagline";
 import { ContactSection } from "@/components/home/ContactSection";
 import { JourneySection } from "@/components/home/JourneySection";
@@ -64,7 +65,9 @@ export function HomePage() {
         <HeroTagline />
         <SectionDivider label="Selected Works" tone="mist" />
         <ProjectShowcase />
-        <SectionDivider label="Journey" tone="fade" />
+        <SectionDivider label="About" tone="fade" />
+        <AboutSection />
+        <SectionDivider label="Journey" tone="fadeReverse" />
         <JourneySection />
         <SectionDivider label="Testimonials" tone="fadeReverse" />
         <TestimonialsSection />
