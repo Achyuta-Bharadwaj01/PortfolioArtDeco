@@ -9,6 +9,7 @@ const footerLinks = [
   { label: "Contact Us", href: contactHref },
   { label: "About", href: "/about" },
   { label: "Portfolio", href: "/portfolio" },
+  { label: "Services", href: "/services" },
   { label: "Blog", href: "/blog" },
   { label: "Projects", href: "/projects" },
   { label: "Instagram", href: "https://www.instagram.com/" },
