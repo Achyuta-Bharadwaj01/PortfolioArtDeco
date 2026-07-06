@@ -4,7 +4,6 @@ import { logos } from "@/lib/constants/assets";
 import { contactHref } from "@/lib/utils/scrollToHash";
 import { siteConfig } from "@/lib/constants/site";
 import { siteX } from "@/lib/constants/layout";
-import { EditorialStamp, HeraldicCrest } from "@/components/ui/ornaments";
 
 const footerLinks = [
   { label: "Contact Us", href: contactHref },
@@ -18,19 +17,8 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className={`relative mt-auto overflow-hidden border-t border-border bg-parchment bg-parchment-texture py-10 sm:py-12 lg:py-14 ${siteX}`}>
-      <EditorialStamp
-        size="xl"
-        tone="cocoa"
-        className="absolute -right-10 top-1/2 -translate-y-1/2 opacity-30 sm:-right-4 lg:opacity-40"
-      />
-      <HeraldicCrest
-        size="lg"
-        tone="brass"
-        className="absolute -left-8 bottom-0 hidden opacity-35 sm:block"
-      />
-
-      <div className="relative z-10 grid gap-8 sm:gap-10 lg:grid-cols-[1.6fr_1fr] lg:items-start xl:grid-cols-[1.7fr_1.3fr]">
+    <footer className={`mt-auto border-t border-border bg-parchment py-10 sm:py-12 lg:py-14 ${siteX}`}>
+      <div className="grid gap-8 sm:gap-10 lg:grid-cols-[1.6fr_1fr] lg:items-start xl:grid-cols-[1.7fr_1.3fr]">
         <div className="flex items-start">
           <Image
             src={logos.onLight}
