@@ -93,7 +93,7 @@ export function NavLinks({
               <span
                 aria-hidden="true"
                 className={`absolute -bottom-1.5 left-0 h-px w-0 transition-all duration-300 group-hover:w-full ${
-                  tone === "light" ? "bg-white/70" : "bg-teal"
+                  tone === "light" ? "bg-white/70" : "bg-bronze"
                 }`}
               />
             </Link>

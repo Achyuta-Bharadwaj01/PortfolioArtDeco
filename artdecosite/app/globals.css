@@ -1,17 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #022b3a;
-  --color-teal: #1f7a8c;
-  --color-sky: #bfdbf7;
-  --color-mist: #f8f9fa;
-  --color-white: #ffffff;
-  --color-black: #000000;
-  --color-background: #f8f9fa;
-  --color-foreground: #000000;
-  --color-surface: #ffffff;
-  --color-accent: #1f7a8c;
-  --color-border: #00000014;
+  /* Warm editorial palette — inspired by interior beiges, bronzes & botanical accents */
+  --color-ivory: #f6f1e9;
+  --color-parchment: #fdfbf7;
+  --color-sand: #e8dcc8;
+  --color-linen: #f0e8dc;
+  --color-taupe: #9a8576;
+  --color-cocoa: #3d2e24;
+  --color-bronze: #a67c52;
+  --color-gold: #c4a574;
+  --color-lavender: #b8a9b0;
+
+  /* Semantic aliases (kept for component compatibility) */
+  --color-navy: #3d2e24;
+  --color-teal: #a67c52;
+  --color-sky: #e8dcc8;
+  --color-mist: #f6f1e9;
+  --color-white: #fdfbf7;
+  --color-black: #1a1410;
+  --color-background: #f6f1e9;
+  --color-foreground: #1a1410;
+  --color-surface: #fdfbf7;
+  --color-accent: #a67c52;
+  --color-border: #3d2e2418;
   --font-heading: var(--font-garamond), "EB Garamond", Georgia, serif;
 }
 
@@ -22,8 +34,8 @@ html {
 
 html,
 body {
-  background-color: #f8f9fa;
-  color: #000000;
+  background-color: #f6f1e9;
+  color: #1a1410;
 }
 
 body {
@@ -40,6 +52,49 @@ body {
 }
 
 ::selection {
-  background-color: #bfdbf7;
-  color: #000000;
+  background-color: #e8dcc8;
+  color: #1a1410;
+}
+
+/* Warm card hover shadow */
+.shadow-warm {
+  box-shadow: 0 8px 30px rgba(61, 46, 36, 0.08);
+}
+
+/* Fluted panel texture — inspired by architectural ribbing */
+.bg-fluted {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(61, 46, 36, 0.04) 0,
+    rgba(61, 46, 36, 0.04) 1px,
+    transparent 1px,
+    transparent 14px
+  );
+}
+
+/* Subtle botanical line pattern for section accents */
+.bg-botanical {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120' fill='none'%3E%3Cpath d='M60 10 Q75 40 60 70 Q45 40 60 10' stroke='%233d2e24' stroke-width='0.4' opacity='0.06'/%3E%3Cpath d='M30 50 Q50 65 30 90' stroke='%233d2e24' stroke-width='0.35' opacity='0.05'/%3E%3Cpath d='M90 50 Q70 65 90 90' stroke='%233d2e24' stroke-width='0.35' opacity='0.05'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+}
+
+/* Warm gradient section transitions */
+.bg-warm-fade {
+  background: linear-gradient(to bottom, #f6f1e9 0%, #ede6da 50%, #fdfbf7 100%);
+}
+
+.bg-warm-fade-reverse {
+  background: linear-gradient(to bottom, #fdfbf7 0%, #ede6da 50%, #f6f1e9 100%);
+}
+
+/* Gold accent line for dividers */
+.divider-gold {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(166, 124, 82, 0.25) 20%,
+    rgba(196, 165, 116, 0.4) 50%,
+    rgba(166, 124, 82, 0.25) 80%,
+    transparent
+  );
 }

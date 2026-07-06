@@ -13,7 +13,7 @@ export function ProjectCard({ project, numeral }: ProjectCardProps) {
 
   return (
     <Link href={project.href} className="group block">
-      <div className="bg-white p-2 ring-1 ring-black/[0.06] lg:p-3">
+      <div className="bg-parchment p-2 ring-1 ring-cocoa/[0.06] lg:p-3">
         <div className="relative aspect-[3/4] w-full overflow-hidden bg-mist">
           <ProjectMedia
             src={project.image}
@@ -25,7 +25,7 @@ export function ProjectCard({ project, numeral }: ProjectCardProps) {
             loop={isVideo}
             className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
           />
-          <div className="pointer-events-none absolute inset-0 z-10 bg-navy/0 transition-colors duration-500 group-hover:bg-navy/10" />
+          <div className="pointer-events-none absolute inset-0 z-10 bg-cocoa/0 transition-colors duration-500 group-hover:bg-cocoa/10" />
           <span className="absolute left-4 top-4 z-10 text-[10px] uppercase tracking-[0.35em] text-white/90 drop-shadow-sm lg:left-5 lg:top-5 lg:text-[11px]">
             {numeral}
           </span>

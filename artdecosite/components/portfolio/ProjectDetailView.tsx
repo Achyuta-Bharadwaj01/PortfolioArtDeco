@@ -76,7 +76,7 @@ export function ProjectDetailView({ project }: ProjectDetailViewProps) {
         </section>
 
         {project.description.length > 0 ? (
-          <section className="bg-white px-5 py-20 lg:px-8 lg:py-28">
+          <section className="bg-parchment px-5 py-20 lg:px-8 lg:py-28">
             <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-20">
               <div className="lg:sticky lg:top-40">
                 <div className="flex items-center gap-4">

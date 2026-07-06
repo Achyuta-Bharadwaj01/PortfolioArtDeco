@@ -17,7 +17,7 @@ function JourneyCard({ entry }: { entry: JourneyEntry }) {
         <span className="relative z-10 mt-3 flex h-3 w-3 items-center justify-center rounded-full border border-teal/40 bg-white ring-4 ring-white transition-colors duration-300 group-hover:border-teal group-hover:bg-teal" />
       </div>
 
-      <div className="mt-5 bg-white p-4 ring-1 ring-black/[0.06] transition-all duration-300 group-hover:ring-teal/25 group-hover:shadow-[0_8px_30px_rgba(2,43,58,0.06)] sm:p-5">
+      <div className="mt-5 bg-parchment p-4 ring-1 ring-cocoa/[0.06] transition-all duration-300 group-hover:ring-bronze/25 group-hover:shadow-warm sm:p-5">
         <h3 className="font-heading text-base font-bold uppercase leading-snug tracking-[0.08em] text-black sm:text-[1.05rem]">
           {entry.title}
         </h3>
@@ -43,7 +43,7 @@ function TimelineConnector() {
 
 export function JourneySection() {
   return (
-    <section className="relative bg-white pb-14 pt-4 lg:pb-20 lg:pt-6">
+    <section className="relative bg-parchment pb-14 pt-4 lg:pb-20 lg:pt-6">
       <JourneySideOrnament side="left" />
       <JourneySideOrnament side="right" />
 

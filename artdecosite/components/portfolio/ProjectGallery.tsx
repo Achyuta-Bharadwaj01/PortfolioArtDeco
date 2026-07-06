@@ -20,7 +20,7 @@ function GalleryMedia({ src, alt, numeral, className = "" }: GalleryMediaProps) 
 
   return (
     <figure className={`group ${className}`}>
-      <div className="bg-white p-2 ring-1 ring-black/[0.06] lg:p-3">
+      <div className="bg-parchment p-2 ring-1 ring-cocoa/[0.06] lg:p-3">
         <div className="relative bg-mist">
           <ProjectMedia
             src={src}
@@ -31,7 +31,7 @@ function GalleryMedia({ src, alt, numeral, className = "" }: GalleryMediaProps) 
             loop={isVideo}
             controls={isVideo}
           />
-          <div className="pointer-events-none absolute inset-0 bg-navy/0 transition-colors duration-500 group-hover:bg-navy/10" />
+          <div className="pointer-events-none absolute inset-0 bg-cocoa/0 transition-colors duration-500 group-hover:bg-cocoa/10" />
           <figcaption className="absolute left-4 top-4 z-10 text-[10px] uppercase tracking-[0.35em] text-white/90 drop-shadow-sm lg:left-5 lg:top-5 lg:text-[11px]">
             {toRomanNumeral(numeral)}
           </figcaption>
@@ -57,11 +57,11 @@ export function ProjectGallery({ project }: ProjectGalleryProps) {
     <section className="bg-mist px-5 pb-24 pt-16 lg:px-8 lg:pb-36 lg:pt-24">
       <div className="mx-auto w-full max-w-7xl">
         <div className="mb-14 flex items-center justify-center gap-4 lg:mb-20">
-          <span className="h-px w-16 bg-navy/20" />
-          <p className="font-heading text-[10px] font-bold uppercase tracking-[0.42em] text-navy/60 lg:text-[11px]">
+          <span className="divider-gold h-px w-16" />
+          <p className="font-heading text-[10px] font-bold uppercase tracking-[0.42em] text-cocoa/60 lg:text-[11px]">
             Renders &amp; Spaces
           </p>
-          <span className="h-px w-16 bg-navy/20" />
+          <span className="divider-gold h-px w-16" />
         </div>
 
         <div className="space-y-6 lg:space-y-8">

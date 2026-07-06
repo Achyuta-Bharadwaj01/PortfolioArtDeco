@@ -17,7 +17,7 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className={`mt-auto border-t border-border bg-white py-10 sm:py-12 lg:py-14 ${siteX}`}>
+    <footer className={`mt-auto border-t border-border bg-parchment py-10 sm:py-12 lg:py-14 ${siteX}`}>
       <div className="grid gap-8 sm:gap-10 lg:grid-cols-[1.6fr_1fr] lg:items-start xl:grid-cols-[1.7fr_1.3fr]">
         <div className="flex items-start">
           <Image
@@ -36,7 +36,7 @@ export function Footer() {
             <li key={link.label}>
               <Link
                 href={link.href}
-                className="transition-colors hover:text-teal"
+                className="transition-colors hover:text-bronze"
                 target={link.href.startsWith("http") ? "_blank" : undefined}
                 rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
               >

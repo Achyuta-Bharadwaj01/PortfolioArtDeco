@@ -8,7 +8,7 @@ function ServiceCard({ category, index }: { category: ServiceCategory; index: nu
   const numeral = String(index + 1).padStart(2, "0");
 
   return (
-    <article className="group relative flex flex-col bg-white p-6 ring-1 ring-black/[0.06] transition-all duration-300 hover:ring-teal/25 hover:shadow-[0_8px_30px_rgba(2,43,58,0.06)] sm:p-7 lg:p-8">
+    <article className="group relative flex flex-col bg-parchment p-6 ring-1 ring-cocoa/[0.06] transition-all duration-300 hover:ring-bronze/25 hover:shadow-warm sm:p-7 lg:p-8">
       <div className="mb-6 flex items-center justify-between gap-4">
         <span className="font-heading text-[10px] font-bold uppercase tracking-[0.42em] text-navy/50">
           {numeral}

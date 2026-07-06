@@ -7,8 +7,9 @@ import { ProjectCard } from "@/components/projects/ProjectCard";
 
 export function ProjectShowcase() {
   return (
-    <section className="bg-mist pb-8 pt-4 lg:pb-10 lg:pt-6">
-      <div className="mx-auto w-full px-5 lg:px-8">
+    <section className="relative bg-mist pb-8 pt-4 lg:pb-10 lg:pt-6">
+      <div className="pointer-events-none absolute inset-0 bg-botanical opacity-40" />
+      <div className="mx-auto w-full px-5 lg:px-8 relative z-10">
         <div className="mb-10 border-b border-black/10 pb-8 lg:mb-12 lg:flex lg:items-end lg:justify-between lg:pb-10">
           <div className="max-w-2xl">
             <p className="max-w-lg text-lg italic leading-relaxed text-black/55 lg:text-xl">
@@ -39,7 +40,7 @@ export function ProjectShowcase() {
         <div className="mt-10 flex justify-center lg:mt-12">
           <Link
             href="/portfolio"
-            className="group inline-flex items-center gap-5 border border-black/20 bg-white px-8 py-4 transition-all duration-300 hover:border-teal hover:shadow-[0_8px_30px_rgba(2,43,58,0.06)] lg:gap-6 lg:px-12 lg:py-5"
+            className="group inline-flex items-center gap-5 border border-cocoa/15 bg-parchment px-8 py-4 transition-all duration-300 hover:border-bronze hover:shadow-warm lg:gap-6 lg:px-12 lg:py-5"
           >
             <span className="h-px w-5 bg-black/25 transition-all duration-300 group-hover:w-8 group-hover:bg-teal" />
             <span className="font-heading text-[11px] font-bold uppercase tracking-[0.32em] text-black transition-colors duration-300 group-hover:text-teal lg:text-xs">

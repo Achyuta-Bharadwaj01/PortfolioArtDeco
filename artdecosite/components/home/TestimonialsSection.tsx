@@ -33,7 +33,7 @@ function TestimonialCard({
 }) {
   return (
     <article className="group flex w-[18rem] shrink-0 snap-start flex-col sm:w-[19.5rem] md:w-[21rem] lg:w-[22rem]">
-      <div className="flex h-full flex-col bg-white p-5 ring-1 ring-black/[0.06] transition-all duration-300 group-hover:ring-teal/25 group-hover:shadow-[0_8px_30px_rgba(2,43,58,0.06)] sm:p-6">
+      <div className="flex h-full flex-col bg-parchment p-5 ring-1 ring-cocoa/[0.06] transition-all duration-300 group-hover:ring-bronze/25 group-hover:shadow-warm sm:p-6">
         <div className="flex items-start justify-between gap-4">
           <span className="font-heading text-[10px] uppercase tracking-[0.28em] text-black/35">
             {toRomanNumeral(index + 1)}

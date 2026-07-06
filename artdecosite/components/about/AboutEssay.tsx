@@ -1,8 +1,10 @@
 import { aboutEssay } from "@/lib/constants/about";
+import { BotanicalAccent } from "@/components/ui/BotanicalAccent";
 
 export function AboutEssay() {
   return (
-    <section className="bg-mist px-5 pb-16 pt-4 sm:px-6 lg:px-10 lg:pb-24 lg:pt-6 xl:px-12">
+    <section className="relative overflow-hidden bg-mist px-5 pb-16 pt-4 sm:px-6 lg:px-10 lg:pb-24 lg:pt-6 xl:px-12">
+      <BotanicalAccent position="bottom-left" className="opacity-50" />
       <article className="mx-auto w-full max-w-3xl">
         <header className="mb-10 border-b border-black/10 pb-10 lg:mb-14 lg:pb-12">
           <div className="mb-6 flex items-center gap-4">

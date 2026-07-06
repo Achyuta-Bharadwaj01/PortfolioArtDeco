@@ -6,8 +6,8 @@ type SectionDividerProps = {
 const toneClasses = {
   mist: "bg-mist",
   white: "bg-white",
-  fade: "bg-gradient-to-b from-mist via-[#f3f5f7] to-white",
-  fadeReverse: "bg-gradient-to-b from-white via-[#f3f5f7] to-mist",
+  fade: "bg-warm-fade",
+  fadeReverse: "bg-warm-fade-reverse",
 } as const;
 
 export function SectionDivider({ label, tone = "mist" }: SectionDividerProps) {
@@ -18,13 +18,13 @@ export function SectionDivider({ label, tone = "mist" }: SectionDividerProps) {
     >
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-3">
         <div className="flex w-full items-center gap-4 sm:gap-6">
-          <span className="h-px flex-1 bg-gradient-to-r from-transparent via-navy/20 to-navy/30" />
-          <span className="text-black/20">◆</span>
-          <span className="h-px flex-1 bg-gradient-to-l from-transparent via-navy/20 to-navy/30" />
+          <span className="divider-gold h-px flex-1" />
+          <span className="text-bronze/30">◆</span>
+          <span className="divider-gold h-px flex-1" />
         </div>
 
         {label ? (
-          <p className="font-heading text-[10px] font-bold uppercase tracking-[0.42em] text-navy/55 lg:text-[11px]">
+          <p className="font-heading text-[10px] font-bold uppercase tracking-[0.42em] text-cocoa/55 lg:text-[11px]">
             {label}
           </p>
         ) : null}
