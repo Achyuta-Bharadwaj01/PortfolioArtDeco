@@ -4,12 +4,33 @@ import {
   projectNumerals,
 } from "@/lib/constants/projects";
 import { ProjectCard } from "@/components/projects/ProjectCard";
+import {
+  EditorialStamp,
+  HeraldicCrest,
+  SketchMural,
+} from "@/components/ui/ornaments";
 
 export function ProjectShowcase() {
   return (
-    <section className="relative bg-mist pb-8 pt-4 lg:pb-10 lg:pt-6">
+    <section className="relative overflow-hidden bg-mist pb-8 pt-4 lg:pb-10 lg:pt-6">
       <div className="pointer-events-none absolute inset-0 bg-botanical opacity-40" />
-      <div className="mx-auto w-full px-5 lg:px-8 relative z-10">
+      <SketchMural
+        variant="interior"
+        tone="walnut"
+        className="absolute -left-8 top-8 h-[22rem] w-[28rem] opacity-80 sm:-left-4 sm:top-12 sm:h-[26rem] sm:w-[32rem] lg:h-[30rem] lg:w-[36rem]"
+      />
+      <SketchMural
+        variant="architectural"
+        tone="mauve"
+        className="absolute -right-12 bottom-0 hidden h-[20rem] w-[26rem] opacity-70 md:block lg:h-[24rem] lg:w-[30rem]"
+      />
+      <EditorialStamp
+        size="lg"
+        tone="brass"
+        className="absolute right-[4%] top-[12%] hidden opacity-50 lg:block"
+      />
+
+      <div className="relative z-10 mx-auto w-full px-5 lg:px-8">
         <div className="mb-10 border-b border-black/10 pb-8 lg:mb-12 lg:flex lg:items-end lg:justify-between lg:pb-10">
           <div className="max-w-2xl">
             <p className="max-w-lg text-lg italic leading-relaxed text-black/55 lg:text-xl">
@@ -19,8 +40,8 @@ export function ProjectShowcase() {
           </div>
 
           <div className="mt-10 hidden items-center gap-5 lg:mt-0 lg:flex">
-            <span className="h-px w-20 bg-navy/25" />
-            <span className="text-black/20">◆</span>
+            <span className="h-px w-20 bg-cocoa/20" />
+            <HeraldicCrest size="sm" tone="brass" className="opacity-70" />
             <span className="text-[10px] font-body uppercase tracking-[0.4em] text-taupe">
               MMXXVI
             </span>

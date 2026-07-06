@@ -9,6 +9,7 @@ import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { Navbar } from "@/components/navbar";
 import { ProjectShowcase } from "@/components/projects";
 import { SectionDivider } from "@/components/ui/SectionDivider";
+import { EditorialStamp, HeraldicCrest } from "@/components/ui/ornaments";
 import { scrollToHash } from "@/lib/utils/scrollToHash";
 
 type NavVariant = "light" | "dark";
@@ -60,6 +61,22 @@ export function HomePage() {
             playsInline
           />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-ivory to-transparent" />
+
+          <HeraldicCrest
+            size="xl"
+            tone="light"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[40%] opacity-70 sm:-translate-y-[35%]"
+          />
+          <EditorialStamp
+            size="lg"
+            tone="light"
+            className="absolute bottom-[18%] right-[8%] hidden opacity-60 lg:block xl:bottom-[22%] xl:right-[12%]"
+          />
+          <EditorialStamp
+            size="md"
+            tone="light"
+            className="absolute bottom-[20%] left-[6%] hidden opacity-50 md:block lg:left-[10%]"
+          />
         </section>
 
         <HeroTagline />

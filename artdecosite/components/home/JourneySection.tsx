@@ -1,6 +1,11 @@
 import { Fragment } from "react";
 import { JourneySideOrnament } from "@/components/home/JourneySideOrnament";
 import {
+  EditorialStamp,
+  HeraldicCrest,
+  SketchMural,
+} from "@/components/ui/ornaments";
+import {
   journeyEntries,
   journeyIntro,
   journeyMaxWidthClass,
@@ -43,9 +48,24 @@ function TimelineConnector() {
 
 export function JourneySection() {
   return (
-    <section className="relative bg-parchment pb-14 pt-4 lg:pb-20 lg:pt-6">
+    <section className="relative overflow-hidden bg-parchment bg-parchment-texture pb-14 pt-4 lg:pb-20 lg:pt-6">
       <JourneySideOrnament side="left" />
       <JourneySideOrnament side="right" />
+      <SketchMural
+        variant="architectural"
+        tone="cocoa"
+        className="absolute -left-10 bottom-8 hidden h-[18rem] w-[22rem] opacity-50 lg:block"
+      />
+      <EditorialStamp
+        size="xl"
+        tone="cocoa"
+        className="absolute -right-8 top-[6%] hidden opacity-35 xl:block"
+      />
+      <HeraldicCrest
+        size="lg"
+        tone="mauve"
+        className="absolute bottom-[5%] left-[2%] hidden opacity-40 lg:block"
+      />
 
       <div className={`relative z-10 mx-auto w-full ${journeyMaxWidthClass} px-5 sm:px-6 lg:px-10 xl:px-12`}>
         <div className="mb-8 max-w-2xl border-b border-black/10 pb-8 lg:mb-10 lg:pb-10">

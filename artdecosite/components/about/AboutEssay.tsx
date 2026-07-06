@@ -1,17 +1,38 @@
 import { aboutEssay } from "@/lib/constants/about";
-import { BotanicalAccent } from "@/components/ui/BotanicalAccent";
+import {
+  EditorialStamp,
+  HeraldicCrest,
+  OrnamentDivider,
+  SketchMural,
+} from "@/components/ui/ornaments";
 
 export function AboutEssay() {
   return (
-    <section className="relative overflow-hidden bg-mist px-5 pb-16 pt-4 sm:px-6 lg:px-10 lg:pb-24 lg:pt-6 xl:px-12">
-      <BotanicalAccent position="bottom-left" className="opacity-50" />
-      <article className="mx-auto w-full max-w-3xl">
-        <header className="mb-10 border-b border-black/10 pb-10 lg:mb-14 lg:pb-12">
-          <div className="mb-6 flex items-center gap-4">
-            <span className="h-px flex-1 bg-navy/15" />
-            <span className="text-black/20">◆</span>
-            <span className="h-px flex-1 bg-navy/15" />
-          </div>
+    <section className="relative overflow-hidden bg-mist bg-parchment-texture px-5 pb-16 pt-4 sm:px-6 lg:px-10 lg:pb-24 lg:pt-6 xl:px-12">
+      <SketchMural
+        variant="botanical"
+        tone="mauve"
+        className="absolute -left-12 top-8 h-[22rem] w-[26rem] opacity-60 sm:h-[26rem] sm:w-[30rem]"
+      />
+      <SketchMural
+        variant="architectural"
+        tone="walnut"
+        className="absolute -right-16 bottom-0 hidden h-[20rem] w-[24rem] opacity-50 md:block"
+      />
+      <EditorialStamp
+        size="lg"
+        tone="brass"
+        className="absolute right-[2%] top-[12%] opacity-40"
+      />
+      <HeraldicCrest
+        size="md"
+        tone="cocoa"
+        className="absolute bottom-[8%] left-[1%] hidden opacity-45 sm:block"
+      />
+
+      <article className="relative z-10 mx-auto w-full max-w-3xl">
+        <header className="mb-10 border-b border-cocoa/10 pb-10 lg:mb-14 lg:pb-12">
+          <OrnamentDivider className="mb-6" />
           <h1 className="text-center font-heading text-[clamp(1.5rem,4vw,2.25rem)] font-bold uppercase leading-snug tracking-[0.08em] text-black">
             {aboutEssay.title}
           </h1>
