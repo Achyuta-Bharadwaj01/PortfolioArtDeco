@@ -3,6 +3,12 @@ import {
   servicesIntro,
   type ServiceCategory,
 } from "@/lib/constants/services";
+import {
+  EditorialStamp,
+  HeraldicCrest,
+  OrnamentDivider,
+  SketchMural,
+} from "@/components/ui/ornaments";
 
 function ServiceCard({ category, index }: { category: ServiceCategory; index: number }) {
   const numeral = String(index + 1).padStart(2, "0");
@@ -39,15 +45,22 @@ function ServiceCard({ category, index }: { category: ServiceCategory; index: nu
 
 export function ServicesSection() {
   return (
-    <section className="bg-mist pb-24 pt-8 lg:pb-36 lg:pt-12">
-      <div className="mx-auto w-full px-5 lg:px-8">
+    <section className="relative overflow-hidden bg-mist pb-24 pt-8 lg:pb-36 lg:pt-12">
+      <SketchMural
+        variant="interior"
+        tone="cocoa"
+        className="absolute -right-10 top-16 hidden h-[22rem] w-[28rem] opacity-55 lg:block"
+      />
+      <EditorialStamp
+        size="xl"
+        tone="cocoa"
+        className="absolute -left-10 bottom-[10%] hidden opacity-30 xl:block"
+      />
+
+      <div className="relative z-10 mx-auto w-full px-5 lg:px-8">
         <header className="mb-16 border-b border-black/10 pb-12 lg:mb-20 lg:flex lg:items-end lg:justify-between lg:pb-14">
           <div className="max-w-2xl">
-            <div className="mb-6 flex items-center gap-4 lg:mb-8">
-              <span className="h-px flex-1 bg-navy/15" />
-              <span className="text-black/20">◆</span>
-              <span className="h-px flex-1 bg-navy/15" />
-            </div>
+            <OrnamentDivider className="mb-6 lg:mb-8" />
             <p className="font-body text-[10px] font-semibold uppercase tracking-[0.42em] text-cocoa/60 lg:text-[11px]">
               {servicesIntro.heading}
             </p>
@@ -57,8 +70,8 @@ export function ServicesSection() {
           </div>
 
           <div className="mt-10 hidden items-center gap-5 lg:mt-0 lg:flex">
-            <span className="h-px w-20 bg-navy/25" />
-            <span className="text-black/20">◆</span>
+            <span className="h-px w-20 bg-cocoa/20" />
+            <HeraldicCrest size="sm" tone="brass" className="opacity-70" />
             <span className="text-[10px] font-body uppercase tracking-[0.4em] text-taupe">
               {String(serviceCategories.length).padStart(2, "0")} Disciplines
             </span>
