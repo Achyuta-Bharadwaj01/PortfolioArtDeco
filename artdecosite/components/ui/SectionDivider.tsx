@@ -19,12 +19,12 @@ export function SectionDivider({ label, tone = "mist" }: SectionDividerProps) {
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-3">
         <div className="flex w-full items-center gap-4 sm:gap-6">
           <span className="divider-gold h-px flex-1" />
-          <span className="text-bronze/30">◆</span>
+          <span className="text-brass/35">◆</span>
           <span className="divider-gold h-px flex-1" />
         </div>
 
         {label ? (
-          <p className="font-heading text-[10px] font-bold uppercase tracking-[0.42em] text-cocoa/55 lg:text-[11px]">
+          <p className="font-body text-[10px] font-bold uppercase tracking-[0.42em] text-cocoa/55 lg:text-[11px]">
             {label}
           </p>
         ) : null}

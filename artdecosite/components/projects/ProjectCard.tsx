@@ -33,10 +33,10 @@ export function ProjectCard({ project, numeral }: ProjectCardProps) {
       </div>
 
       <div className="mt-6 border-t border-black/10 pt-5 text-center lg:mt-7 lg:pt-6">
-        <p className="text-[10px] uppercase tracking-[0.32em] text-black/45 lg:text-[11px]">
+        <p className="text-[10px] font-body uppercase tracking-[0.32em] text-taupe lg:text-[11px]">
           {project.category}
         </p>
-        <p className="mt-2 font-heading text-lg font-bold uppercase tracking-[0.12em] text-black transition-colors group-hover:text-teal lg:text-xl">
+        <p className="mt-2 font-heading text-lg font-bold uppercase tracking-[0.12em] text-black transition-colors group-hover:text-camel lg:text-xl">
           {project.title}
         </p>
       </div>

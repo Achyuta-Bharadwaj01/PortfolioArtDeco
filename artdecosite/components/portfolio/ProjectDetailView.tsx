@@ -84,7 +84,7 @@ export function ProjectDetailView({ project }: ProjectDetailViewProps) {
                   <span className="text-black/20">◆</span>
                   <span className="h-px w-12 bg-navy/20" />
                 </div>
-                <p className="mt-6 font-heading text-[10px] font-bold uppercase tracking-[0.42em] text-navy/60 lg:text-[11px]">
+                <p className="mt-6 font-body text-[10px] font-semibold uppercase tracking-[0.42em] text-cocoa/60 lg:text-[11px]">
                   The Story
                 </p>
                 <p className="mt-5 max-w-sm text-lg italic leading-relaxed text-black/55 lg:text-xl">

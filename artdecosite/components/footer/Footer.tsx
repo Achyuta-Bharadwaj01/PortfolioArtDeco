@@ -31,12 +31,12 @@ export function Footer() {
           />
         </div>
 
-        <ul className="grid grid-cols-2 gap-x-6 gap-y-3 self-center text-sm text-black sm:gap-x-8 sm:text-base lg:justify-items-end lg:text-right">
+        <ul className="grid grid-cols-2 gap-x-6 gap-y-3 self-center font-body text-sm text-black sm:gap-x-8 sm:text-base lg:justify-items-end lg:text-right">
           {footerLinks.map((link) => (
             <li key={link.label}>
               <Link
                 href={link.href}
-                className="transition-colors hover:text-bronze"
+                className="transition-colors hover:text-camel"
                 target={link.href.startsWith("http") ? "_blank" : undefined}
                 rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
               >

@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Pinyon_Script } from "next/font/google";
+import { Jost, Pinyon_Script } from "next/font/google";
 
 export const ebGaramond = localFont({
   src: [
@@ -15,6 +15,13 @@ export const ebGaramond = localFont({
     },
   ],
   variable: "--font-garamond",
+  display: "swap",
+});
+
+export const jost = Jost({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-jost",
   display: "swap",
 });
 

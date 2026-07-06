@@ -21,10 +21,10 @@ const initialValues: ContactFormValues = {
 };
 
 const fieldLabelClass =
-  "mb-2 block font-heading text-[10px] font-bold uppercase tracking-[0.28em] text-black/70 lg:text-[11px]";
+  "mb-2 block font-body text-[10px] font-semibold uppercase tracking-[0.28em] text-cocoa/70 lg:text-[11px]";
 
 const fieldInputClass =
-  "w-full border border-cocoa/15 bg-parchment px-4 py-3 font-heading text-sm text-black outline-none transition-colors focus:border-bronze";
+  "w-full border border-cocoa/15 bg-parchment px-4 py-3 font-body text-sm text-black outline-none transition-colors focus:border-camel";
 
 export function ContactSection() {
   const [values, setValues] = useState<ContactFormValues>(initialValues);
@@ -130,14 +130,14 @@ export function ContactSection() {
                   <label htmlFor="phone" className={fieldLabelClass}>
                     Phone Number
                   </label>
-                  <div className="flex border border-cocoa/15 bg-parchment transition-colors focus-within:border-bronze">
+                  <div className="flex border border-cocoa/15 bg-parchment transition-colors focus-within:border-camel">
                     <select
                       aria-label="Country code"
                       value={values.dialCode}
                       onChange={(event) =>
                         updateField("dialCode", event.target.value)
                       }
-                      className="max-w-[7.5rem] border-r border-cocoa/15 bg-parchment px-3 py-3 font-heading text-sm text-black outline-none"
+                      className="max-w-[7.5rem] border-r border-cocoa/15 bg-parchment px-3 py-3 font-body text-sm text-black outline-none"
                     >
                       {dialCodeOptions.map((option) => (
                         <option key={option.code} value={option.code}>
@@ -153,7 +153,7 @@ export function ContactSection() {
                       onChange={(event) =>
                         updateField("phone", event.target.value)
                       }
-                      className="min-w-0 flex-1 bg-parchment px-4 py-3 font-heading text-sm text-black outline-none"
+                      className="min-w-0 flex-1 bg-parchment px-4 py-3 font-body text-sm text-black outline-none"
                     />
                   </div>
                 </div>
@@ -190,13 +190,13 @@ export function ContactSection() {
                       onChange={(event) =>
                         updateField("agreedToPrivacy", event.target.checked)
                       }
-                      className="mt-1 h-4 w-4 shrink-0 accent-bronze"
+                      className="mt-1 h-4 w-4 shrink-0 accent-camel"
                     />
                     <span>
                       I agree to the{" "}
                       <Link
                         href={contactConfig.privacyHref}
-                        className="text-black underline decoration-black/20 underline-offset-4 transition-colors hover:text-teal"
+                        className="text-black underline decoration-cocoa/20 underline-offset-4 transition-colors hover:text-camel"
                       >
                         Privacy Policy
                       </Link>
@@ -208,7 +208,7 @@ export function ContactSection() {
               </div>
 
               {error ? (
-                <p className="mt-5 text-sm text-teal" role="alert">
+                <p className="mt-5 text-sm text-camel" role="alert">
                   {error}
                 </p>
               ) : null}
@@ -216,13 +216,13 @@ export function ContactSection() {
               <div className="mt-8 flex justify-center sm:justify-start lg:mt-10">
                 <button
                   type="submit"
-                  className="group inline-flex w-full items-center justify-center gap-5 border border-cocoa/15 bg-parchment px-8 py-4 transition-all duration-300 hover:border-bronze hover:shadow-warm sm:w-auto lg:gap-6 lg:px-12 lg:py-5"
+                  className="group inline-flex w-full items-center justify-center gap-5 border border-cocoa/15 bg-parchment px-8 py-4 transition-all duration-300 hover:border-camel hover:shadow-warm sm:w-auto lg:gap-6 lg:px-12 lg:py-5"
                 >
-                  <span className="h-px w-5 bg-black/25 transition-all duration-300 group-hover:w-8 group-hover:bg-teal" />
-                  <span className="font-heading text-[11px] font-bold uppercase tracking-[0.32em] text-black transition-colors duration-300 group-hover:text-teal lg:text-xs">
+                  <span className="h-px w-5 bg-cocoa/25 transition-all duration-300 group-hover:w-8 group-hover:bg-camel" />
+                  <span className="font-body text-[11px] font-semibold uppercase tracking-[0.32em] text-black transition-colors duration-300 group-hover:text-camel lg:text-xs">
                     Contact via WhatsApp
                   </span>
-                  <span className="h-px w-5 bg-black/25 transition-all duration-300 group-hover:w-8 group-hover:bg-teal" />
+                  <span className="h-px w-5 bg-cocoa/25 transition-all duration-300 group-hover:w-8 group-hover:bg-camel" />
                 </button>
               </div>
             </form>

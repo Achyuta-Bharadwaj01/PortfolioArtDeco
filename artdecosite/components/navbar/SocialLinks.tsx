@@ -45,7 +45,7 @@ export function SocialLinks({
     return (
       <div className={`flex flex-col items-center ${className}`}>
         <p
-          className={`mb-4 font-heading text-[10px] font-bold uppercase tracking-[0.32em] transition-all duration-500 ease-out ${
+          className={`mb-4 font-body text-[10px] font-semibold uppercase tracking-[0.32em] transition-all duration-500 ease-out ${
             revealed ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
           } ${tone === "light" ? "text-white/70" : "text-black/45"}`}
           style={{ transitionDelay: revealed ? "280ms" : "0ms" }}

@@ -14,11 +14,11 @@ export function ComingSoonPage({ config }: ComingSoonPageProps) {
       >
         <div className="mb-8 flex w-full max-w-md items-center gap-4 sm:gap-6">
           <span className="divider-gold h-px flex-1" />
-          <span className="text-bronze/30">◆</span>
+          <span className="text-brass/35">◆</span>
           <span className="divider-gold h-px flex-1" />
         </div>
 
-        <p className="font-heading text-[10px] font-bold uppercase tracking-[0.42em] text-cocoa/55 lg:text-[11px]">
+        <p className="font-body text-[10px] font-semibold uppercase tracking-[0.42em] text-cocoa/55 lg:text-[11px]">
           {config.heading}
         </p>
 
@@ -39,19 +39,19 @@ export function ComingSoonPage({ config }: ComingSoonPageProps) {
 
         <div className="mt-10 flex w-full max-w-md items-center gap-4 sm:mt-12 sm:gap-6">
           <span className="divider-gold h-px flex-1" />
-          <span className="text-bronze/30">◆</span>
+          <span className="text-brass/35">◆</span>
           <span className="divider-gold h-px flex-1" />
         </div>
 
         <Link
           href={config.backHref}
-          className="group mt-10 inline-flex items-center gap-5 border border-cocoa/15 bg-parchment px-8 py-4 transition-all duration-300 hover:border-bronze hover:shadow-warm lg:gap-6 lg:px-12 lg:py-5"
+          className="group mt-10 inline-flex items-center gap-5 border border-cocoa/15 bg-parchment px-8 py-4 transition-all duration-300 hover:border-camel hover:shadow-warm lg:gap-6 lg:px-12 lg:py-5"
         >
-          <span className="h-px w-5 bg-cocoa/25 transition-all duration-300 group-hover:w-8 group-hover:bg-bronze" />
-          <span className="font-heading text-[11px] font-bold uppercase tracking-[0.32em] text-black transition-colors duration-300 group-hover:text-bronze lg:text-xs">
+          <span className="h-px w-5 bg-cocoa/25 transition-all duration-300 group-hover:w-8 group-hover:bg-camel" />
+          <span className="font-body text-[11px] font-semibold uppercase tracking-[0.32em] text-black transition-colors duration-300 group-hover:text-camel lg:text-xs">
             {config.backLabel}
           </span>
-          <span className="h-px w-5 bg-cocoa/25 transition-all duration-300 group-hover:w-8 group-hover:bg-bronze" />
+          <span className="h-px w-5 bg-cocoa/25 transition-all duration-300 group-hover:w-8 group-hover:bg-camel" />
         </Link>
       </div>
     </section>

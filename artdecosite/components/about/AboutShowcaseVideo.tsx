@@ -15,7 +15,7 @@ export function AboutShowcaseVideo() {
           />
           <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/10" />
         </div>
-        <p className="mt-4 text-center font-heading text-[10px] uppercase tracking-[0.32em] text-black/35">
+        <p className="mt-4 text-center font-body text-[10px] uppercase tracking-[0.32em] text-taupe">
           Showcase reel — placeholder
         </p>
       </div>

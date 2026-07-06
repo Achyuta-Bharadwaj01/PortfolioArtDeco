@@ -58,7 +58,7 @@ export function ProjectGallery({ project }: ProjectGalleryProps) {
       <div className="mx-auto w-full max-w-7xl">
         <div className="mb-14 flex items-center justify-center gap-4 lg:mb-20">
           <span className="divider-gold h-px w-16" />
-          <p className="font-heading text-[10px] font-bold uppercase tracking-[0.42em] text-cocoa/60 lg:text-[11px]">
+          <p className="font-body text-[10px] font-semibold uppercase tracking-[0.42em] text-cocoa/60 lg:text-[11px]">
             Renders &amp; Spaces
           </p>
           <span className="divider-gold h-px w-16" />

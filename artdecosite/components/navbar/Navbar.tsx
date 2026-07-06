@@ -109,13 +109,13 @@ export function Navbar({ variant = "dark", compact = false }: NavbarProps) {
               style={{ transitionDelay: menuOpen ? "240ms" : "0ms" }}
             >
               <span
-                className={`h-px w-10 ${isLight ? "bg-white/25" : "bg-navy/20"}`}
+                className={`h-px w-10 ${isLight ? "bg-white/25" : "bg-cocoa/20"}`}
               />
               <span className={isLight ? "text-white/25" : "text-black/20"}>
                 ◆
               </span>
               <span
-                className={`h-px w-10 ${isLight ? "bg-white/25" : "bg-navy/20"}`}
+                className={`h-px w-10 ${isLight ? "bg-white/25" : "bg-cocoa/20"}`}
               />
             </div>
 

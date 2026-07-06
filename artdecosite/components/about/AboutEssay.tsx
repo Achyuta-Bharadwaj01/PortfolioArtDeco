@@ -17,7 +17,7 @@ export function AboutEssay() {
           </h1>
         </header>
 
-        <div className="space-y-6 text-base leading-[1.9] text-black/70 lg:text-[1.05rem] lg:leading-[2]">
+        <div className="space-y-6 font-body text-base leading-[1.9] text-black/70 lg:text-[1.05rem] lg:leading-[2]">
           {aboutEssay.paragraphs.map((paragraph) => (
             <p
               key={paragraph.slice(0, 40)}

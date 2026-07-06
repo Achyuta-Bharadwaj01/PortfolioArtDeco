@@ -21,7 +21,7 @@ export function ProjectShowcase() {
           <div className="mt-10 hidden items-center gap-5 lg:mt-0 lg:flex">
             <span className="h-px w-20 bg-navy/25" />
             <span className="text-black/20">◆</span>
-            <span className="text-[10px] uppercase tracking-[0.4em] text-navy/70">
+            <span className="text-[10px] font-body uppercase tracking-[0.4em] text-taupe">
               MMXXVI
             </span>
           </div>
@@ -40,13 +40,13 @@ export function ProjectShowcase() {
         <div className="mt-10 flex justify-center lg:mt-12">
           <Link
             href="/portfolio"
-            className="group inline-flex items-center gap-5 border border-cocoa/15 bg-parchment px-8 py-4 transition-all duration-300 hover:border-bronze hover:shadow-warm lg:gap-6 lg:px-12 lg:py-5"
+            className="group inline-flex items-center gap-5 border border-cocoa/15 bg-parchment px-8 py-4 transition-all duration-300 hover:border-camel hover:shadow-warm lg:gap-6 lg:px-12 lg:py-5"
           >
-            <span className="h-px w-5 bg-black/25 transition-all duration-300 group-hover:w-8 group-hover:bg-teal" />
-            <span className="font-heading text-[11px] font-bold uppercase tracking-[0.32em] text-black transition-colors duration-300 group-hover:text-teal lg:text-xs">
+            <span className="h-px w-5 bg-cocoa/25 transition-all duration-300 group-hover:w-8 group-hover:bg-camel" />
+            <span className="font-body text-[11px] font-semibold uppercase tracking-[0.32em] text-black transition-colors duration-300 group-hover:text-camel lg:text-xs">
               View All Projects
             </span>
-            <span className="h-px w-5 bg-black/25 transition-all duration-300 group-hover:w-8 group-hover:bg-teal" />
+            <span className="h-px w-5 bg-cocoa/25 transition-all duration-300 group-hover:w-8 group-hover:bg-camel" />
           </Link>
         </div>
       </div>

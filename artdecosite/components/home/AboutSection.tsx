@@ -36,7 +36,7 @@ export function AboutSection() {
               <span className="h-px flex-1 bg-navy/15" />
             </div>
 
-            <div className="space-y-6 text-base leading-[1.85] text-black/65 lg:text-[1.05rem] lg:leading-[1.9]">
+            <div className="space-y-6 font-body text-base leading-[1.85] text-black/65 lg:text-[1.05rem] lg:leading-[1.9]">
               {aboutProfile.paragraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 32)}>{paragraph}</p>
               ))}
@@ -45,13 +45,13 @@ export function AboutSection() {
             <div className="mt-10 lg:mt-12">
               <Link
                 href={aboutProfile.cta.href}
-                className="group inline-flex items-center gap-5 border border-cocoa/15 bg-parchment px-8 py-4 transition-all duration-300 hover:border-bronze hover:shadow-warm lg:gap-6 lg:px-12 lg:py-5"
+                className="group inline-flex items-center gap-5 border border-cocoa/15 bg-parchment px-8 py-4 transition-all duration-300 hover:border-camel hover:shadow-warm lg:gap-6 lg:px-12 lg:py-5"
               >
-                <span className="h-px w-5 bg-black/25 transition-all duration-300 group-hover:w-8 group-hover:bg-teal" />
-                <span className="font-heading text-[11px] font-bold uppercase tracking-[0.32em] text-black transition-colors duration-300 group-hover:text-teal lg:text-xs">
+                <span className="h-px w-5 bg-cocoa/25 transition-all duration-300 group-hover:w-8 group-hover:bg-camel" />
+                <span className="font-body text-[11px] font-semibold uppercase tracking-[0.32em] text-black transition-colors duration-300 group-hover:text-camel lg:text-xs">
                   {aboutProfile.cta.label}
                 </span>
-                <span className="h-px w-5 bg-black/25 transition-all duration-300 group-hover:w-8 group-hover:bg-teal" />
+                <span className="h-px w-5 bg-cocoa/25 transition-all duration-300 group-hover:w-8 group-hover:bg-camel" />
               </Link>
             </div>
           </div>
