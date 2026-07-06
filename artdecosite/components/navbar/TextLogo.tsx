@@ -15,7 +15,7 @@ export function TextLogo({ tone = "dark", compact = false }: TextLogoProps) {
       href="/"
       aria-label={siteConfig.name}
       className={`group flex min-w-0 flex-col items-center px-1 transition-colors duration-500 sm:px-2 ${
-        isLight ? "text-white hover:text-white/85" : "text-black hover:text-teal"
+        isLight ? "text-white hover:text-white/85" : "text-black hover:text-camel"
       }`}
     >
       <span
@@ -43,7 +43,7 @@ export function TextLogo({ tone = "dark", compact = false }: TextLogoProps) {
         aria-hidden="true"
         className={`mt-2 hidden h-px transition-all duration-500 group-hover:opacity-100 md:block sm:mt-3 ${
           compact ? "w-11 md:w-14" : "w-14 md:w-[4.25rem] lg:mt-4 lg:w-20"
-        } ${isLight ? "bg-white/55" : "bg-black/35"}`}
+        } ${isLight ? "bg-white/55" : "bg-cocoa/35"}`}
       />
     </Link>
   );

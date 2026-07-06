@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BotanicalAccent } from "@/components/ui/BotanicalAccent";
 import { aboutProfile } from "@/lib/constants/about";
 
 export function AboutSection() {
   return (
-    <section className="bg-white pb-14 pt-4 lg:pb-20 lg:pt-6">
+    <section className="relative overflow-hidden bg-parchment pb-14 pt-4 lg:pb-20 lg:pt-6">
+      <BotanicalAccent position="top-right" className="opacity-60" />
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-10 xl:px-12">
         <div className="mb-8 max-w-2xl border-b border-black/10 pb-8 lg:mb-10 lg:pb-10">
           <h2 className="font-heading text-2xl font-bold uppercase tracking-[0.14em] text-black sm:text-3xl">
@@ -16,7 +18,7 @@ export function AboutSection() {
         </div>
 
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
-          <div className="relative aspect-[4/5] w-full overflow-hidden bg-mist ring-1 ring-black/[0.06] sm:aspect-[3/4] lg:aspect-[4/5]">
+          <div className="relative aspect-[4/5] w-full overflow-hidden bg-linen ring-1 ring-cocoa/[0.08] sm:aspect-[3/4] lg:aspect-[4/5]">
             <Image
               src={aboutProfile.image}
               alt="Shaineela Ahmed"
@@ -34,7 +36,7 @@ export function AboutSection() {
               <span className="h-px flex-1 bg-navy/15" />
             </div>
 
-            <div className="space-y-6 text-base leading-[1.85] text-black/65 lg:text-[1.05rem] lg:leading-[1.9]">
+            <div className="space-y-6 font-body text-base leading-[1.85] text-black/65 lg:text-[1.05rem] lg:leading-[1.9]">
               {aboutProfile.paragraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 32)}>{paragraph}</p>
               ))}
@@ -43,13 +45,13 @@ export function AboutSection() {
             <div className="mt-10 lg:mt-12">
               <Link
                 href={aboutProfile.cta.href}
-                className="group inline-flex items-center gap-5 border border-black/20 bg-white px-8 py-4 transition-all duration-300 hover:border-teal hover:shadow-[0_8px_30px_rgba(2,43,58,0.06)] lg:gap-6 lg:px-12 lg:py-5"
+                className="group inline-flex items-center gap-5 border border-cocoa/15 bg-parchment px-8 py-4 transition-all duration-300 hover:border-camel hover:shadow-warm lg:gap-6 lg:px-12 lg:py-5"
               >
-                <span className="h-px w-5 bg-black/25 transition-all duration-300 group-hover:w-8 group-hover:bg-teal" />
-                <span className="font-heading text-[11px] font-bold uppercase tracking-[0.32em] text-black transition-colors duration-300 group-hover:text-teal lg:text-xs">
+                <span className="h-px w-5 bg-cocoa/25 transition-all duration-300 group-hover:w-8 group-hover:bg-camel" />
+                <span className="font-body text-[11px] font-semibold uppercase tracking-[0.32em] text-black transition-colors duration-300 group-hover:text-camel lg:text-xs">
                   {aboutProfile.cta.label}
                 </span>
-                <span className="h-px w-5 bg-black/25 transition-all duration-300 group-hover:w-8 group-hover:bg-teal" />
+                <span className="h-px w-5 bg-cocoa/25 transition-all duration-300 group-hover:w-8 group-hover:bg-camel" />
               </Link>
             </div>
           </div>

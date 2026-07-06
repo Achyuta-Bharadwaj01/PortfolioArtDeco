@@ -76,7 +76,7 @@ export function ProjectDetailView({ project }: ProjectDetailViewProps) {
         </section>
 
         {project.description.length > 0 ? (
-          <section className="bg-white px-5 py-20 lg:px-8 lg:py-28">
+          <section className="bg-parchment px-5 py-20 lg:px-8 lg:py-28">
             <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-20">
               <div className="lg:sticky lg:top-40">
                 <div className="flex items-center gap-4">
@@ -84,7 +84,7 @@ export function ProjectDetailView({ project }: ProjectDetailViewProps) {
                   <span className="text-black/20">◆</span>
                   <span className="h-px w-12 bg-navy/20" />
                 </div>
-                <p className="mt-6 font-heading text-[10px] font-bold uppercase tracking-[0.42em] text-navy/60 lg:text-[11px]">
+                <p className="mt-6 font-body text-[10px] font-semibold uppercase tracking-[0.42em] text-cocoa/60 lg:text-[11px]">
                   The Story
                 </p>
                 <p className="mt-5 max-w-sm text-lg italic leading-relaxed text-black/55 lg:text-xl">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ebGaramond, pinyonScript } from "@/lib/fonts";
+import { ebGaramond, jost, pinyonScript } from "@/lib/fonts";
 import { Footer } from "@/components/footer/Footer";
 import "./globals.css";
 
@@ -16,9 +16,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${ebGaramond.variable} ${pinyonScript.variable} h-full antialiased`}
+      className={`${ebGaramond.variable} ${jost.variable} ${pinyonScript.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-mist font-heading text-black">
+      <body className="min-h-full flex flex-col bg-mist font-body text-black">
         {children}
         <Footer />
       </body>

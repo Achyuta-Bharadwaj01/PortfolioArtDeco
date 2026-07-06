@@ -22,7 +22,7 @@ export function Navbar({ variant = "dark", compact = false }: NavbarProps) {
 
   const textColor = isLight ? "text-white" : "text-black";
   const borderColor = isLight ? "border-transparent" : "border-border";
-  const bgColor = isLight ? "bg-transparent" : "bg-white/70 backdrop-blur-xl";
+  const bgColor = isLight ? "bg-transparent" : "bg-parchment/80 backdrop-blur-xl";
   const mobileMenuBorder = isLight ? "border-white/15" : "border-black/10";
   const iconSize = compact ? "h-[1.125rem] w-[1.125rem]" : "h-5 w-5 sm:h-6 sm:w-6";
 
@@ -109,13 +109,13 @@ export function Navbar({ variant = "dark", compact = false }: NavbarProps) {
               style={{ transitionDelay: menuOpen ? "240ms" : "0ms" }}
             >
               <span
-                className={`h-px w-10 ${isLight ? "bg-white/25" : "bg-navy/20"}`}
+                className={`h-px w-10 ${isLight ? "bg-white/25" : "bg-cocoa/20"}`}
               />
               <span className={isLight ? "text-white/25" : "text-black/20"}>
                 ◆
               </span>
               <span
-                className={`h-px w-10 ${isLight ? "bg-white/25" : "bg-navy/20"}`}
+                className={`h-px w-10 ${isLight ? "bg-white/25" : "bg-cocoa/20"}`}
               />
             </div>
 

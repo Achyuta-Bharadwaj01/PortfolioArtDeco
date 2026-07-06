@@ -11,19 +11,19 @@ function JourneyCard({ entry }: { entry: JourneyEntry }) {
   return (
     <article className="group relative flex w-[16.5rem] shrink-0 snap-start flex-col sm:w-[17.5rem] md:w-[18rem] lg:w-[19rem] xl:w-[20rem]">
       <div className="flex flex-col items-center">
-        <span className="font-heading text-[11px] font-bold uppercase tracking-[0.28em] text-navy/55 sm:text-xs">
+        <span className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-cocoa/55 sm:text-xs">
           {entry.period}
         </span>
-        <span className="relative z-10 mt-3 flex h-3 w-3 items-center justify-center rounded-full border border-teal/40 bg-white ring-4 ring-white transition-colors duration-300 group-hover:border-teal group-hover:bg-teal" />
+        <span className="relative z-10 mt-3 flex h-3 w-3 items-center justify-center rounded-full border border-camel/40 bg-parchment ring-4 ring-parchment transition-colors duration-300 group-hover:border-camel group-hover:bg-camel" />
       </div>
 
-      <div className="mt-5 bg-white p-4 ring-1 ring-black/[0.06] transition-all duration-300 group-hover:ring-teal/25 group-hover:shadow-[0_8px_30px_rgba(2,43,58,0.06)] sm:p-5">
+      <div className="mt-5 bg-parchment p-4 ring-1 ring-cocoa/[0.06] transition-all duration-300 group-hover:ring-camel/25 group-hover:shadow-warm sm:p-5">
         <h3 className="font-heading text-base font-bold uppercase leading-snug tracking-[0.08em] text-black sm:text-[1.05rem]">
           {entry.title}
         </h3>
-        <p className="mt-2 text-sm font-medium text-teal">{entry.organization}</p>
+        <p className="mt-2 font-body text-sm font-medium text-camel">{entry.organization}</p>
         {entry.description ? (
-          <p className="mt-4 text-sm italic leading-relaxed text-black/60">
+          <p className="mt-4 font-body text-sm italic leading-relaxed text-black/60">
             {entry.description}
           </p>
         ) : null}
@@ -36,14 +36,14 @@ function TimelineConnector() {
   return (
     <span
       aria-hidden="true"
-      className="mt-[2.15rem] hidden h-px min-w-6 flex-1 shrink basis-10 bg-gradient-to-r from-navy/20 via-navy/15 to-navy/20 sm:block lg:min-w-12 lg:max-w-36"
+      className="mt-[2.15rem] hidden h-px min-w-6 flex-1 shrink basis-10 bg-gradient-to-r from-cocoa/20 via-taupe/30 to-cocoa/20 sm:block lg:min-w-12 lg:max-w-36"
     />
   );
 }
 
 export function JourneySection() {
   return (
-    <section className="relative bg-white pb-14 pt-4 lg:pb-20 lg:pt-6">
+    <section className="relative bg-parchment pb-14 pt-4 lg:pb-20 lg:pt-6">
       <JourneySideOrnament side="left" />
       <JourneySideOrnament side="right" />
 
@@ -69,7 +69,7 @@ export function JourneySection() {
             </div>
           </div>
 
-          <p className="mt-2 text-center font-heading text-[10px] uppercase tracking-[0.28em] text-black/35 sm:hidden">
+          <p className="mt-2 text-center font-body text-[10px] uppercase tracking-[0.28em] text-taupe sm:hidden">
             Scroll to explore
           </p>
         </div>

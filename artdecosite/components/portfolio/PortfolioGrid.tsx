@@ -12,7 +12,7 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
       <div className="mx-auto w-full px-5 lg:px-8">
         <div className="mb-16 border-b border-black/10 pb-12 lg:mb-20 lg:flex lg:items-end lg:justify-between lg:pb-14">
           <div className="max-w-2xl">
-            <p className="font-heading text-[10px] font-bold uppercase tracking-[0.42em] text-navy/60 lg:text-[11px]">
+            <p className="font-body text-[10px] font-semibold uppercase tracking-[0.42em] text-cocoa/60 lg:text-[11px]">
               Portfolio
             </p>
             <p className="mt-5 max-w-lg text-lg italic leading-relaxed text-black/55 lg:text-xl">
@@ -24,7 +24,7 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
           <div className="mt-10 hidden items-center gap-5 lg:mt-0 lg:flex">
             <span className="h-px w-20 bg-navy/25" />
             <span className="text-black/20">◆</span>
-            <span className="text-[10px] uppercase tracking-[0.4em] text-navy/70">
+            <span className="text-[10px] font-body uppercase tracking-[0.4em] text-taupe">
               {projects.length.toString().padStart(2, "0")} Projects
             </span>
           </div>

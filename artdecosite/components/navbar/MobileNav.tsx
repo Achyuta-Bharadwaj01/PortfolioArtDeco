@@ -35,7 +35,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
 
   if (!open) return null;
 
-  const linkClass = "text-black hover:text-teal";
+  const linkClass = "text-black hover:text-camel";
 
   return (
     <div

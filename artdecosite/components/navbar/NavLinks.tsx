@@ -43,7 +43,7 @@ export function NavLinks({
   const linkClass =
     tone === "light"
       ? "text-white hover:text-white/80"
-      : "text-black hover:text-teal";
+      : "text-black hover:text-camel";
 
   return (
     <nav aria-label="Main navigation">
@@ -81,7 +81,7 @@ export function NavLinks({
             <Link
               href={href}
               onClick={(event) => handleLinkClick(event, href)}
-              className={`group relative font-heading font-bold uppercase leading-none transition-all duration-300 ${
+              className={`group relative font-body font-semibold uppercase leading-none transition-all duration-300 ${
                 isVertical
                   ? "text-base tracking-[0.26em]"
                   : compact
@@ -93,7 +93,7 @@ export function NavLinks({
               <span
                 aria-hidden="true"
                 className={`absolute -bottom-1.5 left-0 h-px w-0 transition-all duration-300 group-hover:w-full ${
-                  tone === "light" ? "bg-white/70" : "bg-teal"
+                  tone === "light" ? "bg-white/70" : "bg-camel"
                 }`}
               />
             </Link>

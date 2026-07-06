@@ -8,12 +8,12 @@ function ServiceCard({ category, index }: { category: ServiceCategory; index: nu
   const numeral = String(index + 1).padStart(2, "0");
 
   return (
-    <article className="group relative flex flex-col bg-white p-6 ring-1 ring-black/[0.06] transition-all duration-300 hover:ring-teal/25 hover:shadow-[0_8px_30px_rgba(2,43,58,0.06)] sm:p-7 lg:p-8">
+    <article className="group relative flex flex-col bg-parchment p-6 ring-1 ring-cocoa/[0.06] transition-all duration-300 hover:ring-camel/25 hover:shadow-warm sm:p-7 lg:p-8">
       <div className="mb-6 flex items-center justify-between gap-4">
-        <span className="font-heading text-[10px] font-bold uppercase tracking-[0.42em] text-navy/50">
+        <span className="font-body text-[10px] font-semibold uppercase tracking-[0.42em] text-cocoa/50">
           {numeral}
         </span>
-        <span className="h-px flex-1 bg-gradient-to-r from-navy/15 via-navy/10 to-transparent" />
+        <span className="h-px flex-1 bg-gradient-to-r from-cocoa/15 via-taupe/20 to-transparent" />
       </div>
 
       <h3 className="font-heading text-lg font-bold uppercase leading-snug tracking-[0.08em] text-black sm:text-xl">
@@ -25,9 +25,9 @@ function ServiceCard({ category, index }: { category: ServiceCategory; index: nu
           {category.items.map((item) => (
             <li
               key={item}
-              className="flex items-start gap-3 text-sm leading-relaxed text-black/65 sm:text-base"
+              className="flex items-start gap-3 font-body text-sm leading-relaxed text-black/65 sm:text-base"
             >
-              <span className="mt-[0.55rem] h-1 w-1 shrink-0 rounded-full bg-teal/70" />
+              <span className="mt-[0.55rem] h-1 w-1 shrink-0 rounded-full bg-camel/70" />
               <span className="italic">{item}</span>
             </li>
           ))}
@@ -48,7 +48,7 @@ export function ServicesSection() {
               <span className="text-black/20">◆</span>
               <span className="h-px flex-1 bg-navy/15" />
             </div>
-            <p className="font-heading text-[10px] font-bold uppercase tracking-[0.42em] text-navy/60 lg:text-[11px]">
+            <p className="font-body text-[10px] font-semibold uppercase tracking-[0.42em] text-cocoa/60 lg:text-[11px]">
               {servicesIntro.heading}
             </p>
             <p className="mt-5 max-w-lg text-lg italic leading-relaxed text-black/55 lg:text-xl">
@@ -59,7 +59,7 @@ export function ServicesSection() {
           <div className="mt-10 hidden items-center gap-5 lg:mt-0 lg:flex">
             <span className="h-px w-20 bg-navy/25" />
             <span className="text-black/20">◆</span>
-            <span className="text-[10px] uppercase tracking-[0.4em] text-navy/70">
+            <span className="text-[10px] font-body uppercase tracking-[0.4em] text-taupe">
               {String(serviceCategories.length).padStart(2, "0")} Disciplines
             </span>
           </div>
