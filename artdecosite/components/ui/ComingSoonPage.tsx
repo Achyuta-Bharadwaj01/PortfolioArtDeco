@@ -1,12 +1,6 @@
 import Link from "next/link";
 import type { ComingSoonConfig } from "@/lib/constants/comingSoon";
 import { pageTop, siteX } from "@/lib/constants/layout";
-import {
-  EditorialStamp,
-  HeraldicCrest,
-  OrnamentDivider,
-  SketchMural,
-} from "@/components/ui/ornaments";
 
 type ComingSoonPageProps = {
   config: ComingSoonConfig;
@@ -14,29 +8,15 @@ type ComingSoonPageProps = {
 
 export function ComingSoonPage({ config }: ComingSoonPageProps) {
   return (
-    <section
-      className={`relative flex flex-1 flex-col overflow-hidden bg-parchment bg-parchment-texture ${pageTop}`}
-    >
-      <SketchMural
-        variant="botanical"
-        tone="mauve"
-        className="absolute -left-8 top-20 h-[18rem] w-[22rem] opacity-50"
-      />
-      <EditorialStamp
-        size="lg"
-        tone="brass"
-        className="absolute -right-6 bottom-[15%] opacity-40"
-      />
-      <HeraldicCrest
-        size="lg"
-        tone="cocoa"
-        className="absolute left-1/2 top-[18%] -translate-x-1/2 opacity-35"
-      />
-
+    <section className={`flex flex-1 flex-col bg-parchment ${pageTop}`}>
       <div
-        className={`${siteX} relative z-10 mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-4 py-20 text-center sm:py-28 lg:py-32`}
+        className={`${siteX} mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-4 py-20 text-center sm:py-28 lg:py-32`}
       >
-        <OrnamentDivider className="mb-8 max-w-md" />
+        <div className="mb-8 flex w-full max-w-md items-center gap-4 sm:gap-6">
+          <span className="divider-gold h-px flex-1" />
+          <span className="text-brass/35">◆</span>
+          <span className="divider-gold h-px flex-1" />
+        </div>
 
         <p className="font-body text-[10px] font-semibold uppercase tracking-[0.42em] text-cocoa/55 lg:text-[11px]">
           {config.heading}
@@ -46,7 +26,7 @@ export function ComingSoonPage({ config }: ComingSoonPageProps) {
           {config.lines.map((line) => (
             <p
               key={line}
-              className="font-body text-base italic leading-relaxed text-black/55 lg:text-xl"
+              className="text-base italic leading-relaxed text-black/55 lg:text-xl"
             >
               {line}
             </p>
@@ -57,7 +37,11 @@ export function ComingSoonPage({ config }: ComingSoonPageProps) {
           {config.status}
         </h1>
 
-        <OrnamentDivider className="mt-10 max-w-md sm:mt-12" />
+        <div className="mt-10 flex w-full max-w-md items-center gap-4 sm:mt-12 sm:gap-6">
+          <span className="divider-gold h-px flex-1" />
+          <span className="text-brass/35">◆</span>
+          <span className="divider-gold h-px flex-1" />
+        </div>
 
         <Link
           href={config.backHref}

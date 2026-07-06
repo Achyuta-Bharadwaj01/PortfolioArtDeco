@@ -3,11 +3,6 @@
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import {
-  HeraldicCrest,
-  EditorialStamp,
-  SketchMural,
-} from "@/components/ui/ornaments";
-import {
   buildWhatsAppUrl,
   contactConfig,
   countryOptions,
@@ -77,25 +72,9 @@ export function ContactSection() {
   return (
     <section
       id={contactSectionId}
-      className="relative scroll-mt-24 overflow-hidden bg-mist px-5 pb-16 pt-2 lg:scroll-mt-28 lg:px-8 lg:pb-24 lg:pt-4"
+      className="scroll-mt-24 bg-mist px-5 pb-16 pt-2 lg:scroll-mt-28 lg:px-8 lg:pb-24 lg:pt-4"
     >
-      <SketchMural
-        variant="interior"
-        tone="mauve"
-        className="absolute -left-16 bottom-0 hidden h-[22rem] w-[28rem] opacity-50 lg:block"
-      />
-      <HeraldicCrest
-        size="xl"
-        tone="cocoa"
-        className="absolute -right-12 top-[5%] hidden opacity-30 xl:block"
-      />
-      <EditorialStamp
-        size="md"
-        tone="brass"
-        className="absolute bottom-[12%] right-[3%] opacity-45 sm:opacity-55"
-      />
-
-      <div className="relative z-10 mx-auto w-full max-w-7xl">
+      <div className="mx-auto w-full max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-14 xl:gap-20">
           <div className="text-center lg:text-left">
             <h2 className="font-heading text-2xl font-bold uppercase tracking-[0.16em] text-black sm:text-3xl lg:text-[2rem] lg:leading-tight">

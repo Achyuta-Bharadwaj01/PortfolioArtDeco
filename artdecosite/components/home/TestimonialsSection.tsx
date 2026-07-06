@@ -4,11 +4,6 @@ import {
   testimonialsMaxWidthClass,
   type Testimonial,
 } from "@/lib/constants/testimonials";
-import {
-  EditorialStamp,
-  HeraldicCrest,
-  SketchMural,
-} from "@/components/ui/ornaments";
 import { toRomanNumeral } from "@/lib/utils/roman";
 
 function StarRating({ rating }: { rating: number }) {
@@ -74,24 +69,9 @@ function TestimonialCard({
 
 export function TestimonialsSection() {
   return (
-    <section className="relative overflow-hidden bg-mist pb-14 pt-4 lg:pb-20 lg:pt-6">
-      <SketchMural
-        variant="botanical"
-        tone="walnut"
-        className="absolute -right-10 top-0 h-[20rem] w-[24rem] opacity-70 sm:h-[24rem] sm:w-[28rem]"
-      />
-      <EditorialStamp
-        size="lg"
-        tone="brass"
-        className="absolute bottom-[8%] left-[2%] hidden opacity-40 md:block"
-      />
-      <HeraldicCrest
-        size="md"
-        tone="cocoa"
-        className="absolute right-[4%] top-[10%] hidden opacity-50 lg:block"
-      />
+    <section className="bg-mist pb-14 pt-4 lg:pb-20 lg:pt-6">
       <div
-        className={`relative z-10 mx-auto w-full ${testimonialsMaxWidthClass} px-5 sm:px-6 lg:px-10 xl:px-12`}
+        className={`mx-auto w-full ${testimonialsMaxWidthClass} px-5 sm:px-6 lg:px-10 xl:px-12`}
       >
         <div className="mb-8 max-w-2xl border-b border-black/10 pb-8 lg:mb-10 lg:pb-10">
           <h2 className="font-heading text-2xl font-bold uppercase tracking-[0.14em] text-black sm:text-3xl">
