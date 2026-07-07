@@ -1,3 +1,4 @@
+export { BrandWorksSection } from "@/components/portfolio/BrandWorksSection";
 export { PortfolioGrid } from "@/components/portfolio/PortfolioGrid";
 export { MasonryGallery } from "@/components/portfolio/MasonryGallery";
 export { ProjectDetailView } from "@/components/portfolio/ProjectDetailView";

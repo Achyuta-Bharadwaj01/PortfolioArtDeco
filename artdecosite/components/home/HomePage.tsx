@@ -29,7 +29,7 @@ export function HomePage({ showcaseItems }: HomePageProps) {
     <>
       <Navbar />
 
-      <main className="flex flex-1 flex-col">
+      <main className="flex flex-1 flex-col bg-cream">
         <section className="relative h-[70vh] w-full overflow-hidden bg-moss-deep lg:h-screen">
           <video
             className="absolute inset-0 h-full w-full object-cover"
@@ -66,15 +66,15 @@ export function HomePage({ showcaseItems }: HomePageProps) {
           </div>
         </section>
 
-        <SectionDivider label="About" tone="fade" />
+        <SectionDivider />
         <AboutSection />
-        <SectionDivider label="Selected Works" tone="mist" />
+        <SectionDivider />
         <ProjectShowcase items={showcaseItems} />
-        <SectionDivider label="Journey" tone="fadeReverse" />
+        <SectionDivider />
         <JourneySection />
-        <SectionDivider label="Testimonials" tone="fadeReverse" />
+        <SectionDivider />
         <TestimonialsSection />
-        <SectionDivider label="Contact" tone="mist" />
+        <SectionDivider />
         <ContactSection />
       </main>
     </>

@@ -33,7 +33,7 @@ export function BlogEpisodeArticle({ series, episode }: BlogEpisodeArticleProps)
             {episode.title}
           </h1>
           <p className="mt-5 font-body text-base italic leading-relaxed text-ink/50 sm:text-lg">
-            {series.tagline}
+            {episode.subtitle ?? series.tagline}
           </p>
         </header>
 

@@ -76,7 +76,7 @@ export function ContactSection() {
   return (
     <section
       id={contactSectionId}
-      className="relative scroll-mt-24 overflow-hidden bg-cream-soft px-5 py-20 lg:scroll-mt-28 lg:px-8 lg:py-28"
+      className="relative scroll-mt-24 overflow-hidden bg-cream px-5 py-20 lg:scroll-mt-28 lg:px-8 lg:py-28"
     >
       <div
         aria-hidden="true"
@@ -91,7 +91,7 @@ export function ContactSection() {
             mixBlendMode: "multiply",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-cream-soft via-cream-soft/85 to-cream-soft/70 lg:bg-gradient-to-r lg:from-transparent lg:from-30% lg:via-cream-soft/55 lg:via-50% lg:to-cream-soft lg:to-62%" />
+        <div className="absolute inset-0 bg-gradient-to-t from-cream via-cream/85 to-cream/70 lg:bg-gradient-to-r lg:from-transparent lg:from-30% lg:via-cream/55 lg:via-50% lg:to-cream lg:to-62%" />
       </div>
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 xl:gap-20">

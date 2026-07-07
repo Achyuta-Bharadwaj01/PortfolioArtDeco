@@ -1,5 +1,7 @@
 import type { PortfolioItem } from "@/lib/portfolio/types";
+import { BrandWorksSection } from "@/components/portfolio/BrandWorksSection";
 import { ProjectCard } from "@/components/projects/ProjectCard";
+import { brandWorks } from "@/lib/constants/brandWorks";
 import { portfolioSectionCopy } from "@/lib/constants/portfolio";
 import { toRomanNumeral } from "@/lib/utils/roman";
 
@@ -60,30 +62,9 @@ function PortfolioSection({
 }
 
 export function PortfolioGrid({ projects, shoots }: PortfolioGridProps) {
-  const totalCount = projects.length + shoots.length;
-
   return (
     <section className="bg-cream pb-24 pt-8 lg:pb-36 lg:pt-12">
       <div className="mx-auto w-full px-5 lg:px-8">
-        <div className="mb-16 border-b border-gold/20 pb-12 lg:mb-20 lg:flex lg:items-end lg:justify-between lg:pb-14">
-          <div className="max-w-2xl">
-            <p className="font-body text-[10px] font-semibold uppercase tracking-[0.42em] text-gold/70 lg:text-[11px]">
-              Portfolio
-            </p>
-            <p className="mt-5 max-w-lg text-lg italic leading-relaxed text-ink/55 lg:text-xl">
-              {portfolioSectionCopy.pageIntro}
-            </p>
-          </div>
-
-          <div className="mt-10 hidden items-center gap-5 lg:mt-0 lg:flex">
-            <span className="h-px w-20 bg-gold/30" />
-            <span className="text-gold/45">◆</span>
-            <span className="font-body text-[10px] uppercase tracking-[0.4em] text-gold/60">
-              {totalCount.toString().padStart(2, "0")} Works
-            </span>
-          </div>
-        </div>
-
         <div className="space-y-20 lg:space-y-28">
           <PortfolioSection
             eyebrow={portfolioSectionCopy.projectsEyebrow}
@@ -95,6 +76,11 @@ export function PortfolioGrid({ projects, shoots }: PortfolioGridProps) {
             intro={portfolioSectionCopy.shootsIntro}
             items={shoots}
             startIndex={projects.length}
+          />
+          <BrandWorksSection
+            eyebrow={portfolioSectionCopy.brandWorksEyebrow}
+            intro={portfolioSectionCopy.brandWorksIntro}
+            brands={brandWorks}
           />
         </div>
       </div>

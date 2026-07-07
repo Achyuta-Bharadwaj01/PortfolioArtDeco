@@ -76,6 +76,7 @@ export const featuredPortfolioSlugs: Record<PortfolioKind, string[]> = {
 export const portfolioSectionCopy = {
   pageIntro:
     "A complete collection of interiors, brand campaigns, and visual stories shaped with proportion, permanence, and quiet occasion.",
+  showcaseHeading: "Selected Works",
   showcaseIntro:
     "Selected interiors and brand photography composed with proportion, permanence, and a quiet sense of occasion.",
   projectsEyebrow: "Interior Projects",
@@ -84,4 +85,7 @@ export const portfolioSectionCopy = {
     "Residential, commercial, and hospitality spaces designed with layered texture and enduring calm.",
   shootsIntro:
     "Campaign, product, and lifestyle photography for brands that value atmosphere as much as image.",
+  brandWorksEyebrow: "Brand Films",
+  brandWorksIntro:
+    "Campaign films and brand films — direction, styling, and spatial storytelling brought to life on screen.",
 } as const;

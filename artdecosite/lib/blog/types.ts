@@ -8,6 +8,7 @@ export type BlogEpisodeSummary = {
   episode: number;
   title: string;
   excerpt: string;
+  subtitle?: string;
   publishedAt?: string;
 };
 

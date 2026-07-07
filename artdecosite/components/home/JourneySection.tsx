@@ -43,7 +43,7 @@ function TimelineConnector() {
 
 export function JourneySection() {
   return (
-    <section className="relative bg-cream-soft pb-14 pt-4 lg:pb-20 lg:pt-6">
+    <section className="relative bg-cream pb-14 pt-6 lg:pb-20 lg:pt-8">
       <JourneySideOrnament side="left" />
       <JourneySideOrnament side="right" />
 

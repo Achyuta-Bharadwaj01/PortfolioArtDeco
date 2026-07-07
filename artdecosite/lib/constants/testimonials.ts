@@ -16,6 +16,22 @@ export const testimonialsMaxWidthClass = "max-w-[92rem]";
 
 export const testimonials: Testimonial[] = [
   {
+    id: "prateek-jain",
+    name: "Prateek Jain",
+    rating: 5,
+    headline: "Proactive, thoughtful, and client-focused",
+    quote:
+      "It's clear that you care about your work and take the time to do it correctly. I especially liked that you asked the client about their design preferences before creating one and your recommendation on how to make it better. It was really great to work with Shaineela as she is always pro-actively looking for opportunities to improve and deliver positively.",
+  },
+  {
+    id: "latha-krishnappa",
+    name: "Latha Krishnappa",
+    rating: 5,
+    headline: "Professional, detailed, and deeply committed",
+    quote:
+      "I've worked with Shaineela on my Livspace project for over a year. She is extremely professional and goes into the details of what a client wants — taking time to understand our family, culture, and how we live before any proposal. Her ideas are well scripted and sketched in advance, and her commitment and empathy show in every conversation.",
+  },
+  {
     id: "amarpreet-singh",
     name: "Amarpreet Singh",
     rating: 5,
@@ -38,14 +54,6 @@ export const testimonials: Testimonial[] = [
     headline: "Pleasure knowing you",
     quote:
       "I have been in touch with Shaineela from Livspace since March and find her extremely knowledgeable and passionate about what she does. Our first conversations were only about what we were looking for and how we wanted things to shape up. She suggested many options thoughtfully — never rushed, always considered.",
-  },
-  {
-    id: "sasidharan-m",
-    name: "Sasidharan M",
-    rating: 5,
-    headline: "Satisfied work",
-    quote:
-      "A very nice experience with Livspace executives Shaineela and Darshitha — good suggestions and a thoughtful design for our kitchen furnishing. They delivered a well-planned, budget-conscious design for us. We are very satisfied with the work so far. Thanks for the good job.",
   },
   {
     id: "murthychicha",

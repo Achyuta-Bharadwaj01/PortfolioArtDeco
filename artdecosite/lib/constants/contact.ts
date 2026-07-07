@@ -1,6 +1,6 @@
 export const contactConfig = {
   whatsappNumber: "919019348653",
-  email: "hello@shaineelaahmed.com",
+  email: "info.studioellaria@gmail.com",
   scriptHeading: "Let's talk",
   heading: "If any of this resonates, I'd love to hear your story.",
   subheading:

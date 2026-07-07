@@ -13,7 +13,7 @@ const footerLinks = [
 export function Footer() {
   return (
     <footer
-      className={`relative mt-auto overflow-hidden bg-gradient-to-b from-moss to-moss-deep py-6 sm:py-7 ${siteX}`}
+      className={`relative mt-auto overflow-hidden bg-gradient-to-b from-moss to-moss-deep pb-16 pt-8 sm:pb-20 sm:pt-9 lg:pb-24 lg:pt-10 ${siteX}`}
     >
       <div
         aria-hidden="true"
@@ -44,54 +44,57 @@ export function Footer() {
         />
       </div>
 
-      <div className="relative z-20 flex flex-col items-center gap-4 text-center sm:gap-5">
-        <div>
-          <p className="font-heading text-sm font-bold uppercase tracking-[0.22em] text-cream/90 sm:text-base sm:tracking-[0.24em]">
-            {siteConfig.name}
-          </p>
-          <p className="mt-1 font-body text-[9px] uppercase tracking-[0.34em] text-gold-bright/70 sm:text-[10px]">
-            {siteConfig.tagline}
-          </p>
-        </div>
+      <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col gap-6 sm:gap-7 lg:gap-8">
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between lg:items-center">
+          <div className="min-w-0">
+            <p className="font-heading text-2xl font-normal text-cream/95 sm:text-[1.65rem] lg:text-[1.85rem]">
+              {siteConfig.brandName}
+            </p>
+            <p className="mt-1 font-body text-[10px] uppercase tracking-[0.32em] text-gold-bright/70 sm:text-[11px]">
+              {siteConfig.name}
+            </p>
+          </div>
 
-        <nav aria-label="Footer navigation">
-          <ul className="flex flex-wrap items-center justify-center gap-x-1 gap-y-2 font-body text-[11px] uppercase tracking-[0.22em] text-cream/60 sm:gap-x-2 sm:text-xs sm:tracking-[0.24em]">
-            {footerLinks.map((link, index) => (
-              <li key={link.label} className="flex items-center">
-                {index > 0 ? (
-                  <span
-                    aria-hidden="true"
-                    className="mx-2 text-gold-bright/50 sm:mx-3"
+          <nav aria-label="Footer navigation" className="sm:text-right">
+            <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 font-body text-[11px] uppercase tracking-[0.18em] text-cream/65 sm:justify-end sm:gap-x-6 sm:text-xs sm:tracking-[0.2em] lg:gap-x-8">
+              {footerLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-gold-bright"
+                    target={
+                      "external" in link && link.external ? "_blank" : undefined
+                    }
+                    rel={
+                      "external" in link && link.external
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                   >
-                    ·
-                  </span>
-                ) : null}
-                <Link
-                  href={link.href}
-                  className="whitespace-nowrap transition-colors hover:text-gold-bright"
-                  target={"external" in link && link.external ? "_blank" : undefined}
-                  rel={
-                    "external" in link && link.external
-                      ? "noopener noreferrer"
-                      : undefined
-                  }
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="flex w-full max-w-xl items-center gap-3 px-8 sm:max-w-2xl sm:gap-4 sm:px-12">
-          <span className="h-px flex-1 bg-gold-bright/65" />
-          <span className="text-[10px] text-gold-bright/85">◆</span>
-          <span className="h-px flex-1 bg-gold-bright/65" />
+                    {link.label}
+                    {"external" in link && link.external ? (
+                      <span aria-hidden="true" className="text-[10px] leading-none">
+                        ↗
+                      </span>
+                    ) : null}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
 
-        <p className="font-body text-[9px] uppercase tracking-[0.28em] text-cream/35 sm:text-[10px]">
-          © {new Date().getFullYear()} Shaineela Ahmed
-        </p>
+        <span className="h-px w-full bg-gold-bright/30" />
+
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-body text-[10px] uppercase tracking-[0.24em] text-cream/40 sm:text-[11px]">
+            © {new Date().getFullYear()} {siteConfig.name}.
+          </p>
+
+          <p className="font-script text-xl text-gold-bright sm:text-2xl lg:text-[1.65rem]">
+            {siteConfig.footerTagline}
+          </p>
+        </div>
       </div>
     </footer>
   );

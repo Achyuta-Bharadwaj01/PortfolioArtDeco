@@ -2,6 +2,7 @@ import { theme } from "@/lib/constants/theme";
 import { aboutHref, contactHref } from "@/lib/utils/scrollToHash";
 
 export const siteConfig = {
+  brandName: "Ellaria",
   name: "Shaineela Ahmed",
   background: theme.background,
   foreground: theme.foreground,
@@ -10,6 +11,7 @@ export const siteConfig = {
   pinterestUrl: "https://uk.pinterest.com/shaineelaa/",
   linkedinUrl: "https://www.linkedin.com/in/shaineela-ahmed-interiorarchitect/",
   tagline: "Interior Architect & Set Designer",
+  footerTagline: "Every space has a story.",
 } as const;
 
 export const navLinks = [

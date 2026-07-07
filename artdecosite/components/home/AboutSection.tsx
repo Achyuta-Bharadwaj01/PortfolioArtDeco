@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AboutVideoButton } from "@/components/home/AboutVideoButton";
 import { BotanicalAccent } from "@/components/ui/BotanicalAccent";
 import { aboutProfile } from "@/lib/constants/about";
 import { aboutSectionId } from "@/lib/utils/scrollToHash";
@@ -7,7 +8,7 @@ export function AboutSection() {
   return (
     <section
       id={aboutSectionId}
-      className="relative scroll-mt-24 overflow-hidden bg-cream-soft pb-14 pt-4 lg:scroll-mt-28 lg:pb-20 lg:pt-6"
+      className="relative scroll-mt-24 overflow-hidden bg-cream pb-14 pt-6 lg:scroll-mt-28 lg:pb-20 lg:pt-8"
     >
       <BotanicalAccent position="top-right" className="opacity-50" />
 
@@ -44,6 +45,8 @@ export function AboutSection() {
                 <p key={paragraph.slice(0, 32)}>{paragraph}</p>
               ))}
             </div>
+
+            <AboutVideoButton />
           </div>
         </div>
       </div>
