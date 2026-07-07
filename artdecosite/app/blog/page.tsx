@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
-import { ComingSoonPage } from "@/components/ui/ComingSoonPage";
+import { BlogSeriesSection } from "@/components/blog";
 import { Navbar } from "@/components/navbar";
-import { blogConfig } from "@/lib/constants/blog";
+import { getPrimaryBlogSeries } from "@/lib/blog/manifest";
 
 export const metadata: Metadata = {
-  title: "Blog | Shaineela Ahmed",
-  description: "Blog — coming soon. Stories and notes from Shaineela Ahmed.",
+  title: "Design Therapy | Shaineela Ahmed",
+  description:
+    "Design Therapy — essays on human-centered interiors, lifestyle, and the feeling of home.",
 };
 
 export default function BlogPage() {
+  const series = getPrimaryBlogSeries();
+
   return (
     <>
-      <Navbar variant="dark" compact />
-      <main className="flex min-h-[calc(100vh-12rem)] flex-1 flex-col">
-        <ComingSoonPage config={blogConfig} />
+      <Navbar />
+      <main className="flex flex-1 flex-col">
+        <BlogSeriesSection series={series} />
       </main>
     </>
   );

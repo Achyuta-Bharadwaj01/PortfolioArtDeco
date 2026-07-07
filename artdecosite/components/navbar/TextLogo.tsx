@@ -1,49 +1,31 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/constants/site";
 
-type TextLogoProps = {
-  tone?: "light" | "dark";
-  compact?: boolean;
-};
-
-export function TextLogo({ tone = "dark", compact = false }: TextLogoProps) {
-  const isLight = tone === "light";
+export function TextLogo() {
   const [firstName, lastName] = siteConfig.name.split(" ");
 
   return (
     <Link
       href="/"
       aria-label={siteConfig.name}
-      className={`group flex min-w-0 flex-col items-center px-1 transition-colors duration-500 sm:px-2 ${
-        isLight ? "text-cream/90 hover:text-gold-bright" : "text-ink hover:text-gold"
-      }`}
+      className="group flex w-full min-w-0 flex-col items-center text-center text-ink transition-colors hover:text-gold"
     >
-      <span
-        className={`flex flex-col items-center text-center font-heading font-bold uppercase leading-tight transition-all duration-500 sm:hidden ${
-          compact
-            ? "text-base tracking-[0.18em]"
-            : "text-base tracking-[0.2em]"
-        }`}
-      >
-        <span>{firstName}</span>
-        <span className="mt-0.5">{lastName}</span>
+      <span className="font-heading text-sm font-bold uppercase leading-tight tracking-[0.18em] sm:hidden">
+        <span className="block">{firstName}</span>
+        <span className="mt-0.5 block">{lastName}</span>
       </span>
 
-      <span
-        className={`hidden text-center font-heading font-bold uppercase leading-none transition-all duration-500 sm:inline ${
-          compact
-            ? "text-lg tracking-[0.24em] md:text-xl md:tracking-[0.26em]"
-            : "text-xl tracking-[0.28em] md:text-2xl md:tracking-[0.3em] lg:text-[1.75rem] lg:tracking-[0.32em]"
-        }`}
-      >
+      <span className="hidden font-heading text-lg font-bold uppercase leading-tight tracking-[0.24em] sm:block md:text-xl md:tracking-[0.28em] lg:text-[1.65rem] lg:tracking-[0.3em]">
         {siteConfig.name}
       </span>
 
+      <p className="mt-1.5 max-w-[16rem] font-script text-[1.125rem] leading-[1.35] sm:mt-2 sm:max-w-[20rem] sm:text-[1.25rem] md:max-w-[24rem] md:text-[1.35rem] lg:max-w-none lg:text-[1.5rem]">
+        {siteConfig.tagline}
+      </p>
+
       <span
         aria-hidden="true"
-        className={`mt-2 hidden h-px transition-all duration-500 group-hover:opacity-100 md:block sm:mt-3 ${
-          compact ? "w-11 md:w-14" : "w-14 md:w-[4.25rem] lg:mt-4 lg:w-20"
-        } ${isLight ? "bg-gold-bright/50" : "bg-gold/40"}`}
+        className="mt-2 hidden h-px w-12 bg-gold/40 sm:block md:mt-2.5 md:w-16"
       />
     </Link>
   );

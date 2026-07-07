@@ -7,26 +7,9 @@ import { NavLinks } from "@/components/navbar/NavLinks";
 import { SocialLinks } from "@/components/navbar/SocialLinks";
 import { TextLogo } from "@/components/navbar/TextLogo";
 
-type NavbarProps = {
-  variant?: "light" | "dark";
-  compact?: boolean;
-};
-
-const sideRailClass =
-  "relative z-10 flex min-w-[2.25rem] shrink-0 items-center md:min-w-[6.25rem]";
-
-export function Navbar({ variant = "dark", compact = false }: NavbarProps) {
+export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-  const isLight = variant === "light";
-
-  const textColor = isLight ? "text-cream/90" : "text-ink";
-  const borderColor = isLight ? "border-transparent" : "border-gold/15";
-  const bgColor = isLight
-    ? "bg-transparent"
-    : "bg-cream/90 backdrop-blur-xl shadow-[0_1px_0_rgba(169,131,79,0.2)]";
-  const mobileMenuBorder = isLight ? "border-gold-bright/20" : "border-gold/15";
-  const iconSize = compact ? "h-[1.125rem] w-[1.125rem]" : "h-5 w-5 sm:h-6 sm:w-6";
 
   useEffect(() => {
     setMenuOpen(false);
@@ -40,90 +23,55 @@ export function Navbar({ variant = "dark", compact = false }: NavbarProps) {
   }, [menuOpen]);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-20 w-full border-b transition-all duration-500 ${
-        compact
-          ? "px-4 py-3 sm:px-6 lg:px-10 lg:py-4"
-          : "px-4 py-4 sm:px-6 sm:py-5 lg:px-10 lg:py-7"
-      } ${bgColor} ${borderColor}`}
-    >
-      <div className="w-full">
-        <div className="relative flex min-h-9 items-center justify-between">
-          <div className={sideRailClass}>
-            <div className="hidden md:block">
-              <SocialLinks
-                tone={isLight ? "light" : "dark"}
-                iconClassName={iconSize}
-              />
-            </div>
+    <header className="sticky top-0 z-30 w-full overflow-visible border-b border-gold/15 bg-cream shadow-[0_1px_0_rgba(169,131,79,0.2)]">
+      <div className="mx-auto w-full px-4 py-3 sm:px-6 sm:py-3.5 lg:px-10 lg:py-4">
+        <div className="grid grid-cols-[2.25rem_1fr_2.25rem] items-start gap-x-2 sm:grid-cols-[6.25rem_1fr_2.25rem] md:grid-cols-[6.25rem_1fr_6.25rem]">
+          <div className="hidden pt-1 md:block">
+            <SocialLinks tone="dark" iconClassName="h-5 w-5 lg:h-6 lg:w-6" />
           </div>
 
-          <div className="pointer-events-none absolute inset-x-0 flex justify-center px-14 sm:px-16 md:px-28">
-            <div className="pointer-events-auto w-full max-w-[15rem] sm:max-w-none">
-              <TextLogo tone={isLight ? "light" : "dark"} compact={compact} />
-            </div>
+          <div className="col-start-2 min-w-0 px-1 sm:px-2">
+            <TextLogo />
           </div>
 
-          <div className={`${sideRailClass} justify-end`}>
+          <div className="flex justify-end pt-0.5 md:col-start-3">
             <MenuButton
               open={menuOpen}
               onClick={() => setMenuOpen((open) => !open)}
-              className={`md:hidden ${textColor}`}
+              className="text-ink md:hidden"
             />
           </div>
         </div>
 
-        <div
-          className={`hidden w-full justify-center transition-all duration-500 md:flex ${
-            compact ? "mt-3 lg:mt-3.5" : "mt-4 sm:mt-5 lg:mt-6"
-          }`}
-        >
-          <NavLinks tone={isLight ? "light" : "dark"} compact={compact} />
+        <div className="mt-3 hidden justify-center md:flex lg:mt-3.5">
+          <NavLinks tone="dark" compact />
         </div>
       </div>
 
       <div
-        className={`grid overflow-hidden transition-all duration-500 ease-out md:hidden ${
+        className={`grid overflow-hidden border-t border-gold/15 md:hidden ${
           menuOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
         }`}
       >
         <div className="min-h-0">
-          <div
-            className={`border-t pt-4 transition-transform duration-500 ease-out ${mobileMenuBorder} ${
-              menuOpen ? "translate-y-0" : "-translate-y-3"
-            } ${isLight ? "bg-black/20 backdrop-blur-sm" : ""}`}
-          >
+          <div className="px-4 pb-4 pt-3">
             <NavLinks
-              tone={isLight ? "light" : "dark"}
-              compact={compact}
+              tone="dark"
               layout="vertical"
               animated
               revealed={menuOpen}
               onNavigate={() => setMenuOpen(false)}
             />
 
-            <div
-              className={`mt-6 flex items-center justify-center gap-4 transition-all duration-500 ease-out ${
-                menuOpen
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-2 opacity-0"
-              }`}
-              style={{ transitionDelay: menuOpen ? "240ms" : "0ms" }}
-            >
-              <span
-                className={`h-px w-10 ${isLight ? "bg-gold-bright/25" : "bg-gold/20"}`}
-              />
-              <span className={isLight ? "text-gold-bright/40" : "text-gold/35"}>
-                ◆
-              </span>
-              <span
-                className={`h-px w-10 ${isLight ? "bg-gold-bright/25" : "bg-gold/20"}`}
-              />
+            <div className="mt-5 flex items-center justify-center gap-4">
+              <span className="h-px w-10 bg-gold/20" />
+              <span className="text-gold/35">◆</span>
+              <span className="h-px w-10 bg-gold/20" />
             </div>
 
-            <div className="mt-5 pb-2">
+            <div className="mt-4 flex justify-center pb-1">
               <SocialLinks
-                tone={isLight ? "light" : "dark"}
+                tone="dark"
                 layout="menu"
                 revealed={menuOpen}
                 iconClassName="h-5 w-5"

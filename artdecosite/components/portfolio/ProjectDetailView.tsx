@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
 import { Navbar } from "@/components/navbar";
 import { ProjectGallery } from "@/components/portfolio/ProjectGallery";
 import { ProjectMedia } from "@/components/portfolio/ProjectMedia";
@@ -12,37 +11,13 @@ type ProjectDetailViewProps = {
   project: PortfolioDetail;
 };
 
-type NavVariant = "light" | "dark";
-
 export function ProjectDetailView({ project }: ProjectDetailViewProps) {
-  const [navVariant, setNavVariant] = useState<NavVariant>("light");
-  const heroRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const heroEl = heroRef.current;
-    if (!heroEl) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        setNavVariant(entry.isIntersecting ? "light" : "dark");
-      },
-      { threshold: 0.2 },
-    );
-
-    observer.observe(heroEl);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <>
-      <Navbar variant={navVariant} compact={navVariant === "dark"} />
+      <Navbar />
 
       <main className="flex flex-1 flex-col">
-        <section
-          ref={heroRef}
-          className="relative min-h-[72vh] w-full overflow-hidden bg-black lg:min-h-screen"
-        >
+        <section className="relative min-h-[72vh] w-full overflow-hidden bg-black lg:min-h-screen">
           <ProjectMedia
             src={project.poster}
             alt={project.title}
@@ -56,23 +31,23 @@ export function ProjectDetailView({ project }: ProjectDetailViewProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/35" />
 
           <div className="absolute inset-x-0 bottom-0 px-5 pb-14 pt-24 lg:px-8 lg:pb-20">
-              <div className="mx-auto w-full max-w-7xl">
-                <Link
-                  href="/portfolio"
-                  className="inline-flex items-center gap-3 font-heading text-[10px] font-bold uppercase tracking-[0.32em] text-white/75 transition-colors hover:text-white lg:text-[11px]"
-                >
-                  <span className="h-px w-6 bg-white/50" />
-                  Back to Portfolio
-                </Link>
+            <div className="mx-auto w-full max-w-7xl">
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center gap-3 font-heading text-[10px] font-bold uppercase tracking-[0.32em] text-white/75 transition-colors hover:text-white lg:text-[11px]"
+              >
+                <span className="h-px w-6 bg-white/50" />
+                Back to Portfolio
+              </Link>
 
-                <p className="mt-8 text-[10px] uppercase tracking-[0.38em] text-white/70 lg:text-[11px]">
-                  {project.category}
-                </p>
-                <h1 className="mt-4 max-w-4xl font-heading text-4xl italic font-light leading-tight text-white sm:text-5xl lg:text-6xl">
-                  {project.title}
-                </h1>
-              </div>
+              <p className="mt-8 text-[10px] uppercase tracking-[0.38em] text-white/70 lg:text-[11px]">
+                {project.category}
+              </p>
+              <h1 className="mt-4 max-w-4xl font-heading text-4xl font-light italic leading-tight text-white sm:text-5xl lg:text-6xl">
+                {project.title}
+              </h1>
             </div>
+          </div>
         </section>
 
         {project.description.length > 0 ? (

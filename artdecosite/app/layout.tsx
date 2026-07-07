@@ -3,7 +3,6 @@ import {
   ebGaramond,
   pinyonScript,
   cormorantGaramond,
-  parisienne,
 } from "@/lib/fonts";
 import { Footer } from "@/components/footer/Footer";
 import "./globals.css";
@@ -22,7 +21,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${ebGaramond.variable} ${pinyonScript.variable} ${cormorantGaramond.variable} ${parisienne.variable} h-full antialiased`}
+      className={`${ebGaramond.variable} ${pinyonScript.variable} ${cormorantGaramond.variable} h-full antialiased`}
     >
       <body
         suppressHydrationWarning

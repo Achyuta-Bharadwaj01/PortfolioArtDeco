@@ -69,8 +69,7 @@
   --font-heading: var(--font-cormorant), var(--font-garamond), "Cormorant Garamond",
     "EB Garamond", Georgia, serif;
   --font-body: var(--font-garamond), "EB Garamond", Georgia, serif;
-  --font-script-display: var(--font-parisienne), var(--font-script), "Parisienne",
-    "Pinyon Script", cursive;
+  --font-script-display: var(--font-script), "Pinyon Script", cursive;
 }
 
 html {

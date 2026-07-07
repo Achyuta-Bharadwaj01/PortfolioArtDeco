@@ -1,10 +1,16 @@
 export const contactConfig = {
   whatsappNumber: "919019348653",
-  heading: "Get in Touch",
+  email: "hello@shaineelaahmed.com",
+  scriptHeading: "Let's talk",
+  heading: "If any of this resonates, I'd love to hear your story.",
   subheading:
-    "Share your details below and begin a conversation on WhatsApp — for enquiries, collaborations, or project discussions.",
+    "For enquiries, collaborations, or project discussions — reach out by email or WhatsApp.",
   privacyHref: "/privacy",
+  emailSubject: "Enquiry from Shaineela Ahmed website",
+  whatsappGreeting: "Hello, I'd like to get in touch regarding a project enquiry.",
 } as const;
+
+export type ContactChannel = "email" | "whatsapp";
 
 export const dialCodeOptions = [
   { code: "+91", label: "India (+91)" },
@@ -36,6 +42,7 @@ export const countryOptions = [
 export type ContactFormValues = {
   fullName: string;
   email: string;
+  message: string;
   dialCode: string;
   phone: string;
   country: string;
@@ -44,13 +51,39 @@ export type ContactFormValues = {
 
 export function buildWhatsAppUrl(values: ContactFormValues) {
   const message = [
-    "Hello, I would like to get in touch.",
+    contactConfig.whatsappGreeting,
     "",
     `Name: ${values.fullName}`,
     `Email: ${values.email}`,
-    `Phone: ${values.dialCode} ${values.phone}`,
-    `Country: ${values.country}`,
-  ].join("\n");
+    values.phone.trim()
+      ? `Phone: ${values.dialCode} ${values.phone}`
+      : null,
+    values.country ? `Country: ${values.country}` : null,
+    values.message.trim() ? `\nMessage:\n${values.message.trim()}` : null,
+  ]
+    .filter(Boolean)
+    .join("\n");
 
   return `https://wa.me/${contactConfig.whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+
+export function buildMailtoUrl(values: ContactFormValues) {
+  const body = [
+    `Name: ${values.fullName}`,
+    values.phone.trim()
+      ? `Phone: ${values.dialCode} ${values.phone}`
+      : null,
+    values.country ? `Country: ${values.country}` : null,
+    "",
+    values.message.trim() || "I would like to get in touch regarding a project enquiry.",
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  const params = new URLSearchParams({
+    subject: contactConfig.emailSubject,
+    body,
+  });
+
+  return `mailto:${contactConfig.email}?${params.toString()}`;
 }

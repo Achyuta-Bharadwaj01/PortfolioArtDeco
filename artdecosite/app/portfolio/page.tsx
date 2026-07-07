@@ -15,8 +15,8 @@ export default function PortfolioPage() {
 
   return (
     <>
-      <Navbar variant="dark" compact />
-      <main className="flex flex-1 flex-col pt-32 lg:pt-36">
+      <Navbar />
+      <main className="flex flex-1 flex-col">
         <PortfolioGrid projects={projects} shoots={shoots} />
       </main>
     </>

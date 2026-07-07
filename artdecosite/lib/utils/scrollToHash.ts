@@ -1,6 +1,8 @@
 export const contactSectionId = "contact";
+export const aboutSectionId = "about";
 
 export const contactHref = `/#${contactSectionId}`;
+export const aboutHref = `/#${aboutSectionId}`;
 
 export function parseHashHref(href: string) {
   const hashIndex = href.indexOf("#");

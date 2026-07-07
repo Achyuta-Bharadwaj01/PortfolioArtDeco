@@ -3,10 +3,12 @@
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import {
+  buildMailtoUrl,
   buildWhatsAppUrl,
   contactConfig,
   countryOptions,
   dialCodeOptions,
+  type ContactChannel,
   type ContactFormValues,
 } from "@/lib/constants/contact";
 import { contactSectionId } from "@/lib/utils/scrollToHash";
@@ -14,6 +16,7 @@ import { contactSectionId } from "@/lib/utils/scrollToHash";
 const initialValues: ContactFormValues = {
   fullName: "",
   email: "",
+  message: "",
   dialCode: dialCodeOptions[0].code,
   phone: "",
   country: "",
@@ -24,9 +27,10 @@ const fieldLabelClass =
   "mb-2 block font-body text-[10px] font-semibold uppercase tracking-[0.28em] text-gold/75 lg:text-[11px]";
 
 const fieldInputClass =
-  "w-full border border-gold/20 bg-cream-soft px-4 py-3 font-body text-sm text-ink outline-none transition-colors focus:border-gold";
+  "w-full border border-gold/20 bg-cream px-4 py-3 font-body text-sm text-ink outline-none transition-colors focus:border-gold";
 
 export function ContactSection() {
+  const [channel, setChannel] = useState<ContactChannel>("email");
   const [values, setValues] = useState<ContactFormValues>(initialValues);
   const [error, setError] = useState<string | null>(null);
 
@@ -51,13 +55,8 @@ export function ContactSection() {
       return;
     }
 
-    if (!values.phone.trim()) {
-      setError("Please enter your phone number.");
-      return;
-    }
-
-    if (!values.country) {
-      setError("Please select your country.");
+    if (channel === "whatsapp" && !values.phone.trim()) {
+      setError("Please enter your phone number for WhatsApp.");
       return;
     }
 
@@ -66,15 +65,19 @@ export function ContactSection() {
       return;
     }
 
-    window.open(buildWhatsAppUrl(values), "_blank", "noopener,noreferrer");
+    if (channel === "whatsapp") {
+      window.open(buildWhatsAppUrl(values), "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    window.location.href = buildMailtoUrl(values);
   }
 
   return (
     <section
       id={contactSectionId}
-      className="relative scroll-mt-24 overflow-hidden bg-cream-soft px-5 pb-16 pt-8 lg:scroll-mt-28 lg:px-8 lg:pb-24 lg:pt-12"
+      className="relative scroll-mt-24 overflow-hidden bg-cream-soft px-5 py-20 lg:scroll-mt-28 lg:px-8 lg:py-28"
     >
-      {/* House illustration — full-bleed background, blurred and blended into cream */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-0"
@@ -82,173 +85,214 @@ export function ContactSection() {
         <img
           src="/UIItems/House_img.png"
           alt=""
-          className="h-full w-full object-contain object-left"
+          className="absolute bottom-0 left-0 h-[55%] w-auto max-w-[85%] object-contain object-left-bottom opacity-35 sm:h-[60%] sm:max-w-[70%] sm:opacity-40 lg:bottom-auto lg:left-0 lg:top-1/2 lg:h-[88%] lg:max-w-none lg:-translate-y-1/2 lg:opacity-45 xl:h-[92%]"
           style={{
-            filter: "blur(0.4px)",
+            filter: "blur(0.35px)",
             mixBlendMode: "multiply",
-            opacity: 0.45,
           }}
         />
-        {/* Gradient fade — dissolves the image edge; matches form card bg exactly */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent from-35% via-cream-soft/50 via-55% to-cream-soft to-70%" />
+        <div className="absolute inset-0 bg-gradient-to-t from-cream-soft via-cream-soft/85 to-cream-soft/70 lg:bg-gradient-to-r lg:from-transparent lg:from-30% lg:via-cream-soft/55 lg:via-50% lg:to-cream-soft lg:to-62%" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl">
-        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-14 xl:gap-20">
-          <div className="text-center lg:text-left">
-            <h2 className="font-heading text-3xl italic font-normal text-ink sm:text-4xl lg:text-[2.5rem] lg:leading-tight">
-              {contactConfig.heading}
-            </h2>
-            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-ink/55 lg:mx-0 lg:mt-5 lg:max-w-sm lg:text-lg">
-              {contactConfig.subheading}
-            </p>
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 xl:gap-20">
+        <div aria-hidden="true" className="hidden min-h-[28rem] lg:block" />
 
-            <p className="mx-auto mt-6 hidden max-w-sm text-sm leading-relaxed text-ink/40 lg:mx-0 lg:block">
-              Your details open a pre-filled WhatsApp message — a direct way to
-              begin a conversation about your project or enquiry.
-            </p>
+        <div className="mx-auto w-full max-w-lg text-center lg:mx-0 lg:max-w-md xl:max-w-lg">
+          <p className="font-script-display text-2xl text-gold sm:text-3xl lg:text-4xl">
+            {contactConfig.scriptHeading}
+          </p>
+
+          <h2 className="mt-8 font-heading text-3xl font-normal leading-snug text-ink sm:text-4xl lg:mt-10 lg:text-[2.75rem] lg:leading-tight">
+            {contactConfig.heading}
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-ink/50 lg:text-lg">
+            {contactConfig.subheading}
+          </p>
+
+          <div className="mt-10 inline-flex border border-gold/20 bg-cream p-1">
+            <button
+              type="button"
+              onClick={() => {
+                setChannel("email");
+                setError(null);
+              }}
+              className={`px-6 py-2.5 font-body text-[10px] font-semibold uppercase tracking-[0.28em] transition-colors lg:px-8 lg:text-[11px] ${
+                channel === "email"
+                  ? "bg-moss text-cream"
+                  : "text-ink/55 hover:text-ink"
+              }`}
+            >
+              Email
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setChannel("whatsapp");
+                setError(null);
+              }}
+              className={`px-6 py-2.5 font-body text-[10px] font-semibold uppercase tracking-[0.28em] transition-colors lg:px-8 lg:text-[11px] ${
+                channel === "whatsapp"
+                  ? "bg-moss text-cream"
+                  : "text-ink/55 hover:text-ink"
+              }`}
+            >
+              WhatsApp
+            </button>
           </div>
 
-          <div className="bg-cream-soft p-5 ring-1 ring-gold/15 sm:p-6 lg:p-8 xl:p-10">
-            <form onSubmit={handleSubmit} className="text-left" noValidate>
-              <div className="grid gap-6 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-6">
-                <div className="sm:col-span-1">
-                  <label htmlFor="full-name" className={fieldLabelClass}>
-                    Full Name
-                  </label>
-                  <input
-                    id="full-name"
-                    type="text"
-                    autoComplete="name"
-                    value={values.fullName}
-                    onChange={(event) =>
-                      updateField("fullName", event.target.value)
-                    }
-                    className={fieldInputClass}
-                  />
-                </div>
+          <form
+            onSubmit={handleSubmit}
+            className="mx-auto mt-10 text-left lg:mt-12"
+            noValidate
+          >
+            <div className="space-y-5">
+              <div>
+                <label htmlFor="full-name" className={fieldLabelClass}>
+                  Full Name
+                </label>
+                <input
+                  id="full-name"
+                  type="text"
+                  autoComplete="name"
+                  value={values.fullName}
+                  onChange={(event) =>
+                    updateField("fullName", event.target.value)
+                  }
+                  className={fieldInputClass}
+                />
+              </div>
 
-                <div className="sm:col-span-1">
-                  <label htmlFor="email" className={fieldLabelClass}>
-                    Email<span className="text-ink/45">*</span>
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    value={values.email}
-                    onChange={(event) =>
-                      updateField("email", event.target.value)
-                    }
-                    className={fieldInputClass}
-                  />
-                </div>
+              <div>
+                <label htmlFor="email" className={fieldLabelClass}>
+                  Email<span className="text-ink/45">*</span>
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  value={values.email}
+                  onChange={(event) =>
+                    updateField("email", event.target.value)
+                  }
+                  className={fieldInputClass}
+                />
+              </div>
 
-                <div className="sm:col-span-1">
-                  <label htmlFor="phone" className={fieldLabelClass}>
-                    Phone Number
-                  </label>
-                  <div className="flex border border-gold/20 bg-cream-soft transition-colors focus-within:border-gold">
+              {channel === "whatsapp" ? (
+                <>
+                  <div>
+                    <label htmlFor="phone" className={fieldLabelClass}>
+                      Phone Number<span className="text-ink/45">*</span>
+                    </label>
+                    <div className="flex border border-gold/20 bg-cream transition-colors focus-within:border-gold">
+                      <select
+                        aria-label="Country code"
+                        value={values.dialCode}
+                        onChange={(event) =>
+                          updateField("dialCode", event.target.value)
+                        }
+                        className="max-w-[7.5rem] border-r border-gold/20 bg-cream px-3 py-3 font-body text-sm text-ink outline-none"
+                      >
+                        {dialCodeOptions.map((option) => (
+                          <option key={option.code} value={option.code}>
+                            {option.code}
+                          </option>
+                        ))}
+                      </select>
+                      <input
+                        id="phone"
+                        type="tel"
+                        autoComplete="tel-national"
+                        value={values.phone}
+                        onChange={(event) =>
+                          updateField("phone", event.target.value)
+                        }
+                        className="min-w-0 flex-1 bg-cream px-4 py-3 font-body text-sm text-ink outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="country" className={fieldLabelClass}>
+                      Country
+                    </label>
                     <select
-                      aria-label="Country code"
-                      value={values.dialCode}
+                      id="country"
+                      value={values.country}
                       onChange={(event) =>
-                        updateField("dialCode", event.target.value)
+                        updateField("country", event.target.value)
                       }
-                      className="max-w-[7.5rem] border-r border-gold/20 bg-cream-soft px-3 py-3 font-body text-sm text-ink outline-none"
+                      className={`${fieldInputClass} appearance-none`}
                     >
-                      {dialCodeOptions.map((option) => (
-                        <option key={option.code} value={option.code}>
-                          {option.code}
+                      <option value="">Select country</option>
+                      {countryOptions.map((country) => (
+                        <option key={country} value={country}>
+                          {country}
                         </option>
                       ))}
                     </select>
-                    <input
-                      id="phone"
-                      type="tel"
-                      autoComplete="tel-national"
-                      value={values.phone}
-                      onChange={(event) =>
-                        updateField("phone", event.target.value)
-                      }
-                      className="min-w-0 flex-1 bg-cream-soft px-4 py-3 font-body text-sm text-ink outline-none"
-                    />
                   </div>
-                </div>
-
-                <div className="sm:col-span-1">
-                  <label htmlFor="country" className={fieldLabelClass}>
-                    Country<span className="text-ink/45">*</span>
-                  </label>
-                  <select
-                    id="country"
-                    required
-                    value={values.country}
-                    onChange={(event) =>
-                      updateField("country", event.target.value)
-                    }
-                    className={`${fieldInputClass} appearance-none`}
-                  >
-                    <option value="" disabled>
-                      Select country
-                    </option>
-                    {countryOptions.map((country) => (
-                      <option key={country} value={country}>
-                        {country}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="sm:col-span-2">
-                  <label className="flex items-start gap-3 text-sm leading-relaxed text-ink/60">
-                    <input
-                      type="checkbox"
-                      checked={values.agreedToPrivacy}
-                      onChange={(event) =>
-                        updateField("agreedToPrivacy", event.target.checked)
-                      }
-                      className="mt-1 h-4 w-4 shrink-0 accent-gold"
-                    />
-                    <span>
-                      I agree to the{" "}
-                      <Link
-                        href={contactConfig.privacyHref}
-                        className="text-ink/75 underline decoration-gold/25 underline-offset-4 transition-colors hover:text-gold"
-                      >
-                        Privacy Policy
-                      </Link>
-                      .
-                      <span className="text-ink/45">*</span>
-                    </span>
-                  </label>
-                </div>
-              </div>
-
-              {error ? (
-                <p className="mt-5 text-sm text-gold" role="alert">
-                  {error}
-                </p>
+                </>
               ) : null}
 
-              <div className="mt-8 flex justify-center sm:justify-start lg:mt-10">
-                <button
-                  type="submit"
-                  className="group inline-flex w-full items-center justify-center gap-5 border border-gold/25 bg-cream px-8 py-4 transition-all duration-300 hover:border-gold hover:shadow-gold sm:w-auto lg:gap-6 lg:px-12 lg:py-5"
-                >
-                  <span className="h-px w-5 bg-gold/35 transition-all duration-300 group-hover:w-8 group-hover:bg-gold" />
-                  <span className="font-body text-[11px] font-semibold uppercase tracking-[0.32em] text-ink/75 transition-colors duration-300 group-hover:text-gold lg:text-xs">
-                    Contact via WhatsApp
-                  </span>
-                  <span className="h-px w-5 bg-gold/35 transition-all duration-300 group-hover:w-8 group-hover:bg-gold" />
-                </button>
+              <div>
+                <label htmlFor="message" className={fieldLabelClass}>
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  rows={4}
+                  value={values.message}
+                  onChange={(event) =>
+                    updateField("message", event.target.value)
+                  }
+                  className={`${fieldInputClass} resize-none`}
+                  placeholder="Tell me a little about your project or enquiry..."
+                />
               </div>
-            </form>
-          </div>
+
+              <label className="flex items-start gap-3 text-sm leading-relaxed text-ink/60">
+                <input
+                  type="checkbox"
+                  checked={values.agreedToPrivacy}
+                  onChange={(event) =>
+                    updateField("agreedToPrivacy", event.target.checked)
+                  }
+                  className="mt-1 h-4 w-4 shrink-0 accent-gold"
+                />
+                <span>
+                  I agree to the{" "}
+                  <Link
+                    href={contactConfig.privacyHref}
+                    className="text-ink/75 underline decoration-gold/25 underline-offset-4 transition-colors hover:text-gold"
+                  >
+                    Privacy Policy
+                  </Link>
+                  .
+                  <span className="text-ink/45">*</span>
+                </span>
+              </label>
+            </div>
+
+            {error ? (
+              <p className="mt-5 text-center text-sm text-gold" role="alert">
+                {error}
+              </p>
+            ) : null}
+
+            <div className="mt-8 flex justify-center lg:mt-10">
+              <button
+                type="submit"
+                className="w-full bg-moss px-10 py-4 font-body text-[11px] font-semibold uppercase tracking-[0.32em] text-cream transition-colors hover:bg-moss-deep lg:px-14 lg:text-xs"
+              >
+                Begin a Conversation
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </section>
   );
 }
-

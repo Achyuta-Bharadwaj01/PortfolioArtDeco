@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function ShopPage() {
   return (
     <>
-      <Navbar variant="dark" compact />
+      <Navbar />
       <main className="flex min-h-[calc(100vh-12rem)] flex-1 flex-col">
         <ComingSoonPage config={shopConfig} />
       </main>

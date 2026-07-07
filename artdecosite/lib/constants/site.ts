@@ -1,5 +1,5 @@
 import { theme } from "@/lib/constants/theme";
-import { contactHref } from "@/lib/utils/scrollToHash";
+import { aboutHref, contactHref } from "@/lib/utils/scrollToHash";
 
 export const siteConfig = {
   name: "Shaineela Ahmed",
@@ -9,7 +9,7 @@ export const siteConfig = {
     "https://www.instagram.com/ellariastudio?igsh=MXg0MmZpM2wyOWw1&utm_source=qr",
   pinterestUrl: "https://uk.pinterest.com/shaineelaa/",
   linkedinUrl: "https://www.linkedin.com/in/shaineela-ahmed-interiorarchitect/",
-  tagline: "Interior Architect and Set Designer",
+  tagline: "Interior Architect & Set Designer",
 } as const;
 
 export const navLinks = [
@@ -17,6 +17,6 @@ export const navLinks = [
   { label: "SERVICES", href: "/services" },
   { label: "SHOP", href: "/shop" },
   { label: "BLOG", href: "/blog" },
-  { label: "ABOUT", href: "/about" },
+  { label: "ABOUT", href: aboutHref },
   { label: "CONTACT", href: contactHref },
 ] as const;

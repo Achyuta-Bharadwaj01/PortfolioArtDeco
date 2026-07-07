@@ -6,24 +6,6 @@ import {
 } from "@/lib/constants/testimonials";
 import { toRomanNumeral } from "@/lib/utils/roman";
 
-function StarRating({ rating }: { rating: number }) {
-  return (
-    <div
-      aria-label={`${rating} out of 5 stars`}
-      className="flex gap-0.5 font-heading text-sm tracking-widest"
-    >
-      {Array.from({ length: 5 }, (_, index) => (
-        <span
-          key={index}
-          className={index < rating ? "text-gold-bright" : "text-ink/15"}
-        >
-          ★
-        </span>
-      ))}
-    </div>
-  );
-}
-
 function TestimonialCard({
   testimonial,
   index,
@@ -34,12 +16,9 @@ function TestimonialCard({
   return (
     <article className="group flex w-[18rem] shrink-0 snap-start flex-col sm:w-[19.5rem] md:w-[21rem] lg:w-[22rem]">
       <div className="flex h-full flex-col bg-cream-soft p-5 ring-1 ring-gold/[0.12] transition-all duration-300 group-hover:ring-gold/35 group-hover:shadow-gold sm:p-6">
-        <div className="flex items-start justify-between gap-4">
-          <span className="font-body text-[10px] uppercase tracking-[0.28em] text-gold/70">
-            {toRomanNumeral(index + 1)}
-          </span>
-          <StarRating rating={testimonial.rating} />
-        </div>
+        <span className="font-body text-[10px] uppercase tracking-[0.28em] text-gold/70">
+          {toRomanNumeral(index + 1)}
+        </span>
 
         <div className="my-4 flex items-center gap-3">
           <span className="h-px flex-1 bg-gold/20" />
