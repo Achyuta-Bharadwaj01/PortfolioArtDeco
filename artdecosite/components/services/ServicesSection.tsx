@@ -24,7 +24,7 @@ function ServiceCard({
           <span className="h-px flex-1 bg-gold/15" />
         </div>
 
-        <h3 className="mt-6 font-heading text-lg font-semibold uppercase leading-snug tracking-[0.08em] text-ink sm:text-xl">
+        <h3 className="mt-6 font-heading text-xl italic font-normal leading-snug text-ink sm:text-2xl">
           {category.title}
         </h3>
 

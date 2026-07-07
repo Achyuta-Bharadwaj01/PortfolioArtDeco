@@ -8,12 +8,17 @@ import { JourneySection } from "@/components/home/JourneySection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { Navbar } from "@/components/navbar";
 import { ProjectShowcase } from "@/components/projects";
+import type { PortfolioItem } from "@/lib/portfolio/types";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { scrollToHash } from "@/lib/utils/scrollToHash";
 
 type NavVariant = "light" | "dark";
 
-export function HomePage() {
+type HomePageProps = {
+  showcaseItems: PortfolioItem[];
+};
+
+export function HomePage({ showcaseItems }: HomePageProps) {
   const [navVariant, setNavVariant] = useState<NavVariant>("light");
   const heroRef = useRef<HTMLDivElement | null>(null);
 
@@ -93,7 +98,7 @@ export function HomePage() {
 
         <HeroTagline />
         <SectionDivider label="Selected Works" tone="mist" />
-        <ProjectShowcase />
+        <ProjectShowcase items={showcaseItems} />
         <SectionDivider label="About" tone="fade" />
         <AboutSection />
         <SectionDivider label="Journey" tone="fadeReverse" />

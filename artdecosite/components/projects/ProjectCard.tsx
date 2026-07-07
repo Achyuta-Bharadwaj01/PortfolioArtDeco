@@ -1,10 +1,10 @@
 import Link from "next/link";
-import type { Project } from "@/lib/constants/projects";
+import type { PortfolioItem } from "@/lib/portfolio/types";
 import { ProjectMedia } from "@/components/portfolio/ProjectMedia";
 import { isVideoSrc } from "@/lib/utils/media";
 
 type ProjectCardProps = {
-  project: Project;
+  project: PortfolioItem;
   numeral: string;
 };
 
@@ -33,10 +33,10 @@ export function ProjectCard({ project, numeral }: ProjectCardProps) {
       </div>
 
       <div className="mt-6 border-t border-gold/15 pt-5 text-center transition-colors duration-300 group-hover:border-gold/35 lg:mt-7 lg:pt-6">
-        <p className="text-[10px] font-body uppercase tracking-[0.32em] text-gold lg:text-[11px]">
+        <p className="font-body text-[10px] uppercase tracking-[0.32em] text-gold lg:text-[11px]">
           {project.category}
         </p>
-        <p className="mt-2 font-heading text-lg font-semibold uppercase tracking-[0.12em] text-ink transition-colors group-hover:text-gold lg:text-xl">
+        <p className="mt-2 font-heading text-lg font-normal italic text-ink transition-colors group-hover:text-gold lg:text-xl">
           {project.title}
         </p>
       </div>

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import {
   ebGaramond,
-  jost,
   pinyonScript,
   cormorantGaramond,
   parisienne,
@@ -23,7 +22,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${ebGaramond.variable} ${jost.variable} ${pinyonScript.variable} ${cormorantGaramond.variable} ${parisienne.variable} h-full antialiased`}
+      className={`${ebGaramond.variable} ${pinyonScript.variable} ${cormorantGaramond.variable} ${parisienne.variable} h-full antialiased`}
     >
       <body
         suppressHydrationWarning

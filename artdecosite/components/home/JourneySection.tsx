@@ -49,7 +49,7 @@ export function JourneySection() {
 
       <div className={`relative z-10 mx-auto w-full ${journeyMaxWidthClass} px-5 sm:px-6 lg:px-10 xl:px-12`}>
         <div className="mb-8 max-w-2xl border-b border-gold/20 pb-8 lg:mb-10 lg:pb-10">
-          <h2 className="font-heading text-2xl font-semibold uppercase tracking-[0.14em] text-ink sm:text-3xl">
+          <h2 className="font-heading text-3xl italic font-normal text-ink sm:text-4xl">
             {journeyIntro.heading}
           </h2>
           <p className="mt-4 max-w-xl text-base italic leading-relaxed text-ink/55 lg:text-lg">

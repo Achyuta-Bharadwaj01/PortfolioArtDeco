@@ -66,10 +66,11 @@
   --color-slate: #6b7f8a;
   --color-border: rgba(61, 43, 31, 0.1);
 
-  --font-heading: var(--font-cormorant), "Cormorant Garamond",
-    var(--font-garamond), "EB Garamond", Georgia, serif;
-  --font-body: var(--font-jost), "Jost", system-ui, sans-serif;
-  --font-script-display: var(--font-parisienne), "Parisienne", cursive;
+  --font-heading: var(--font-cormorant), var(--font-garamond), "Cormorant Garamond",
+    "EB Garamond", Georgia, serif;
+  --font-body: var(--font-garamond), "EB Garamond", Georgia, serif;
+  --font-script-display: var(--font-parisienne), var(--font-script), "Parisienne",
+    "Pinyon Script", cursive;
 }
 
 html {

@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Jost, Pinyon_Script, Cormorant_Garamond, Parisienne } from "next/font/google";
+import { Pinyon_Script, Cormorant_Garamond, Parisienne } from "next/font/google";
 
 export const ebGaramond = localFont({
   src: [
@@ -30,13 +30,6 @@ export const parisienne = Parisienne({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-parisienne",
-  display: "swap",
-});
-
-export const jost = Jost({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-jost",
   display: "swap",
 });
 

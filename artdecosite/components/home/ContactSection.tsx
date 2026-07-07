@@ -96,7 +96,7 @@ export function ContactSection() {
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-14 xl:gap-20">
           <div className="text-center lg:text-left">
-            <h2 className="font-heading text-2xl font-semibold uppercase tracking-[0.16em] text-ink sm:text-3xl lg:text-[2rem] lg:leading-tight">
+            <h2 className="font-heading text-3xl italic font-normal text-ink sm:text-4xl lg:text-[2.5rem] lg:leading-tight">
               {contactConfig.heading}
             </h2>
             <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-ink/55 lg:mx-0 lg:mt-5 lg:max-w-sm lg:text-lg">

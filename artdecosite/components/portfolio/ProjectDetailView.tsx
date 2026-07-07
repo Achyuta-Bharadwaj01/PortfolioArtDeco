@@ -5,11 +5,11 @@ import { useEffect, useRef, useState } from "react";
 import { Navbar } from "@/components/navbar";
 import { ProjectGallery } from "@/components/portfolio/ProjectGallery";
 import { ProjectMedia } from "@/components/portfolio/ProjectMedia";
-import type { ProjectDetail } from "@/lib/projects/getProjectDetail";
+import type { PortfolioDetail } from "@/lib/portfolio/types";
 import { isVideoSrc } from "@/lib/utils/media";
 
 type ProjectDetailViewProps = {
-  project: ProjectDetail;
+  project: PortfolioDetail;
 };
 
 type NavVariant = "light" | "dark";
@@ -68,7 +68,7 @@ export function ProjectDetailView({ project }: ProjectDetailViewProps) {
                 <p className="mt-8 text-[10px] uppercase tracking-[0.38em] text-white/70 lg:text-[11px]">
                   {project.category}
                 </p>
-                <h1 className="mt-4 max-w-4xl font-heading text-4xl font-bold uppercase leading-tight tracking-[0.12em] text-white sm:text-5xl lg:text-6xl">
+                <h1 className="mt-4 max-w-4xl font-heading text-4xl italic font-light leading-tight text-white sm:text-5xl lg:text-6xl">
                   {project.title}
                 </h1>
               </div>
@@ -88,7 +88,9 @@ export function ProjectDetailView({ project }: ProjectDetailViewProps) {
                   The Story
                 </p>
                 <p className="mt-5 max-w-sm text-lg italic leading-relaxed text-black/55 lg:text-xl">
-                  Concept, evolution, and the atmosphere behind the space.
+                  {project.kind === "shoot"
+                    ? "Concept, direction, and the atmosphere behind the campaign."
+                    : "Concept, evolution, and the atmosphere behind the space."}
                 </p>
               </div>
 

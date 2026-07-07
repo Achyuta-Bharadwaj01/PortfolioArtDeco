@@ -12,7 +12,7 @@ export function AboutEssay() {
             <span className="text-gold/45">◆</span>
             <span className="h-px flex-1 bg-gold/20" />
           </div>
-          <h1 className="text-center font-heading text-[clamp(1.5rem,4vw,2.25rem)] font-semibold uppercase leading-snug tracking-[0.08em] text-ink">
+          <h1 className="text-center font-heading text-[clamp(1.75rem,4vw,2.75rem)] italic font-normal leading-snug text-ink">
             {aboutEssay.title}
           </h1>
         </header>
