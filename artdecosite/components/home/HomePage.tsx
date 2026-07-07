@@ -53,7 +53,7 @@ export function HomePage() {
         >
           <video
             className="absolute inset-0 h-full w-full object-cover"
-            src="/Assets/temp_hero_vid.mp4"
+            src="/Assets/Shaineela%20Hero.mov"
             autoPlay
             muted
             loop
