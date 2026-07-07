@@ -8,7 +8,6 @@ import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { Navbar } from "@/components/navbar";
 import { ProjectShowcase } from "@/components/projects";
 import type { PortfolioItem } from "@/lib/portfolio/types";
-import { SectionDivider } from "@/components/ui/SectionDivider";
 import { scrollToHash } from "@/lib/utils/scrollToHash";
 
 type HomePageProps = {
@@ -40,7 +39,7 @@ export function HomePage({ showcaseItems }: HomePageProps) {
             playsInline
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-moss-deep/40 via-transparent to-moss/20" />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-cream to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-cream via-cream/80 to-transparent lg:h-72" />
 
           <div
             aria-hidden="true"
@@ -66,15 +65,10 @@ export function HomePage({ showcaseItems }: HomePageProps) {
           </div>
         </section>
 
-        <SectionDivider />
         <AboutSection />
-        <SectionDivider />
         <ProjectShowcase items={showcaseItems} />
-        <SectionDivider />
         <JourneySection />
-        <SectionDivider />
         <TestimonialsSection />
-        <SectionDivider />
         <ContactSection />
       </main>
     </>

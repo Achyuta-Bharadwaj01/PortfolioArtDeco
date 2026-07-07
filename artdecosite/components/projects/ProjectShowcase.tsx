@@ -10,7 +10,7 @@ type ProjectShowcaseProps = {
 
 export function ProjectShowcase({ items }: ProjectShowcaseProps) {
   return (
-    <section className="relative bg-cream pb-8 pt-6 lg:pb-10 lg:pt-8">
+    <section className="relative bg-cream pb-16 pt-4 lg:pb-24 lg:pt-6">
       <div className="pointer-events-none absolute inset-0 bg-botanical opacity-25" />
       <div className="relative z-10 mx-auto w-full px-5 lg:px-8">
         <div className="mb-10 border-b border-gold/20 pb-8 lg:mb-12 lg:pb-10">

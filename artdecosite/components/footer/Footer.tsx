@@ -13,7 +13,7 @@ const footerLinks = [
 export function Footer() {
   return (
     <footer
-      className={`relative mt-auto overflow-hidden bg-gradient-to-b from-moss to-moss-deep pb-16 pt-8 sm:pb-20 sm:pt-9 lg:pb-24 lg:pt-10 ${siteX}`}
+      className={`relative mt-auto overflow-hidden bg-gradient-to-b from-moss to-moss-deep pb-28 pt-8 sm:pb-20 sm:pt-9 lg:pb-24 lg:pt-10 ${siteX}`}
     >
       <div
         aria-hidden="true"
@@ -22,25 +22,25 @@ export function Footer() {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 left-0 z-10"
+        className="pointer-events-none absolute bottom-0 left-0 z-[1]"
       >
         <img
           src="/UIItems/Floral_filgree.png"
           alt=""
-          className="h-28 w-28 object-contain sm:h-36 sm:w-36 lg:h-44 lg:w-44"
-          style={{ mixBlendMode: "multiply", opacity: 0.45 }}
+          className="h-28 w-28 object-contain opacity-40 sm:h-36 sm:w-36 sm:opacity-45 lg:h-44 lg:w-44"
+          style={{ mixBlendMode: "multiply" }}
         />
       </div>
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-0 z-10 scale-x-[-1]"
+        className="pointer-events-none absolute bottom-0 right-0 z-[1] scale-x-[-1]"
       >
         <img
           src="/UIItems/Floral_filgree.png"
           alt=""
-          className="h-28 w-28 object-contain sm:h-36 sm:w-36 lg:h-44 lg:w-44"
-          style={{ mixBlendMode: "multiply", opacity: 0.45 }}
+          className="h-28 w-28 object-contain opacity-40 sm:h-36 sm:w-36 sm:opacity-45 lg:h-44 lg:w-44"
+          style={{ mixBlendMode: "multiply" }}
         />
       </div>
 
@@ -86,12 +86,12 @@ export function Footer() {
 
         <span className="h-px w-full bg-gold-bright/30" />
 
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-body text-[10px] uppercase tracking-[0.24em] text-cream/40 sm:text-[11px]">
+        <div className="flex flex-col items-center gap-5 px-6 pb-2 text-center sm:flex-row sm:items-center sm:justify-between sm:px-0 sm:pb-0 sm:text-left">
+          <p className="order-2 font-body text-[10px] uppercase tracking-[0.24em] text-cream/40 sm:order-1 sm:text-[11px]">
             © {new Date().getFullYear()} {siteConfig.name}.
           </p>
 
-          <p className="font-script text-xl text-gold-bright sm:text-2xl lg:text-[1.65rem]">
+          <p className="order-1 max-w-[15rem] font-script text-xl leading-snug text-gold-bright drop-shadow-[0_1px_8px_rgba(24,37,24,0.45)] sm:order-2 sm:max-w-none sm:text-2xl lg:text-[1.65rem]">
             {siteConfig.footerTagline}
           </p>
         </div>

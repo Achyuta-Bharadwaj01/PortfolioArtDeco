@@ -76,7 +76,7 @@ export function ContactSection() {
   return (
     <section
       id={contactSectionId}
-      className="relative scroll-mt-24 overflow-hidden bg-cream px-5 py-20 lg:scroll-mt-28 lg:px-8 lg:py-28"
+      className="relative scroll-mt-24 overflow-hidden border-t border-gold/10 bg-cream px-5 py-20 lg:scroll-mt-28 lg:px-8 lg:py-28"
     >
       <div
         aria-hidden="true"

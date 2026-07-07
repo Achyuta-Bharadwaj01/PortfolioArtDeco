@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ellaria — Walk Through Me</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Parisienne&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --cream:#FBF8F2;
+    --cream-soft:#F4EFE4;
+    --parchment:#F0E9DA;
+    --moss:#24382A;
+    --moss-deep:#182518;
+    --chocolate:#3D2B1F;
+    --gold:#A9834F;
+    --gold-bright:#C9A86A;
+    --sage:#7C8D71;
+    --blush:#C98F73;
+    --charcoal:#2A2823;
+    --ink:#232019;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:'EB Garamond', serif;
+    font-size:18px;
+    line-height:1.75;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background:var(--gold); color:var(--cream); }
+
+  h1,h2,h3{ font-family:'Cormorant Garamond', serif; font-weight:500; letter-spacing:0.01em; color:var(--ink); }
+  .script{ font-family:'Parisienne', cursive; font-weight:400; }
+  .ui-sans{ font-family:'Jost', sans-serif; letter-spacing:0.14em; text-transform:uppercase; font-weight:400; }
+  a{ color:inherit; text-decoration:none; }
+
+  .container{ max-width:1240px; margin:0 auto; padding:0 80px; }
+  @media (max-width:900px){ .container{ padding:0 24px; } }
+
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:999; opacity:0.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .9s ease, transform .9s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .reveal{ transition:none; opacity:1; transform:none; } *{animation:none !important;} }
+
+  /* ================= NAV — the rooms ================= */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:300;
+    padding:20px 80px; display:flex; align-items:center; justify-content:space-between;
+    background:rgba(251,248,242,0.0); transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  header.scrolled{ background:rgba(251,248,242,0.95); backdrop-filter:blur(10px); padding:13px 80px; box-shadow:0 1px 0 rgba(169,131,79,0.25); }
+  header .logo{ font-family:'Cormorant Garamond', serif; font-size:1.5rem; letter-spacing:0.2em; font-weight:500; color:var(--cream); transition:color .4s ease; }
+  header.scrolled .logo{ color:var(--ink); }
+
+  .room-nav{ display:flex; gap:8px; align-items:center; }
+  .room-link{
+    position:relative; width:40px; height:40px; display:flex; align-items:center; justify-content:center;
+    border-radius:50%; transition:background .3s ease;
+  }
+  .room-link:hover{ background:rgba(169,131,79,0.15); }
+  .room-link svg{ width:19px; height:19px; stroke:var(--cream); transition:stroke .4s ease; }
+  header.scrolled .room-link svg{ stroke:var(--ink); }
+  .room-tooltip{
+    position:absolute; top:48px; left:50%; transform:translateX(-50%) translateY(-6px);
+    font-family:'Jost',sans-serif; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--ink); background:var(--cream); border:1px solid var(--gold);
+    padding:6px 12px; white-space:nowrap; opacity:0; pointer-events:none; transition:opacity .3s ease, transform .3s ease;
+  }
+  .room-link:hover .room-tooltip{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  .header-actions{ display:flex; align-items:center; gap:14px; }
+  .studio-pill{
+    font-family:'Jost',sans-serif; font-size:0.62rem; letter-spacing:0.13em; text-transform:uppercase;
+    color:var(--gold-bright); border:1px solid var(--gold-bright); padding:7px 14px; border-radius:20px;
+    transition:all .35s ease;
+  }
+  header.scrolled .studio-pill{ color:var(--gold); border-color:var(--gold); }
+  .studio-pill:hover{ background:var(--gold); color:var(--cream); }
+
+  .btn-gold{
+    font-family:'Jost', sans-serif; font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase;
+    border:1px solid var(--gold-bright); color:var(--cream); background:var(--gold);
+    padding:11px 24px; display:inline-block; transition:all .35s ease;
+  }
+  .btn-gold:hover{ background:transparent; color:var(--gold-bright); box-shadow:0 0 0 1px var(--gold-bright); transform:translateY(-2px); }
+  .btn-gold.on-light{ background:var(--moss); border-color:var(--moss); color:var(--cream); }
+  .btn-gold.on-light:hover{ background:transparent; color:var(--moss); box-shadow:0 0 0 1px var(--moss); }
+
+  @media (max-width:940px){
+    header{ padding:18px 20px; }
+    header.scrolled{ padding:12px 20px; }
+    .room-nav{ display:none; }
+  }
+
+  /* ================= FOYER (hero) ================= */
+  .foyer{
+    position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; overflow:hidden;
+    background:linear-gradient(175deg, #1c2b1e 0%, #16201a 55%, #101710 100%);
+  }
+  #heroCanvas{ position:absolute; inset:0; z-index:1; opacity:0.9; }
+  .foyer-vignette{
+    position:absolute; inset:0; z-index:1;
+    background:radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(10,14,10,0.55) 100%);
+  }
+  .foyer-content{ position:relative; z-index:2; padding:0 24px; }
+  .foyer-eyebrow{ color:var(--gold-bright); font-size:0.68rem; margin-bottom:20px; }
+  .foyer h1{ font-size:clamp(3rem, 8vw, 5.6rem); color:#FBF8F2; letter-spacing:0.05em; text-shadow:0 2px 30px rgba(0,0,0,0.5); }
+  .foyer .role{ display:block; margin-top:18px; color:#D7DECF; font-size:1.08rem; }
+  .foyer-lines{ min-height:70px; margin-bottom:26px; }
+  .foyer-lines .line{
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:400;
+    font-size:clamp(1.2rem, 2.2vw, 1.6rem); color:#F1EDE0; opacity:0; transform:translateY(10px);
+    transition:opacity 1s ease, transform 1s ease;
+  }
+  .foyer-lines .line.show{ opacity:1; transform:translateY(0); }
+  .foyer-scroll{
+    position:absolute; bottom:36px; left:50%; transform:translateX(-50%); z-index:2;
+    color:var(--gold-bright); display:flex; flex-direction:column; align-items:center; gap:10px; opacity:0.85;
+  }
+  .foyer-scroll .stem{ width:1px; height:44px; background:linear-gradient(var(--gold-bright), transparent); animation:cue 2.4s ease-in-out infinite; }
+  @keyframes cue{ 0%,100%{transform:scaleY(1); opacity:0.7;} 50%{transform:scaleY(0.55); opacity:1;} }
+
+  /* ================= divider ================= */
+  .divider{ display:flex; align-items:center; justify-content:center; gap:16px; max-width:400px; margin:0 auto; }
+  .divider .stem{ flex:1; height:1px; background:linear-gradient(to right, transparent, var(--gold), transparent); }
+  .divider svg{ width:22px; height:22px; opacity:0.85; }
+
+  section{ position:relative; }
+  .section-pad{ padding:120px 0; }
+  @media (max-width:940px){ .section-pad{ padding:76px 0; } }
+  .room-label{ text-align:center; color:var(--gold); font-size:0.68rem; margin-bottom:14px; }
+  .room-title{ text-align:center; font-size:clamp(2rem, 4vw, 3rem); margin-bottom:14px; }
+  .room-sub{ text-align:center; max-width:580px; margin:0 auto 76px; color:#5c5748; font-style:italic; font-size:1.08rem; }
+
+  /* ================= THE STUDY (about + beliefs) ================= */
+  .study-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:90px; align-items:center; margin-bottom:110px; }
+  @media (max-width:940px){ .study-grid{ grid-template-columns:1fr; gap:44px; text-align:center; } }
+  .study-portrait{
+    aspect-ratio:3/4; border-radius:3px; position:relative; overflow:hidden;
+    background:radial-gradient(circle at 30% 20%, #7a8b6f, #46583e 55%, #263420 100%);
+    box-shadow:0 30px 60px -25px rgba(36,56,42,0.35);
+  }
+  .study-portrait::after{ content:''; position:absolute; inset:0; box-shadow:inset 0 0 0 1px rgba(169,131,79,0.4); }
+  .study-portrait .mono{ position:absolute; bottom:22px; left:22px; color:#F1EDE0; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.25rem; }
+  .study-text .kicker{ color:var(--gold); margin-bottom:16px; font-size:0.7rem; }
+  .study-text h2{ font-size:clamp(1.8rem,3vw,2.5rem); margin-bottom:22px; line-height:1.3; }
+  .study-text p{ color:#4d4838; margin-bottom:18px; max-width:520px; }
+  @media (max-width:940px){ .study-text p{ margin-left:auto; margin-right:auto; } }
+
+  .beliefs-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(169,131,79,0.3); border-radius:4px; overflow:hidden; }
+  @media (max-width:900px){ .beliefs-row{ grid-template-columns:1fr; } }
+  .belief-card{ background:var(--cream); padding:44px 36px; text-align:center; }
+  .belief-card .num{ font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--gold); font-size:1.05rem; margin-bottom:14px; }
+  .belief-card h3{ font-size:1.4rem; margin-bottom:12px; }
+  .belief-card p{ color:#5c5748; font-size:0.95rem; }
+
+  /* ================= HALLWAY OF PHOTOGRAPHS (journey, 3D tilt) ================= */
+  .hallway-section{ background:var(--parchment); }
+  .frame-track{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:36px; perspective:1200px;
+  }
+  @media (max-width:1050px){ .frame-track{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .frame-track{ grid-template-columns:1fr; } }
+
+  .photo-frame{
+    background:#fff; padding:16px 16px 20px; box-shadow:0 20px 40px -18px rgba(60,50,30,0.3);
+    transform-style:preserve-3d; transition:transform .15s ease-out, box-shadow .3s ease;
+    will-change:transform;
+  }
+  .photo-frame:hover{ box-shadow:0 30px 55px -18px rgba(60,50,30,0.4); }
+  .frame-visual{
+    aspect-ratio:4/5; margin-bottom:16px; position:relative; overflow:hidden;
+    border:1px solid rgba(169,131,79,0.35);
+  }
+  .frame-visual::after{ content:''; position:absolute; inset:0; box-shadow:inset 0 0 30px rgba(0,0,0,0.15); }
+  .tone-a{ background:linear-gradient(160deg,#5c6f52,#3a4a32 55%,#25301c); }
+  .tone-b{ background:linear-gradient(160deg,#7a5b3c,#5c4630 55%,#3a2c1c); }
+  .tone-c{ background:linear-gradient(160deg,#6b6250,#463f34 55%,#2e2a22); }
+  .tone-d{ background:linear-gradient(160deg,#4f6247,#324027 55%,#1e2818); }
+  .photo-frame .year{ font-family:'Jost',sans-serif; font-size:0.64rem; letter-spacing:0.13em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+  .photo-frame h4{ font-size:1.28rem; margin-bottom:8px; }
+  .photo-frame p{ color:#5c5748; font-size:0.92rem; }
+
+  /* ================= THE DRAWING ROOM (services) ================= */
+  .drawing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(169,131,79,0.28); border-radius:4px; overflow:hidden; }
+  @media (max-width:900px){ .drawing-grid{ grid-template-columns:1fr; } }
+  .drawing-card{ background:var(--cream); padding:50px 40px; transition:background .35s ease; }
+  .drawing-card:hover{ background:var(--parchment); }
+  .drawing-card .roman{ font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--gold); font-size:1rem; margin-bottom:18px; }
+  .drawing-card h3{ font-size:1.6rem; margin-bottom:14px; }
+  .drawing-card p{ color:#5c5748; margin-bottom:20px; }
+  .drawing-card .link{ font-family:'Jost',sans-serif; font-size:0.64rem; letter-spacing:0.13em; text-transform:uppercase; color:var(--moss); border-bottom:1px solid var(--gold); padding-bottom:2px; }
+
+  /* ================= THE GUEST BOOK (testimonials) ================= */
+  .guestbook-section{ background:var(--cream-soft); }
+  .guestbook-pages{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px; }
+  @media (max-width:900px){ .guestbook-pages{ grid-template-columns:1fr; } }
+  .gb-page{
+    background:#fff; padding:38px 32px; box-shadow:0 18px 36px -20px rgba(60,50,30,0.28);
+    position:relative; border-top:3px solid var(--gold);
+  }
+  .gb-page:nth-child(2){ transform:rotate(-0.6deg); }
+  .gb-page:nth-child(1){ transform:rotate(0.8deg); }
+  .gb-page:nth-child(3){ transform:rotate(-0.3deg); }
+  .gb-page .quote-mark{ font-family:'Cormorant Garamond',serif; font-size:2.6rem; color:var(--gold); line-height:0.4; display:block; margin-bottom:16px; }
+  .gb-page p{ color:#4d4838; font-style:italic; margin-bottom:20px; }
+  .gb-page .who{ font-family:'Jost',sans-serif; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+  .gb-page .role{ display:block; color:#8a8471; font-size:0.7rem; margin-top:4px; font-family:'EB Garamond',serif; font-style:italic; text-transform:none; letter-spacing:0.02em; }
+
+  /* ================= GARDEN DOOR (3D door → studio) ================= */
+  .garden-door-section{
+    position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(180deg, #1a2818 0%, #0f180f 100%);
+    overflow:hidden;
+    perspective:1800px;
+  }
+  .garden-glow{
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse at 50% 50%, rgba(201,168,106,0.16), transparent 60%);
+  }
+  .door-frame{
+    position:relative; width:min(520px, 78vw); aspect-ratio:1/1.5;
+    background:linear-gradient(160deg,#2a1c12,#1a1109);
+    border-radius:6px 6px 0 0; box-shadow:0 40px 90px -30px rgba(0,0,0,0.7);
+    overflow:hidden;
+  }
+  .door-glimpse{
+    position:absolute; inset:10px; border-radius:4px 4px 0 0;
+    background:radial-gradient(circle at 50% 30%, #8a9c72, #4d6038 55%, #2c3a20 100%);
+  }
+  .door-panel{
+    position:absolute; top:0; bottom:0; width:50%;
+    background:linear-gradient(160deg,#3a2818,#241708);
+    border:1px solid rgba(201,168,106,0.35);
+    transform-style:preserve-3d; transition:transform 1.4s cubic-bezier(.65,0,.35,1);
+    box-shadow:inset 0 0 30px rgba(0,0,0,0.4);
+  }
+  .door-panel.left{ left:0; transform-origin:left center; }
+  .door-panel.right{ left:50%; transform-origin:right center; }
+  .garden-door-section.open .door-panel.left{ transform:rotateY(-108deg); }
+  .garden-door-section.open .door-panel.right{ transform:rotateY(108deg); }
+  .door-handle{ position:absolute; top:50%; width:6px; height:26px; background:var(--gold-bright); border-radius:3px; }
+  .door-panel.left .door-handle{ right:14px; }
+  .door-panel.right .door-handle{ left:14px; }
+
+  .door-caption{
+    position:absolute; bottom:-100px; left:50%; transform:translateX(-50%);
+    text-align:center; width:100%; opacity:0; transition:opacity 1s ease .6s;
+  }
+  .garden-door-section.open .door-caption{ opacity:1; }
+  .door-caption .script{ display:block; color:#E4D9BE; font-size:1.4rem; margin-bottom:14px; }
+  .door-caption h2{ color:#FBF8F2; font-size:clamp(1.7rem,3.2vw,2.4rem); margin-bottom:30px; }
+
+  .garden-door-wrap{ text-align:center; position:relative; z-index:2; }
+  .garden-eyebrow{ color:var(--gold-bright); font-size:0.68rem; margin-bottom:40px; opacity:0.9; }
+
+  /* ================= CONNECT ================= */
+  .connect-section{ text-align:center; padding:140px 0; }
+  .connect-section .script{ display:block; color:var(--gold); font-size:1.4rem; margin-bottom:16px; }
+  .connect-section h2{ font-size:clamp(2.1rem,4.2vw,3.2rem); max-width:680px; margin:0 auto 38px; line-height:1.3; }
+
+  /* ================= FOOTER ================= */
+  footer{ background:var(--moss-deep); color:#D7D2C2; padding:56px 0 34px; }
+  .footer-row{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; align-items:center; }
+  .footer-logo{ font-family:'Cormorant Garamond',serif; font-size:1.35rem; letter-spacing:0.2em; color:#FBF8F2; }
+  .footer-nav{ display:flex; gap:28px; flex-wrap:wrap; }
+  .footer-nav a{ font-size:0.88rem; color:#D7D2C2; }
+  .footer-nav a:hover{ color:var(--gold-bright); }
+  .footer-fine{ margin-top:30px; padding-top:22px; border-top:1px solid rgba(201,168,106,0.2); font-size:0.78rem; color:#A9A48F; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header id="siteHeader">
+  <div class="logo">Ellaria</div>
+
+  <nav class="room-nav">
+    <a href="#foyer" class="room-link" aria-label="Foyer">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round"><path d="M12 3 L12 8"/><circle cx="12" cy="12" r="5"/><path d="M8 20 L16 20"/><path d="M10 20 L10 17 M14 20 L14 17"/></svg>
+      <span class="room-tooltip">The Foyer</span>
+    </a>
+    <a href="#study" class="room-link" aria-label="The Study">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round"><path d="M4 5 L4 19 L12 17 L20 19 L20 5 L12 7 Z"/><path d="M12 7 L12 17"/></svg>
+      <span class="room-tooltip">The Study</span>
+    </a>
+    <a href="#hallway" class="room-link" aria-label="The Hallway">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="4" y="4" width="16" height="16" rx="1"/><rect x="8" y="8" width="8" height="8" rx="0.5"/></svg>
+      <span class="room-tooltip">The Hallway</span>
+    </a>
+    <a href="#drawing-room" class="room-link" aria-label="The Drawing Room">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round"><path d="M4 20 L4 12 C 4 9 8 9 8 12 L8 20"/><path d="M16 20 L16 12 C 16 9 20 9 20 12 L20 20"/><path d="M4 14 L20 14"/></svg>
+      <span class="room-tooltip">The Drawing Room</span>
+    </a>
+    <a href="#guest-book" class="room-link" aria-label="Guest Book">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round"><path d="M4 19 L4 6 C 8 4 8 4 12 6 C 16 4 16 4 20 6 L20 19 C 16 17 16 17 12 19 C 8 17 8 17 4 19 Z"/><path d="M12 6 L12 19"/></svg>
+      <span class="room-tooltip">Guest Book</span>
+    </a>
+    <a href="#garden-door" class="room-link" aria-label="Garden Door">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round"><path d="M6 21 L6 5 C 6 3 18 3 18 5 L18 21"/><path d="M4 21 L20 21"/><circle cx="15" cy="13" r="0.8" fill="currentColor" stroke="none"/></svg>
+      <span class="room-tooltip">Garden Door</span>
+    </a>
+  </nav>
+
+  <div class="header-actions">
+    <a href="#garden-door" class="studio-pill">Elegia Studio</a>
+    <a href="#connect" class="btn-gold">Connect</a>
+  </div>
+</header>
+
+<!-- ================= FOYER ================= -->
+<section class="foyer" id="foyer">
+  <canvas id="heroCanvas"></canvas>
+  <div class="foyer-vignette"></div>
+
+  <div class="foyer-content">
+    <div class="foyer-eyebrow ui-sans">Welcome — come in</div>
+    <div class="foyer-lines" id="heroLines">
+      <p class="line">I believe a space should feel like the truth,</p>
+    </div>
+    <h1>Shaineela Ahmed</h1>
+    <span class="role script">Interior Architect · Stylist · Creative Strategist</span>
+  </div>
+
+  <div class="foyer-scroll ui-sans" style="font-size:0.6rem;"><div class="stem"></div>Step Inside</div>
+</section>
+
+<!-- ================= THE STUDY ================= -->
+<section class="section-pad" id="study">
+  <div class="container">
+    <div class="study-grid">
+      <div class="study-portrait reveal">
+        <div class="mono">S.A.</div>
+      </div>
+      <div class="study-text reveal">
+        <div class="kicker ui-sans">The Study</div>
+        <h2>Before I design a room, I try to understand a person.</h2>
+        <p>I'm Shaineela — an interior architect, stylist, and creative strategist, but before any of those titles, I'm someone who has always noticed how spaces make people feel, long before I had language for it.</p>
+        <p>Nine years in, across residential design, hospitality, styling, and business strategy, I've learned the work I care about most isn't about trends or square footage. It's about identity — helping a person, brand, or home say something true about itself.</p>
+      </div>
+    </div>
+
+    <div class="room-label ui-sans reveal">What I Stand For</div>
+    <div class="beliefs-row">
+      <div class="belief-card reveal">
+        <div class="num">I.</div>
+        <h3>Space is identity</h3>
+        <p>A room should tell the truth about the person living in it — not the trend they were sold.</p>
+      </div>
+      <div class="belief-card reveal">
+        <div class="num">II.</div>
+        <h3>Nature is not decoration</h3>
+        <p>Biophilic design isn't a plant in the corner. It's a way of letting a space breathe.</p>
+      </div>
+      <div class="belief-card reveal">
+        <div class="num">III.</div>
+        <h3>More can be honest</h3>
+        <p>I don't believe in minimalism for its own sake. Layered and romantic can still be true.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="stem"></div><svg viewBox="0 0 24 24" fill="none"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" stroke="#A9834F" stroke-width="1"/></svg><div class="stem"></div></div>
+
+<!-- ================= THE HALLWAY OF PHOTOGRAPHS ================= -->
+<section class="hallway-section section-pad" id="hallway">
+  <div class="container">
+    <div class="room-label ui-sans reveal">The Hallway of Photographs</div>
+    <h2 class="room-title reveal">My Journey</h2>
+    <p class="room-sub reveal">Frames I pause at, on the way from where I started to where I am.</p>
+
+    <div class="frame-track">
+      <div class="photo-frame reveal" data-tilt>
+        <div class="frame-visual tone-a"></div>
+        <div class="year">Livspace</div>
+        <h4>Where I learned the craft</h4>
+        <p>Grew from designer to Studio Director — learning how ideas become built, livable spaces.</p>
+      </div>
+      <div class="photo-frame reveal" data-tilt>
+        <div class="frame-visual tone-b"></div>
+        <div class="year">Square Yards &amp; TOI</div>
+        <h4>Where I learned the business</h4>
+        <p>Growth and strategy roles — understanding how design connects to real markets and people.</p>
+      </div>
+      <div class="photo-frame reveal" data-tilt>
+        <div class="frame-visual tone-c"></div>
+        <div class="year">HomeLane</div>
+        <h4>Where I led at scale</h4>
+        <p>As Senior Category Manager — category strategy and enablement across a national network.</p>
+      </div>
+      <div class="photo-frame reveal" data-tilt>
+        <div class="frame-visual tone-d"></div>
+        <div class="year">Now</div>
+        <h4>Building something mine</h4>
+        <p>An independent practice — biophilic, romantic maximalist, and entirely my own.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE DRAWING ROOM ================= -->
+<section class="section-pad" id="drawing-room">
+  <div class="container">
+    <div class="room-label ui-sans reveal">The Drawing Room</div>
+    <h2 class="room-title reveal">Services</h2>
+    <p class="room-sub reveal">Three ways to work with me — each one starts with a conversation.</p>
+  </div>
+  <div class="drawing-grid">
+    <div class="drawing-card reveal">
+      <div class="roman">I.</div>
+      <h3>Interior Design</h3>
+      <p>End-to-end design for homes and hospitality spaces — biophilic, layered, and built around how you live.</p>
+      <a href="#" class="link">Learn More</a>
+    </div>
+    <div class="drawing-card reveal">
+      <div class="roman">II.</div>
+      <h3>Styling</h3>
+      <p>Editorial and commercial styling that gives a space its final, unmistakable voice.</p>
+      <a href="#" class="link">Learn More</a>
+    </div>
+    <div class="drawing-card reveal">
+      <div class="roman">III.</div>
+      <h3>Creative Direction for Brands</h3>
+      <p>Strategic and visual direction for brands who want their spaces and stories to feel like one thing.</p>
+      <a href="#" class="link">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GUEST BOOK ================= -->
+<section class="guestbook-section section-pad" id="guest-book">
+  <div class="container">
+    <div class="room-label ui-sans reveal">The Guest Book</div>
+    <h2 class="room-title reveal" style="margin-bottom:70px;">Testimonials</h2>
+
+    <div class="guestbook-pages">
+      <div class="gb-page reveal">
+        <span class="quote-mark">"</span>
+        <p>Shaineela doesn't just design a room — she translates who you are into a space. It felt personal from the first conversation.</p>
+        <div class="who">Client Name<span class="role">Residential Project, Bengaluru</span></div>
+      </div>
+      <div class="gb-page reveal">
+        <span class="quote-mark">"</span>
+        <p>Working with her on our brand's creative direction changed how we thought about our own spaces. She sees things we couldn't.</p>
+        <div class="who">Client Name<span class="role">Brand Collaboration</span></div>
+      </div>
+      <div class="gb-page reveal">
+        <span class="quote-mark">"</span>
+        <p>She has a rare gift for making a space feel emotionally complete, not just beautifully finished.</p>
+        <div class="who">Client Name<span class="role">Hospitality Project</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GARDEN DOOR (3D opening door) ================= -->
+<section class="garden-door-section" id="garden-door">
+  <div class="garden-glow"></div>
+  <div class="garden-door-wrap">
+    <div class="garden-eyebrow ui-sans">The Garden Door</div>
+    <div class="door-frame">
+      <div class="door-glimpse"></div>
+      <div class="door-panel left"><div class="door-handle"></div></div>
+      <div class="door-panel right"><div class="door-handle"></div></div>
+    </div>
+    <div class="door-caption">
+      <span class="script">Through here, the work itself</span>
+      <h2>Elegia — my studio, and the spaces I've built.</h2>
+      <a href="#" class="btn-gold">Step Into Elegia</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONNECT ================= -->
+<section class="connect-section" id="connect">
+  <div class="container">
+    <span class="script">Let's talk</span>
+    <h2>If any of this resonates, I'd love to hear your story.</h2>
+    <a href="#" class="btn-gold on-light">Begin a Conversation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div class="footer-logo">Ellaria</div>
+      <div class="footer-nav">
+        <a href="#study">The Study</a>
+        <a href="#hallway">The Hallway</a>
+        <a href="#drawing-room">Drawing Room</a>
+        <a href="#guest-book">Guest Book</a>
+        <a href="#garden-door">Garden Door ↗</a>
+      </div>
+    </div>
+    <div class="footer-fine">
+      <span>© 2026 Shaineela Ahmed.</span>
+      <span class="script" style="color:#C9A86A; font-size:1rem;">Every space has a story.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/128/three.min.js"></script>
+<script>
+  // ---------- header on scroll ----------
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ---------- foyer text sequence ----------
+  const lines = [
+    "I believe a space should feel like the truth,",
+    "not a performance of it.",
+    "This is where I tell you why."
+  ];
+  const lineEl = document.querySelector('#heroLines');
+  let li = 0;
+  function cycleLine(){
+    lineEl.innerHTML = `<p class="line">${lines[li]}</p>`;
+    requestAnimationFrame(()=> requestAnimationFrame(()=> lineEl.querySelector('.line').classList.add('show')));
+    setTimeout(()=>{
+      lineEl.querySelector('.line').classList.remove('show');
+      setTimeout(()=>{ li = (li+1) % lines.length; cycleLine(); }, 700);
+    }, 3200);
+  }
+  cycleLine();
+
+  // ---------- scroll reveal ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ---------- 3D tilt on hallway photo frames ----------
+  document.querySelectorAll('[data-tilt]').forEach(card => {
+    card.style.transformStyle = 'preserve-3d';
+    card.parentElement.style.perspective = '1200px';
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `rotateY(${x*14}deg) rotateX(${-y*14}deg) translateZ(6px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateY(0deg) rotateX(0deg) translateZ(0)';
+    });
+  });
+
+  // ---------- garden door: open on scroll into view ----------
+  const doorSection = document.getElementById('garden-door');
+  const doorObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) doorSection.classList.add('open');
+    });
+  }, { threshold: 0.5 });
+  doorObserver.observe(doorSection);
+
+  // ---------- Three.js ambient foyer scene ----------
+  (function initHeroScene(){
+    const canvas = document.getElementById('heroCanvas');
+    if (!window.THREE || !canvas) { canvas && (canvas.style.display='none'); return; }
+
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
+    } catch(e){ canvas.style.display='none'; return; }
+
+    const foyer = document.getElementById('foyer');
+    function size(){
+      const w = foyer.clientWidth, h = foyer.clientHeight;
+      renderer.setSize(w, h, false);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      return {w,h};
+    }
+    let {w,h} = size();
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, w/h, 0.1, 100);
+    camera.position.set(0, 0, 9);
+
+    const ambient = new THREE.AmbientLight(0x8a9c72, 0.5);
+    scene.add(ambient);
+    const point = new THREE.PointLight(0xC9A86A, 1.4, 30);
+    point.position.set(4, 3, 6);
+    scene.add(point);
+    const point2 = new THREE.PointLight(0x6f8a5c, 0.7, 30);
+    point2.position.set(-5, -2, 4);
+    scene.add(point2);
+
+    // central ornament — wireframe icosahedron, like a lantern's geometry
+    const geo = new THREE.IcosahedronGeometry(2.1, 1);
+    const mat = new THREE.MeshStandardMaterial({
+      color: 0xC9A86A, wireframe:true, transparent:true, opacity:0.55,
+      emissive:0x6b512c, emissiveIntensity:0.3
+    });
+    const ornament = new THREE.Mesh(geo, mat);
+    scene.add(ornament);
+
+    const innerGeo = new THREE.IcosahedronGeometry(1.3, 0);
+    const innerMat = new THREE.MeshStandardMaterial({ color:0xE4D9BE, transparent:true, opacity:0.08 });
+    const innerMesh = new THREE.Mesh(innerGeo, innerMat);
+    scene.add(innerMesh);
+
+    // dust motes
+    const dustCount = window.innerWidth < 700 ? 60 : 160;
+    const dustGeo = new THREE.BufferGeometry();
+    const positions = new Float32Array(dustCount * 3);
+    for (let i=0;i<dustCount;i++){
+      positions[i*3] = (Math.random()-0.5) * 14;
+      positions[i*3+1] = (Math.random()-0.5) * 8;
+      positions[i*3+2] = (Math.random()-0.5) * 10;
+    }
+    dustGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const dustMat = new THREE.PointsMaterial({ color:0xC9A86A, size:0.035, transparent:true, opacity:0.55 });
+    const dust = new THREE.Points(dustGeo, dustMat);
+    scene.add(dust);
+
+    let targetX = 0, targetY = 0;
+    window.addEventListener('mousemove', (e) => {
+      targetX = (e.clientX / window.innerWidth - 0.5) * 0.6;
+      targetY = (e.clientY / window.innerHeight - 0.5) * 0.6;
+    });
+
+    window.addEventListener('resize', () => {
+      const s = size();
+      camera.aspect = s.w / s.h;
+      camera.updateProjectionMatrix();
+    });
+
+    const clock = new THREE.Clock();
+    function animate(){
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+      ornament.rotation.y = t * 0.12;
+      ornament.rotation.x = t * 0.06;
+      innerMesh.rotation.y = -t * 0.08;
+      dust.rotation.y = t * 0.02;
+
+      camera.position.x += (targetX*3 - camera.position.x) * 0.03;
+      camera.position.y += (-targetY*2 - camera.position.y) * 0.03;
+      camera.lookAt(0,0,0);
+
+      renderer.render(scene, camera);
+    }
+    animate();
+  })();
+</script>
+
+</body>
+</html>

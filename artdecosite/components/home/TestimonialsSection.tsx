@@ -123,7 +123,7 @@ export function TestimonialsSection() {
   return (
     <section
       ref={sectionRef}
-      className="group/testimonials bg-cream pb-14 pt-6 lg:pb-20 lg:pt-8"
+      className="group/testimonials bg-cream pb-16 pt-4 lg:pb-24 lg:pt-6"
     >
       <div
         className={`mx-auto w-full ${testimonialsMaxWidthClass} px-5 sm:px-6 lg:px-10 xl:px-12`}
