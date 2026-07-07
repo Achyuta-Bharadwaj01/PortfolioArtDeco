@@ -38,3 +38,12 @@ export const featuredProjects: Project[] = [
 ];
 
 export const projectNumerals = ["I", "II", "III", "IV"] as const;
+
+export const projectShowcaseIntro = {
+  subheading:
+    "Interiors composed with proportion, permanence, and a quiet sense of occasion.",
+  eyebrow: "Portfolio",
+  doorCaption: "Through here, the work itself",
+  doorTitle: "Selected interiors, crafted with intention.",
+  ctaLabel: "Enter the Portfolio",
+} as const;

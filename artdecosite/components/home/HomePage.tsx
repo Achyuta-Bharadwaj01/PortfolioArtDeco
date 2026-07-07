@@ -49,7 +49,7 @@ export function HomePage() {
       <main className="flex flex-1 flex-col">
         <section
           ref={heroRef}
-          className="relative h-[70vh] w-full overflow-hidden bg-black lg:h-screen"
+          className="relative h-[70vh] w-full overflow-hidden bg-moss-deep lg:h-screen"
         >
           <video
             className="absolute inset-0 h-full w-full object-cover"
@@ -59,7 +59,36 @@ export function HomePage() {
             loop
             playsInline
           />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-ivory to-transparent" />
+          {/* Atmospheric dark green tint */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-moss-deep/40 via-transparent to-moss/20" />
+          {/* Bottom fade to cream */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-cream to-transparent" />
+
+          {/* Gold filigree corner ornaments — Gold_filgree.png is top-left oriented */}
+          {/* bottom-left: flip vertically */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-0 left-0 z-10 scale-y-[-1]"
+          >
+            <img
+              src="/UIItems/Gold_filgree.png"
+              alt=""
+              className="h-36 w-36 object-contain sm:h-48 sm:w-48 lg:h-64 lg:w-64"
+              style={{ mixBlendMode: "multiply", opacity: 0.65 }}
+            />
+          </div>
+          {/* bottom-right: rotate 180deg */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-0 right-0 z-10 rotate-180"
+          >
+            <img
+              src="/UIItems/Gold_filgree.png"
+              alt=""
+              className="h-36 w-36 object-contain sm:h-48 sm:w-48 lg:h-64 lg:w-64"
+              style={{ mixBlendMode: "multiply", opacity: 0.65 }}
+            />
+          </div>
         </section>
 
         <HeroTagline />

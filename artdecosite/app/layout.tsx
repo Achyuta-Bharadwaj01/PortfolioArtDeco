@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { ebGaramond, jost, pinyonScript } from "@/lib/fonts";
+import {
+  ebGaramond,
+  jost,
+  pinyonScript,
+  cormorantGaramond,
+  parisienne,
+} from "@/lib/fonts";
 import { Footer } from "@/components/footer/Footer";
 import "./globals.css";
 
@@ -16,9 +22,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${ebGaramond.variable} ${jost.variable} ${pinyonScript.variable} h-full antialiased`}
+      data-scroll-behavior="smooth"
+      className={`${ebGaramond.variable} ${jost.variable} ${pinyonScript.variable} ${cormorantGaramond.variable} ${parisienne.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-mist font-body text-black">
+      <body
+        suppressHydrationWarning
+        className="min-h-full flex flex-col bg-cream font-body text-ink"
+      >
         {children}
         <Footer />
       </body>

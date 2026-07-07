@@ -20,10 +20,12 @@ export function Navbar({ variant = "dark", compact = false }: NavbarProps) {
   const pathname = usePathname();
   const isLight = variant === "light";
 
-  const textColor = isLight ? "text-white" : "text-black";
-  const borderColor = isLight ? "border-transparent" : "border-border";
-  const bgColor = isLight ? "bg-transparent" : "bg-parchment/80 backdrop-blur-xl";
-  const mobileMenuBorder = isLight ? "border-white/15" : "border-black/10";
+  const textColor = isLight ? "text-cream/90" : "text-ink";
+  const borderColor = isLight ? "border-transparent" : "border-gold/15";
+  const bgColor = isLight
+    ? "bg-transparent"
+    : "bg-cream/90 backdrop-blur-xl shadow-[0_1px_0_rgba(169,131,79,0.2)]";
+  const mobileMenuBorder = isLight ? "border-gold-bright/20" : "border-gold/15";
   const iconSize = compact ? "h-[1.125rem] w-[1.125rem]" : "h-5 w-5 sm:h-6 sm:w-6";
 
   useEffect(() => {
@@ -109,13 +111,13 @@ export function Navbar({ variant = "dark", compact = false }: NavbarProps) {
               style={{ transitionDelay: menuOpen ? "240ms" : "0ms" }}
             >
               <span
-                className={`h-px w-10 ${isLight ? "bg-white/25" : "bg-cocoa/20"}`}
+                className={`h-px w-10 ${isLight ? "bg-gold-bright/25" : "bg-gold/20"}`}
               />
-              <span className={isLight ? "text-white/25" : "text-black/20"}>
+              <span className={isLight ? "text-gold-bright/40" : "text-gold/35"}>
                 ◆
               </span>
               <span
-                className={`h-px w-10 ${isLight ? "bg-white/25" : "bg-cocoa/20"}`}
+                className={`h-px w-10 ${isLight ? "bg-gold-bright/25" : "bg-gold/20"}`}
               />
             </div>
 

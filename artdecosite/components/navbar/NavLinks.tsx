@@ -42,8 +42,8 @@ export function NavLinks({
 
   const linkClass =
     tone === "light"
-      ? "text-white hover:text-white/80"
-      : "text-black hover:text-camel";
+      ? "text-cream/90 hover:text-gold-bright"
+      : "text-ink hover:text-gold";
 
   return (
     <nav aria-label="Main navigation">
@@ -93,7 +93,7 @@ export function NavLinks({
               <span
                 aria-hidden="true"
                 className={`absolute -bottom-1.5 left-0 h-px w-0 transition-all duration-300 group-hover:w-full ${
-                  tone === "light" ? "bg-white/70" : "bg-camel"
+                  tone === "light" ? "bg-gold-bright/80" : "bg-gold"
                 }`}
               />
             </Link>

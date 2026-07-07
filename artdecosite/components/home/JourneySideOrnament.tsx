@@ -7,7 +7,7 @@ function EditorialOrnament() {
     <svg
       viewBox="0 0 96 360"
       aria-hidden="true"
-      className="h-[22rem] w-20 text-cocoa/20 xl:h-[26rem] xl:w-24"
+      className="h-[22rem] w-20 text-gold/25 xl:h-[26rem] xl:w-24"
       fill="none"
     >
       <path
@@ -89,7 +89,7 @@ export function JourneySideOrnament({ side }: JourneySideOrnamentProps) {
       }`}
     >
       <div
-        className={`absolute inset-y-0 bg-fluted ${isLeft ? "right-0 border-r border-cocoa/[0.06]" : "left-0 border-l border-cocoa/[0.06]"}`}
+        className={`absolute inset-y-0 bg-fluted ${isLeft ? "right-0 border-r border-gold/[0.08]" : "left-0 border-l border-gold/[0.08]"}`}
       />
 
       <div
@@ -98,13 +98,13 @@ export function JourneySideOrnament({ side }: JourneySideOrnamentProps) {
         <div className={isLeft ? "" : "scale-x-[-1]"}>
           <EditorialOrnament />
         </div>
-        <p className="mt-4 text-center font-heading text-[9px] uppercase tracking-[0.38em] text-cocoa/30">
+        <p className="mt-4 text-center font-heading text-[9px] uppercase tracking-[0.38em] text-gold/35">
           {isLeft ? "MMXV" : "MMXXVI"}
         </p>
       </div>
 
       <p
-        className={`absolute bottom-[22%] font-heading text-[9px] uppercase tracking-[0.42em] text-cocoa/25 [writing-mode:vertical-rl] ${
+        className={`absolute bottom-[22%] font-heading text-[9px] uppercase tracking-[0.42em] text-gold/30 [writing-mode:vertical-rl] ${
           isLeft ? "right-3 xl:right-5" : "left-3 xl:left-5"
         }`}
       >

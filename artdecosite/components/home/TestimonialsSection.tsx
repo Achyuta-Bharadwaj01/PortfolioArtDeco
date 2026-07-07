@@ -15,7 +15,7 @@ function StarRating({ rating }: { rating: number }) {
       {Array.from({ length: 5 }, (_, index) => (
         <span
           key={index}
-          className={index < rating ? "text-camel" : "text-black/15"}
+          className={index < rating ? "text-gold-bright" : "text-ink/15"}
         >
           ★
         </span>
@@ -33,31 +33,31 @@ function TestimonialCard({
 }) {
   return (
     <article className="group flex w-[18rem] shrink-0 snap-start flex-col sm:w-[19.5rem] md:w-[21rem] lg:w-[22rem]">
-      <div className="flex h-full flex-col bg-parchment p-5 ring-1 ring-cocoa/[0.06] transition-all duration-300 group-hover:ring-camel/25 group-hover:shadow-warm sm:p-6">
+      <div className="flex h-full flex-col bg-cream-soft p-5 ring-1 ring-gold/[0.12] transition-all duration-300 group-hover:ring-gold/35 group-hover:shadow-gold sm:p-6">
         <div className="flex items-start justify-between gap-4">
-          <span className="font-body text-[10px] uppercase tracking-[0.28em] text-taupe">
+          <span className="font-body text-[10px] uppercase tracking-[0.28em] text-gold/70">
             {toRomanNumeral(index + 1)}
           </span>
           <StarRating rating={testimonial.rating} />
         </div>
 
         <div className="my-4 flex items-center gap-3">
-          <span className="h-px flex-1 bg-navy/15" />
-          <span className="text-black/20">◆</span>
-          <span className="h-px flex-1 bg-navy/15" />
+          <span className="h-px flex-1 bg-gold/20" />
+          <span className="text-gold/40">◆</span>
+          <span className="h-px flex-1 bg-gold/20" />
         </div>
 
-        <h3 className="font-heading text-sm font-bold uppercase leading-snug tracking-[0.1em] text-black">
+        <h3 className="font-heading text-sm font-semibold uppercase leading-snug tracking-[0.1em] text-ink">
           {testimonial.headline}
         </h3>
 
-        <blockquote className="mt-4 flex-1 font-body text-sm italic leading-relaxed text-black/60">
+        <blockquote className="mt-4 flex-1 font-body text-sm italic leading-relaxed text-ink/60">
           &ldquo;{testimonial.quote}&rdquo;
         </blockquote>
 
-        <footer className="mt-6 border-t border-black/[0.06] pt-4">
+        <footer className="mt-6 border-t border-gold/12 pt-4">
           <cite className="not-italic">
-            <span className="font-body text-sm font-medium text-camel">
+            <span className="font-body text-sm font-medium text-gold">
               {testimonial.name}
             </span>
           </cite>
@@ -69,15 +69,15 @@ function TestimonialCard({
 
 export function TestimonialsSection() {
   return (
-    <section className="bg-mist pb-14 pt-4 lg:pb-20 lg:pt-6">
+    <section className="bg-cream pb-14 pt-4 lg:pb-20 lg:pt-6">
       <div
         className={`mx-auto w-full ${testimonialsMaxWidthClass} px-5 sm:px-6 lg:px-10 xl:px-12`}
       >
-        <div className="mb-8 max-w-2xl border-b border-black/10 pb-8 lg:mb-10 lg:pb-10">
-          <h2 className="font-heading text-2xl font-bold uppercase tracking-[0.14em] text-black sm:text-3xl">
+        <div className="mb-8 max-w-2xl border-b border-gold/20 pb-8 lg:mb-10 lg:pb-10">
+          <h2 className="font-heading text-2xl font-semibold uppercase tracking-[0.14em] text-ink sm:text-3xl">
             {testimonialsIntro.heading}
           </h2>
-          <p className="mt-4 max-w-xl text-base italic leading-relaxed text-black/55 lg:text-lg">
+          <p className="mt-4 max-w-xl text-base italic leading-relaxed text-ink/55 lg:text-lg">
             {testimonialsIntro.subheading}
           </p>
         </div>
@@ -95,7 +95,7 @@ export function TestimonialsSection() {
             </div>
           </div>
 
-          <p className="mt-2 text-center font-body text-[10px] uppercase tracking-[0.28em] text-taupe sm:hidden">
+          <p className="mt-2 text-center font-body text-[10px] uppercase tracking-[0.28em] text-gold/60 sm:hidden">
             Scroll to read more
           </p>
         </div>

@@ -7,21 +7,21 @@ import { ProjectCard } from "@/components/projects/ProjectCard";
 
 export function ProjectShowcase() {
   return (
-    <section className="relative bg-mist pb-8 pt-4 lg:pb-10 lg:pt-6">
-      <div className="pointer-events-none absolute inset-0 bg-botanical opacity-40" />
-      <div className="mx-auto w-full px-5 lg:px-8 relative z-10">
-        <div className="mb-10 border-b border-black/10 pb-8 lg:mb-12 lg:flex lg:items-end lg:justify-between lg:pb-10">
+    <section className="relative bg-cream pb-8 pt-4 lg:pb-10 lg:pt-6">
+      <div className="pointer-events-none absolute inset-0 bg-botanical opacity-25" />
+      <div className="relative z-10 mx-auto w-full px-5 lg:px-8">
+        <div className="mb-10 border-b border-gold/20 pb-8 lg:mb-12 lg:flex lg:items-end lg:justify-between lg:pb-10">
           <div className="max-w-2xl">
-            <p className="max-w-lg text-lg italic leading-relaxed text-black/55 lg:text-xl">
-              Interiors composed with proportion, permanence, and a quiet sense of
-              occasion.
+            <p className="max-w-lg text-lg italic leading-relaxed text-ink/55 lg:text-xl">
+              Interiors composed with proportion, permanence, and a quiet sense
+              of occasion.
             </p>
           </div>
 
           <div className="mt-10 hidden items-center gap-5 lg:mt-0 lg:flex">
-            <span className="h-px w-20 bg-navy/25" />
-            <span className="text-black/20">◆</span>
-            <span className="text-[10px] font-body uppercase tracking-[0.4em] text-taupe">
+            <span className="h-px w-20 bg-gold/30" />
+            <span className="text-gold/45">◆</span>
+            <span className="font-body text-[10px] uppercase tracking-[0.4em] text-gold/60">
               MMXXVI
             </span>
           </div>
@@ -40,13 +40,13 @@ export function ProjectShowcase() {
         <div className="mt-10 flex justify-center lg:mt-12">
           <Link
             href="/portfolio"
-            className="group inline-flex items-center gap-5 border border-cocoa/15 bg-parchment px-8 py-4 transition-all duration-300 hover:border-camel hover:shadow-warm lg:gap-6 lg:px-12 lg:py-5"
+            className="group inline-flex items-center gap-5 border border-gold/25 bg-cream-soft px-8 py-4 transition-all duration-300 hover:border-gold hover:shadow-gold lg:gap-6 lg:px-12 lg:py-5"
           >
-            <span className="h-px w-5 bg-cocoa/25 transition-all duration-300 group-hover:w-8 group-hover:bg-camel" />
-            <span className="font-body text-[11px] font-semibold uppercase tracking-[0.32em] text-black transition-colors duration-300 group-hover:text-camel lg:text-xs">
+            <span className="h-px w-5 bg-gold/30 transition-all duration-300 group-hover:w-8 group-hover:bg-gold" />
+            <span className="font-body text-[11px] font-semibold uppercase tracking-[0.32em] text-ink/75 transition-colors duration-300 group-hover:text-gold lg:text-xs">
               View All Projects
             </span>
-            <span className="h-px w-5 bg-cocoa/25 transition-all duration-300 group-hover:w-8 group-hover:bg-camel" />
+            <span className="h-px w-5 bg-gold/30 transition-all duration-300 group-hover:w-8 group-hover:bg-gold" />
           </Link>
         </div>
       </div>

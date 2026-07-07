@@ -2,50 +2,74 @@
 
 @theme {
   /*
-   * Screenshot-sampled palette (showroom, prestige mural, shapoorji, books)
-   * ivory      #E8E0D5  showroom wall beige
-   * parchment  #F5F3EE  shapoorji cream / prestige marble
-   * sand       #E8DCC8  aged book paper edges
-   * linen      #D6CEC3  showroom stone floor
-   * taupe      #B4A79A  shapoorji curtain
-   * mauve      #A3928F  prestige botanical mural
-   * cocoa      #4B3621  shapoorji walnut shelving
-   * walnut     #5C4033  antique book leather
-   * camel      #A67C52  shapoorji headboard velvet
-   * brass      #C5A572  showroom pillar / gold vase
-   * slate      #6B7F8A  showroom accent chair
+   * Palette — reference: Elegia/Shaineela Ahmed design system
+   *
+   * Dark section colours (hero, footer, CTA)
+   * moss-deep   #182518   deepest forest (footer)
+   * moss        #24382A   forest green   (dark sections)
+   * chocolate   #3D2B1F   warm dark brown
+   *
+   * Light section colours (cards, content)
+   * cream       #FBF8F2   brightest cream (page bg)
+   * cream-soft  #F4EFE4   warm card bg
+   * parchment   #F0E9DA   deeper warm parchment
+   * sand        #E8DCC8   aged paper
+   * linen       #D6CEC3   stone/linen
+   *
+   * Neutrals
+   * taupe       #8A8471   muted label text
+   * sage        #7C8D71   muted green accent
+   * ink         #232019   primary text (deepest)
+   *
+   * Gold / accent
+   * gold-bright #C9A86A   bright gold (primary decorative)
+   * gold        #A9834F   medium gold  (accent)
+   * cocoa       #4B3621   warm brown   (subtle borders)
+   * walnut      #5C4033   warm border  (kept for compat)
    */
-  --color-ivory: #e8e0d5;
-  --color-parchment: #f5f3ee;
+
+  /* Core palette */
+  --color-cream: #fbf8f2;
+  --color-cream-soft: #f4efe4;
+  --color-parchment: #f0e9da;
   --color-sand: #e8dcc8;
   --color-linen: #d6cec3;
-  --color-taupe: #b4a79a;
-  --color-mauve: #a3928f;
+  --color-taupe: #8a8471;
+  --color-sage: #7c8d71;
+  --color-moss: #24382a;
+  --color-moss-deep: #182518;
+  --color-chocolate: #3d2b1f;
   --color-cocoa: #4b3621;
   --color-walnut: #5c4033;
-  --color-camel: #a67c52;
-  --color-brass: #c5a572;
-  --color-slate: #6b7f8a;
+  --color-gold: #a9834f;
+  --color-gold-bright: #c9a86a;
+  --color-ink: #232019;
   --color-sofa: #d4c5b5;
 
-  /* Semantic aliases (kept for component compatibility) */
-  --color-navy: #4b3621;
-  --color-teal: #a67c52;
+  /* Semantic aliases */
+  --color-ivory: #fbf8f2;
+  --color-mist: #fbf8f2;
+  --color-white: #f4efe4;
+  --color-surface: #f4efe4;
+  --color-background: #fbf8f2;
+  --color-foreground: #232019;
+  --color-black: #232019;
+  --color-navy: #24382a;
+  --color-camel: #a9834f;
+  --color-teal: #a9834f;
+  --color-accent: #c9a86a;
+  --color-bronze: #a9834f;
+  --color-brass: #c9a86a;
   --color-sky: #e8dcc8;
-  --color-mist: #e8e0d5;
-  --color-white: #f5f3ee;
-  --color-black: #2b2520;
-  --color-surface: #f5f3ee;
-  --color-background: #e8e0d5;
-  --color-foreground: #2b2520;
-  --color-accent: #a67c52;
-  --color-border: #4b362118;
-  --color-bronze: #a67c52;
-  --color-gold: #c5a572;
+  --color-mauve: #a3928f;
   --color-lavender: #a3928f;
+  --color-slate: #6b7f8a;
+  --color-border: rgba(61, 43, 31, 0.1);
 
-  --font-heading: var(--font-garamond), "EB Garamond", Georgia, serif;
+  --font-heading: var(--font-cormorant), "Cormorant Garamond",
+    var(--font-garamond), "EB Garamond", Georgia, serif;
   --font-body: var(--font-jost), "Jost", system-ui, sans-serif;
+  --font-script-display: var(--font-parisienne), "Parisienne", cursive;
 }
 
 html {
@@ -55,8 +79,8 @@ html {
 
 html,
 body {
-  background-color: #e8e0d5;
-  color: #2b2520;
+  background-color: #fbf8f2;
+  color: #232019;
 }
 
 body {
@@ -77,6 +101,10 @@ body {
   font-family: var(--font-script);
 }
 
+.font-script-display {
+  font-family: var(--font-script-display);
+}
+
 /* Showroom-style tracked caps labels */
 .type-label {
   font-family: var(--font-body);
@@ -90,50 +118,71 @@ body {
 /* Prestige / books editorial headings */
 .type-display {
   font-family: var(--font-heading);
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 ::selection {
-  background-color: #e8dcc8;
-  color: #2b2520;
+  background-color: rgba(201, 168, 106, 0.3);
+  color: #232019;
 }
 
 .shadow-warm {
-  box-shadow: 0 8px 30px rgba(75, 54, 33, 0.08);
+  box-shadow: 0 8px 30px rgba(36, 56, 42, 0.14);
+}
+
+.shadow-gold {
+  box-shadow: 0 4px 20px rgba(169, 131, 79, 0.2);
+}
+
+/* Dark atmospheric sections (hero backdrop, footer) */
+.bg-dark-section {
+  background: linear-gradient(160deg, #24382a 0%, #1a2818 55%, #101710 100%);
 }
 
 .bg-fluted {
   background-image: repeating-linear-gradient(
     90deg,
-    rgba(75, 54, 33, 0.04) 0,
-    rgba(75, 54, 33, 0.04) 1px,
+    rgba(36, 56, 42, 0.06) 0,
+    rgba(36, 56, 42, 0.06) 1px,
     transparent 1px,
     transparent 14px
   );
 }
 
 .bg-botanical {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120' fill='none'%3E%3Cpath d='M60 10 Q75 40 60 70 Q45 40 60 10' stroke='%234b3621' stroke-width='0.4' opacity='0.06'/%3E%3Cpath d='M30 50 Q50 65 30 90' stroke='%234b3621' stroke-width='0.35' opacity='0.05'/%3E%3Cpath d='M90 50 Q70 65 90 90' stroke='%234b3621' stroke-width='0.35' opacity='0.05'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120' fill='none'%3E%3Cpath d='M60 10 Q75 40 60 70 Q45 40 60 10' stroke='%2324382a' stroke-width='0.4' opacity='0.06'/%3E%3Cpath d='M30 50 Q50 65 30 90' stroke='%2324382a' stroke-width='0.35' opacity='0.05'/%3E%3Cpath d='M90 50 Q70 65 90 90' stroke='%2324382a' stroke-width='0.35' opacity='0.05'/%3E%3C/svg%3E");
   background-size: 120px 120px;
 }
 
 .bg-warm-fade {
-  background: linear-gradient(to bottom, #e8e0d5 0%, #d6cec3 50%, #f5f3ee 100%);
+  background: linear-gradient(to bottom, #fbf8f2 0%, #f0e9da 50%, #f4efe4 100%);
 }
 
 .bg-warm-fade-reverse {
-  background: linear-gradient(to bottom, #f5f3ee 0%, #d6cec3 50%, #e8e0d5 100%);
+  background: linear-gradient(to bottom, #f4efe4 0%, #f0e9da 50%, #fbf8f2 100%);
 }
 
+/* Gold decorative divider gradient */
 .divider-gold {
   background: linear-gradient(
     to right,
     transparent,
-    rgba(197, 165, 114, 0.28) 20%,
-    rgba(197, 165, 114, 0.45) 50%,
-    rgba(197, 165, 114, 0.28) 80%,
+    rgba(201, 168, 106, 0.35) 20%,
+    rgba(201, 168, 106, 0.6) 50%,
+    rgba(201, 168, 106, 0.35) 80%,
     transparent
   );
+}
+
+/* Dark card style for moss sections */
+.card-dark {
+  background: rgba(255, 251, 242, 0.06);
+  border: 1px solid rgba(201, 168, 106, 0.2);
+}
+
+.card-dark:hover {
+  background: rgba(255, 251, 242, 0.1);
+  border-color: rgba(201, 168, 106, 0.45);
 }
