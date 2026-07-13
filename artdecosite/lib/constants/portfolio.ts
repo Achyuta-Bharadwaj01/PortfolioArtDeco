@@ -45,7 +45,7 @@ export const portfolioFolderOverrides: Record<string, PortfolioFolderOverride> =
     "westside summer campaign 2021": {
       slug: "westside-summer-campaign-2021",
       title: "Westside Summer Campaign",
-      category: "Fashion Campaign",
+      category: "Brand Campaign",
     },
     "TROVE Showroom": {
       slug: "trove-showroom",

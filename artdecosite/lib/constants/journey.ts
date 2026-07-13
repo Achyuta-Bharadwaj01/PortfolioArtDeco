@@ -42,10 +42,10 @@ export const journeyEntries: JourneyEntry[] = [
   {
     id: "Founder",
     title: "Founder",
-    organization: "Elaria Studios",
+    organization: "Ellaria Studios",
     period: "2026 - Present",
     description:
-      "Founded Elaria Studios — a studio for interior designers to showcase their work and connect with clients.",
+      "Founded Ellaria Studios — a studio for interior designers to showcase their work and connect with clients.",
   },
 ];
 

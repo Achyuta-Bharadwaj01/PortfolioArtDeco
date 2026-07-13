@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { HorizontalScrollArea } from "@/components/ui/HorizontalScrollArea";
 import {
   testimonials,
   testimonialsIntro,
@@ -32,7 +33,7 @@ function CardCorner({
       src="/UIItems/Floral_filgree.png"
       alt=""
       aria-hidden="true"
-      className={`pointer-events-none absolute h-9 w-9 object-contain opacity-30 transition-all duration-500 ease-out group-hover:scale-110 group-hover:opacity-50 sm:h-10 sm:w-10 ${cornerPositions[position]} ${cornerTransforms[position]}`}
+      className={`pointer-events-none absolute h-9 w-9 object-contain opacity-30 transition-opacity duration-500 ease-out group-hover:opacity-50 sm:h-10 sm:w-10 ${cornerPositions[position]} ${cornerTransforms[position]}`}
       style={{ mixBlendMode: "multiply" }}
     />
   );
@@ -70,7 +71,7 @@ function TestimonialCard({
             &ldquo;{testimonial.quote}&rdquo;
           </blockquote>
 
-          <footer className="mt-6 border-t border-gold/15 pt-4 transition-colors duration-300 group-hover:border-gold/30 sm:mt-7">
+          <footer className="mt-6 sm:mt-7">
             <cite className="not-italic">
               <span className="font-body text-[11px] font-medium uppercase tracking-[0.22em] text-gold transition-all duration-300 group-hover:tracking-[0.26em] sm:text-xs">
                 {testimonial.name}
@@ -131,7 +132,7 @@ export function TestimonialsSection() {
         <TestimonialsHeader />
 
         <div className="relative -mx-5 sm:-mx-6 lg:-mx-10 xl:-mx-12">
-          <div className="overflow-x-auto overscroll-x-contain scroll-smooth pb-4 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory scroll-px-5 sm:scroll-px-6 lg:scroll-px-10 xl:scroll-px-12 [&::-webkit-scrollbar]:hidden">
+          <HorizontalScrollArea className="scroll-px-5 pt-3 pb-4 sm:scroll-px-6 lg:scroll-px-10 xl:scroll-px-12">
             <div className="flex w-max min-w-full items-stretch gap-5 px-5 sm:px-6 lg:gap-6 lg:px-10 xl:px-12">
               {testimonials.map((testimonial, index) => (
                 <TestimonialCard
@@ -141,11 +142,7 @@ export function TestimonialsSection() {
                 />
               ))}
             </div>
-          </div>
-
-          <p className="mt-2 text-center font-body text-[10px] uppercase tracking-[0.28em] text-gold/60 sm:hidden">
-            Scroll to read more
-          </p>
+          </HorizontalScrollArea>
         </div>
       </div>
     </section>
