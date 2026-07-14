@@ -33,8 +33,8 @@ export const brandWorks: readonly BrandWork[] = [
     slug: "nestasia",
     name: "Nestasia",
     videos: videosFromUrls([
+      "https://www.youtube.com/watch?v=pKDgsWT_KV4",
       "https://www.youtube.com/watch?v=nFvRh8KorAY",
-      "https://youtu.be/nFvRh8KorAY",
     ]),
   },
   {

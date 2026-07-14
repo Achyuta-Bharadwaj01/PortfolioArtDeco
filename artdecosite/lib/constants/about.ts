@@ -7,3 +7,57 @@ export const aboutProfile = {
   /** Placeholder until the about video is ready. */
   videoUrl: null,
 } as const;
+
+export type SupportSystemMember = {
+  id: string;
+  name: string;
+  headline: string;
+  location?: string;
+  linkedinUsername?: string;
+  photoSrc?: string;
+  linkedinUrl?: string;
+};
+
+export const aboutPage = {
+  title: "About Me",
+  videoPlaceholderLabel: "About video — coming soon",
+} as const;
+
+export const supportSystemIntro = {
+  heading: "My Support System",
+} as const;
+
+export const supportSystemMembers: SupportSystemMember[] = [
+  {
+    id: "saif-ahmed",
+    name: "Saif Ahmed",
+    headline: "FMVA® | AICPA - Candidate | Audit & Assurance Analyst @ Deloitte USI",
+    location: "Bengaluru, Karnataka, India",
+    linkedinUsername: "saif-ahmed-finance",
+    linkedinUrl: "https://www.linkedin.com/in/saif-ahmed-finance",
+  },
+  {
+    id: "saniya-ahmed",
+    name: "Saniya Ahmed N",
+    headline: "UI UX Designer at Infobrandz",
+    location: "Bengaluru, Karnataka, India",
+    linkedinUsername: "saniya-ahmed-n-07574b21a",
+    linkedinUrl: "https://www.linkedin.com/in/saniya-ahmed-n-07574b21a",
+  },
+  {
+    id: "omar-nabil-ahmed",
+    name: "Dr. Omar Nabil Ahmed",
+    headline:
+      "Chief Executive Officer at Engineering Technology Associates, Inc.",
+    location: "Bengaluru, Karnataka, India",
+    linkedinUsername: "omar-nabil-ahmed",
+    linkedinUrl: "https://www.linkedin.com/in/omar-nabil-ahmed",
+  },
+  {
+    id: "naziya-ahmed",
+    name: "Dr. Naziya Ahmed",
+    headline: "Doctor",
+    location: "India",
+    photoSrc: "/Assets/person/NaziyaAhmed.png",
+  },
+];

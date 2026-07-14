@@ -1,5 +1,5 @@
 import { theme } from "@/lib/constants/theme";
-import { aboutHref, contactHref } from "@/lib/utils/scrollToHash";
+import { contactHref } from "@/lib/utils/scrollToHash";
 
 export const siteConfig = {
   brandName: "Ellaria",
@@ -19,6 +19,6 @@ export const navLinks = [
   { label: "SERVICES", href: "/services" },
   { label: "SHOP", href: "/shop" },
   { label: "BLOG", href: "/blog" },
-  { label: "ABOUT", href: aboutHref },
+  { label: "ABOUT", href: "/about" },
   { label: "CONTACT", href: contactHref },
 ] as const;

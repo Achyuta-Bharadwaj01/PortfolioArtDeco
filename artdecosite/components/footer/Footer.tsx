@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { aboutHref, contactHref } from "@/lib/utils/scrollToHash";
+import { contactHref } from "@/lib/utils/scrollToHash";
 import { siteConfig } from "@/lib/constants/site";
 import { siteX } from "@/lib/constants/layout";
 
 const footerLinks = [
   { label: "Portfolio", href: "/portfolio" },
-  { label: "About", href: aboutHref },
+  { label: "About", href: "/about" },
   { label: "Contact", href: contactHref },
   { label: "Instagram", href: siteConfig.instagramUrl, external: true },
 ] as const;
