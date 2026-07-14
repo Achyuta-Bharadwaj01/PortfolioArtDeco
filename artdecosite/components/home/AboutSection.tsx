@@ -12,16 +12,20 @@ export function AboutSection() {
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-10 xl:px-12">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
           <div className="relative flex items-center justify-center">
-            <div className="relative mx-auto w-full max-w-[360px] sm:max-w-[440px] lg:max-w-[520px]">
-              <Image
-                src={aboutProfile.image}
-                alt="Shaineela Ahmed"
-                width={900}
-                height={900}
-                unoptimized
-                sizes="(max-width: 640px) 360px, (max-width: 1024px) 440px, 520px"
-                className="h-auto w-full object-contain"
-              />
+            <div className="relative mx-auto w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[420px]">
+              <div className="overflow-hidden rounded-[1.75rem] border border-gold/25 bg-parchment p-1.5 shadow-[0_24px_48px_-28px_rgba(35,32,25,0.2)] sm:rounded-[2rem] sm:p-2">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[1.35rem] sm:rounded-[1.65rem]">
+                  <Image
+                    src={aboutProfile.image}
+                    alt="Shaineela Ahmed"
+                    fill
+                    unoptimized
+                    sizes="(max-width: 640px) 320px, (max-width: 1024px) 380px, 420px"
+                    className="object-cover object-[center_42%] scale-[1.02]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-gold/15" />
+                </div>
+              </div>
             </div>
           </div>
 

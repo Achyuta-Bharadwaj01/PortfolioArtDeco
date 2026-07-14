@@ -25,7 +25,7 @@ export const serviceCategories: readonly ServiceCategory[] = [
   },
   {
     id: "styling",
-    title: "Styling",
+    title: "Styling and Home Staging",
     description:
       "Editorial and commercial styling that gives a space its final, unmistakable voice.",
     href: contactHref,
