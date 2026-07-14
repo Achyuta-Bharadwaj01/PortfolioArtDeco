@@ -1,0 +1,21 @@
+export const poemLetter = {
+  eyebrow: "A Note From Me",
+  scriptHeading: "For You",
+  subheading: "Before you go, a small letter — click the seal to open it.",
+  openHint: "Click to open",
+  closeHint: "Click to read again",
+  title: "The Architecture of the Unspoken",
+  signature: "Shaineela",
+  stanzas: [
+    "We are feeling creatures\nliving in constructed worlds\nsearching, always,\nfor a place that understands us\nwithout being asked.",
+    "A space that holds the weight of a hard day.\nThat lets light in at just the right angle\nto remind you softly\nthat tomorrow exists.\nThat arranges silence in a way\nthat finally feels like peace.",
+    "We don\u2019t just inhabit spaces.\nWe pour ourselves into them.\nOur routines, our quiet moments,\nour grief, our joy, the version of ourselves\nwe are still becoming.",
+    "And so to design a space\nis to hold something sacred.\nIt is to say\nI see you.\nI thought of you.\nI built this with your whole human life in mind.",
+    "But we are not the only ones living.",
+    "The earth beneath every foundation\nhas a life of its own.\nThe materials we choose\ncarry stories\nof forests, of hands, of water,\nof a planet that gives\nmore than we remember to honour.",
+    "Responsible design is not a trend.\nIt is a conversation\nbetween what we need today\nand what we owe tomorrow.\nIt is choosing materials that breathe.\nLight that doesn\u2019t cost the sky.\nSpaces that are beautiful\nwithout being borrowed\nfrom a future that isn\u2019t ours to spend.",
+    "Because the most meaningful spaces\nare the ones built with conscience\nwhere human emotion\nand planetary care\nsit together\nin the same quiet room.",
+    "This is why I design.\nNot just to create something beautiful.\nBut to create something\nthat was worth creating.",
+    "Because everything I create\ncarries the same quiet promise\nto be thoughtful,\nto be meaningful,\nand to leave the world\na little more beautiful\nthan I found it.",
+  ],
+} as const;

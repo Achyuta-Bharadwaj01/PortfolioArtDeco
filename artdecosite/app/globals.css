@@ -247,3 +247,162 @@ body {
     transform: none !important;
   }
 }
+
+/* Envelope letter — closing note interaction */
+.envelope-scene {
+  perspective: 1600px;
+}
+
+.envelope-shell {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+}
+
+.envelope-body {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: linear-gradient(165deg, #f4efe4 0%, #ecdfc2 100%);
+  border: 1px solid rgba(169, 131, 79, 0.38);
+  box-shadow:
+    0 26px 46px -24px rgba(16, 23, 16, 0.45),
+    0 2px 0 rgba(255, 255, 255, 0.4) inset;
+  transition: box-shadow 0.5s ease;
+}
+
+.envelope-letter {
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  top: 11%;
+  height: 80%;
+  z-index: 10;
+  background: linear-gradient(180deg, #fffdf8 0%, #fbf8f2 100%);
+  border: 1px solid rgba(169, 131, 79, 0.22);
+  border-top: 2px solid rgba(201, 168, 106, 0.55);
+  box-shadow: 0 14px 30px -16px rgba(16, 23, 16, 0.4);
+  transform: translateY(2%);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.18s;
+}
+
+.envelope-flap {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  clip-path: polygon(0 0, 100% 0, 50% 56%);
+  background: linear-gradient(200deg, #efe4c9 0%, #ddc79a 100%);
+  border-bottom: 1px solid rgba(169, 131, 79, 0.32);
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.85s cubic-bezier(0.5, 0, 0.25, 1),
+    z-index 0s 0.4s;
+}
+
+.envelope-seal {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  z-index: 40;
+  width: 15%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  transition:
+    transform 0.45s ease,
+    opacity 0.4s ease;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #d9b978 0%, #a9834f 55%, #7d6038 100%);
+  box-shadow: 0 6px 14px -4px rgba(16, 23, 16, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.envelope-shell.is-open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 5;
+}
+
+.envelope-shell.is-open .envelope-letter {
+  transform: translateY(-38%);
+}
+
+.envelope-shell.is-open .envelope-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.6) rotate(20deg);
+  pointer-events: none;
+}
+
+@keyframes envelope-breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.envelope-idle {
+  animation: envelope-breathe 4.5s ease-in-out infinite;
+}
+
+.envelope-idle.is-paused {
+  animation-play-state: paused;
+}
+
+@keyframes letter-modal-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes letter-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.letter-modal-backdrop-enter {
+  animation: letter-modal-backdrop-in 0.4s ease forwards;
+}
+
+.letter-modal-enter {
+  animation: letter-modal-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.letter-modal-backdrop-exit,
+.letter-modal-exit {
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.letter-modal-exit {
+  transform: scale(0.96) translateY(10px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .envelope-idle {
+    animation: none;
+  }
+
+  .envelope-flap,
+  .envelope-letter,
+  .envelope-seal {
+    transition-duration: 0.01ms !important;
+  }
+
+  .letter-modal-backdrop-enter,
+  .letter-modal-enter {
+    animation-duration: 0.01ms !important;
+  }
+}

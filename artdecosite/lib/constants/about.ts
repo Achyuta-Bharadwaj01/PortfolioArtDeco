@@ -48,7 +48,7 @@ export const supportSystemMembers: SupportSystemMember[] = [
     id: "omar-nabil-ahmed",
     name: "Dr. Omar Nabil Ahmed",
     headline:
-      "Chief Executive Officer at Engineering Technology Associates, Inc.",
+      "CEO at ETA, Inc. | MD at India Builders Corporation Pvt Ltd. | LP at Ullegiant Ecojects Pvt Ltd.",
     location: "Bengaluru, Karnataka, India",
     linkedinUsername: "omar-nabil-ahmed",
     linkedinUrl: "https://www.linkedin.com/in/omar-nabil-ahmed",

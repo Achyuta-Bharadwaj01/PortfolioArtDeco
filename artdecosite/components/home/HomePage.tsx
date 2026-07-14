@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { AboutSection } from "@/components/home/AboutSection";
 import { ContactSection } from "@/components/home/ContactSection";
 import { JourneySection } from "@/components/home/JourneySection";
+import { PoemLetterSection } from "@/components/home/PoemLetterSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { Navbar } from "@/components/navbar";
 import { ProjectShowcase } from "@/components/projects";
@@ -47,6 +48,7 @@ export function HomePage({ showcaseItems }: HomePageProps) {
         <JourneySection />
         <TestimonialsSection />
         <ContactSection />
+        <PoemLetterSection />
       </main>
     </>
   );
