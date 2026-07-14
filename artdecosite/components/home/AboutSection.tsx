@@ -14,14 +14,13 @@ export function AboutSection() {
           <div className="relative flex items-center justify-center">
             <div className="relative mx-auto w-full max-w-[360px] sm:max-w-[440px] lg:max-w-[520px]">
               <Image
-                src="/UIItems/mirror_borderFilgreen_withimage.png"
+                src={aboutProfile.image}
                 alt="Shaineela Ahmed"
                 width={900}
                 height={900}
                 unoptimized
                 sizes="(max-width: 640px) 360px, (max-width: 1024px) 440px, 520px"
                 className="h-auto w-full object-contain"
-                style={{ mixBlendMode: "multiply" }}
               />
             </div>
           </div>
