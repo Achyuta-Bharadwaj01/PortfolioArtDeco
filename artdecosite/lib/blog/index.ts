@@ -1,12 +1,4 @@
-export {
-  getEpisodeBySlug,
-  getEpisodeSlugs,
-} from "@/lib/blog/getEpisode";
-export {
-  getEpisodeSummaries,
-  getEpisodeSummary,
-  getPrimaryBlogSeries,
-} from "@/lib/blog/manifest";
+export { getBlogSeries, getEpisodeBySlug, getEpisodeSlugs } from "@/lib/blog/strapi";
 export type {
   BlogEpisode,
   BlogEpisodeSummary,
