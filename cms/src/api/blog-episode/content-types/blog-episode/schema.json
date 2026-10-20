@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blog_episodes",
+  "info": {
+    "singularName": "blog-episode",
+    "pluralName": "blog-episodes",
+    "displayName": "Blog Episode",
+    "description": "One essay in a series. Paragraphs match the current site renderer."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "episode": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "excerpt": {
+      "type": "text",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "publishedOn": {
+      "type": "date"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "paragraphs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blog.paragraph"
+    },
+    "series": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::blog-series.blog-series",
+      "inversedBy": "episodes"
+    }
+  }
+}

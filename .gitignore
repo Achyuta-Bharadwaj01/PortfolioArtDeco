@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# strapi
+.tmp/
+.cache/
+.strapi/
+dist/
+build/
+exports/
+.strapi-updater.json
+.strapi-cloud.json
+license.txt
+
+# env and local databases
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite3
+
+# logs and os junk
+*.log
+.DS_Store
+Thumbs.db

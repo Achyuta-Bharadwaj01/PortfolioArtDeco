@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_blog_paragraphs",
+  "info": {
+    "displayName": "Paragraph",
+    "icon": "align-left",
+    "description": "One block of an essay. Emphasis renders it as a pull quote."
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    },
+    "emphasis": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
