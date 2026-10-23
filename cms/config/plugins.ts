@@ -57,12 +57,13 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
                   region: env('AWS_REGION', 'ap-south-1'),
                   params: {
                     Bucket: bucket,
+                    ACL: null,
                   },
                 },
               },
               actionOptions: {
-                upload: {},
-                uploadStream: {},
+                upload: { ACL: null },
+                uploadStream: { ACL: null },
                 delete: {},
               },
             }

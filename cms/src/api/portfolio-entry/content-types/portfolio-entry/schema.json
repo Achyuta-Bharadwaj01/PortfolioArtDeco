@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "portfolio_entries",
+  "info": {
+    "singularName": "portfolio-entry",
+    "pluralName": "portfolio-entries",
+    "displayName": "Portfolio Entry",
+    "description": "An interior project or a brand shoot."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "kind": {
+      "type": "enumeration",
+      "enum": ["project", "shoot"],
+      "required": true
+    },
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "sortOrder": {
+      "type": "integer",
+      "default": 0
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images", "videos"]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images", "videos"]
+    },
+    "description": {
+      "type": "component",
+      "repeatable": true,
+      "component": "portfolio.text-block"
+    }
+  }
+}

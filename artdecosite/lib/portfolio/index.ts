@@ -1,10 +1,12 @@
 import fs from "fs";
 import path from "path";
+import { cache } from "react";
 import {
   featuredPortfolioSlugs,
   portfolioDetails,
   portfolioFolderOverrides,
 } from "@/lib/constants/portfolio";
+import { getStrapiPortfolio } from "@/lib/portfolio/strapi";
 import {
   buildGalleryFromMedia,
   collectMediaFromDirectory,
@@ -87,31 +89,32 @@ function loadItemsFromCollection(config: PortfolioCollection): PortfolioItem[] {
       return {
         ...metadata,
         image: poster.publicPath,
-      } satisfies PortfolioItem;
+        featured: featuredPortfolioSlugs[config.kind].includes(metadata.slug),
+      };
     })
     .filter((item): item is PortfolioItem => item !== null)
     .sort((a, b) => a.title.localeCompare(b.title));
 }
 
-export function getAllProjects(): PortfolioItem[] {
+function getLocalProjects(): PortfolioItem[] {
   return loadItemsFromCollection(getCollectionConfig("project"));
 }
 
-export function getAllShoots(): PortfolioItem[] {
+function getLocalShoots(): PortfolioItem[] {
   return loadItemsFromCollection(getCollectionConfig("shoot"));
 }
 
-export function getAllPortfolioItems(): PortfolioItem[] {
-  return [...getAllProjects(), ...getAllShoots()].sort((a, b) =>
+function getLocalPortfolioItems(): PortfolioItem[] {
+  return [...getLocalProjects(), ...getLocalShoots()].sort((a, b) =>
     a.title.localeCompare(b.title),
   );
 }
 
 function findPortfolioItem(slug: string): PortfolioItem | null {
-  return getAllPortfolioItems().find((entry) => entry.slug === slug) ?? null;
+  return getLocalPortfolioItems().find((entry) => entry.slug === slug) ?? null;
 }
 
-export function getPortfolioDetail(slug: string): PortfolioDetail | null {
+function getLocalPortfolioDetail(slug: string): PortfolioDetail | null {
   const item = findPortfolioItem(slug);
 
   if (!item) {
@@ -157,13 +160,50 @@ export function getPortfolioDetail(slug: string): PortfolioDetail | null {
   };
 }
 
-export function getAllPortfolioSlugs() {
-  return getAllPortfolioItems().map((item) => item.slug);
+function getLocalCatalog(): PortfolioDetail[] {
+  return getLocalPortfolioItems()
+    .map((item) => getLocalPortfolioDetail(item.slug))
+    .filter((item): item is PortfolioDetail => item !== null);
 }
 
-export function getFeaturedPortfolioItems(): PortfolioItem[] {
-  const projects = getAllProjects();
-  const shoots = getAllShoots();
+const getPortfolioCatalog = cache(async () => {
+  const remote = await getStrapiPortfolio();
+
+  if (remote && remote.length > 0) {
+    return remote;
+  }
+
+  return getLocalCatalog();
+});
+
+export async function getAllProjects(): Promise<PortfolioItem[]> {
+  const catalog = await getPortfolioCatalog();
+  return catalog.filter((item) => item.kind === "project");
+}
+
+export async function getAllShoots(): Promise<PortfolioItem[]> {
+  const catalog = await getPortfolioCatalog();
+  return catalog.filter((item) => item.kind === "shoot");
+}
+
+export async function getAllPortfolioItems(): Promise<PortfolioItem[]> {
+  const catalog = await getPortfolioCatalog();
+  return [...catalog].sort((a, b) => a.title.localeCompare(b.title));
+}
+
+export async function getPortfolioDetail(slug: string): Promise<PortfolioDetail | null> {
+  const catalog = await getPortfolioCatalog();
+  return catalog.find((item) => item.slug === slug) ?? null;
+}
+
+export async function getAllPortfolioSlugs() {
+  const catalog = await getPortfolioCatalog();
+  return catalog.map((item) => item.slug);
+}
+
+export async function getFeaturedPortfolioItems(): Promise<PortfolioItem[]> {
+  const projects = await getAllProjects();
+  const shoots = await getAllShoots();
 
   const pickFeatured = (
     items: PortfolioItem[],
@@ -172,9 +212,15 @@ export function getFeaturedPortfolioItems(): PortfolioItem[] {
   ) => {
     const selected: PortfolioItem[] = [];
 
+    for (const item of items) {
+      if (item.featured) {
+        selected.push(item);
+      }
+    }
+
     for (const slug of slugs) {
       const match = items.find((item) => item.slug === slug);
-      if (match) {
+      if (match && !selected.some((entry) => entry.slug === match.slug)) {
         selected.push(match);
       }
     }

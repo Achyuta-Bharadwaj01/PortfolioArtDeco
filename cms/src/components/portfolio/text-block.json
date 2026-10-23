@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_portfolio_text_blocks",
+  "info": {
+    "displayName": "Text block",
+    "icon": "align-left",
+    "description": "One paragraph of a project or shoot description."
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -10,15 +10,17 @@ type ProjectPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
-  return getAllPortfolioSlugs().map((slug) => ({ slug }));
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  return (await getAllPortfolioSlugs()).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const item = getPortfolioDetail(slug);
+  const item = await getPortfolioDetail(slug);
 
   if (!item) {
     return {};
@@ -37,7 +39,7 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const item = getPortfolioDetail(slug);
+  const item = await getPortfolioDetail(slug);
 
   if (!item) {
     notFound();

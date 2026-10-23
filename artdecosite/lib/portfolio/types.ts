@@ -7,6 +7,7 @@ export type PortfolioItem = {
   image: string;
   href: string;
   kind: PortfolioKind;
+  featured: boolean;
 };
 
 export type PortfolioDetail = PortfolioItem & {

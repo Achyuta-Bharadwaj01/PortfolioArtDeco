@@ -9,9 +9,11 @@ export const metadata: Metadata = {
     "Portfolio of interior design projects and brand photography by Shaineela Ahmed.",
 };
 
-export default function PortfolioPage() {
-  const projects = getAllProjects();
-  const shoots = getAllShoots();
+export const revalidate = 60;
+
+export default async function PortfolioPage() {
+  const projects = await getAllProjects();
+  const shoots = await getAllShoots();
 
   return (
     <>

@@ -196,6 +196,8 @@ const PUBLIC_ACTIONS = [
   'api::blog-series.blog-series.findOne',
   'api::blog-episode.blog-episode.find',
   'api::blog-episode.blog-episode.findOne',
+  'api::portfolio-entry.portfolio-entry.find',
+  'api::portfolio-entry.portfolio-entry.findOne',
 ];
 
 export async function ensurePublicRead(strapi: Core.Strapi) {
