@@ -13,10 +13,23 @@ export interface BlogParagraph extends Struct.ComponentSchema {
   };
 }
 
+export interface PortfolioTextBlock extends Struct.ComponentSchema {
+  collectionName: 'components_portfolio_text_blocks';
+  info: {
+    description: 'One paragraph of a project or shoot description.';
+    displayName: 'Text block';
+    icon: 'align-left';
+  };
+  attributes: {
+    text: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
       'blog.paragraph': BlogParagraph;
+      'portfolio.text-block': PortfolioTextBlock;
     }
   }
 }

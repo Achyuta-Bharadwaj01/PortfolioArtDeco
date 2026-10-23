@@ -525,6 +525,44 @@ export interface ApiBlogSeriesBlogSeries extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPortfolioEntryPortfolioEntry extends Struct.CollectionTypeSchema {
+  collectionName: 'portfolio_entries';
+  info: {
+    description: 'An interior project or a brand shoot.';
+    displayName: 'Portfolio Entry';
+    pluralName: 'portfolio-entries';
+    singularName: 'portfolio-entry';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.String & Schema.Attribute.Required;
+    cover: Schema.Attribute.Media<'images' | 'videos'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Component<'portfolio.text-block', true>;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    gallery: Schema.Attribute.Media<'images' | 'videos', true>;
+    kind: Schema.Attribute.Enumeration<['project', 'shoot']> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::portfolio-entry.portfolio-entry'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    sortOrder: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1038,6 +1076,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::blog-episode.blog-episode': ApiBlogEpisodeBlogEpisode;
       'api::blog-series.blog-series': ApiBlogSeriesBlogSeries;
+      'api::portfolio-entry.portfolio-entry': ApiPortfolioEntryPortfolioEntry;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
